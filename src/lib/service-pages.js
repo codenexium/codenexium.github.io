@@ -16,41 +16,66 @@ export const SERVICE_INDUSTRIES = {
       group: 'Small Businesses',
       items: {
         'Restaurants & cafés - menus, reservations, delivery':
-          'Menu-driven pages with reservation and delivery CTAs that turn local searches into bookings.',
-        'Gyms & fitness studios - schedules, memberships, booking':
-          'Class schedules and membership pages with clear sign-up prompts.',
+          'Menu-driven informative pages with clear CTAs that turn local searches into physical foot traffic.',
         'Salons & spas - appointments, showcase, promotions':
-          'A service showcase with an easy appointment flow that keeps your book full.',
+          'A sleek service showcase that outlines your treatments, packages, and location details.',
         'Travel agencies - packages, itineraries, inquiries':
-          'Package and itinerary pages that route enquiries straight to you.',
+          'Detailed package and itinerary pages that route lead inquiries straight to your inbox.',
       },
     },
     {
       group: 'Professionals',
       items: {
-        'Doctors & clinics - booking, patient info, telemedicine':
-          'Patient-facing pages that build trust and capture appointments.',
         'Lawyers & law firms - services, testimonials, contact forms':
-          'Credible service pages, testimonials and contact forms that win clients.',
-        'Accountants & financial advisors - packages, consultations':
-          'Package pages and consultation booking that make you look established.',
+          'Credible service breakdowns, case studies, and secure contact forms that win client trust.',
         'Architects & interior designers - portfolios, project showcases':
-          'A visual portfolio that sells your design quality before the first meeting.',
-        'Tutors & coaches - courses, booking, payments':
-          'Course and booking pages that turn visitors into students.',
+          'A high-end visual portfolio showcasing your spatial designs before the first consultation.',
+        'Accountants & financial advisors - packages, consultations':
+          'Polished corporate layouts that establish financial expertise and highlight core services.',
       },
     },
     {
       group: 'Growing Enterprises',
       items: {
         'Startups - branding, product showcase, investor relations':
-          'A polished site that makes a young company look established.',
+          'A world-class web presence that makes a young company look reliable to investors.',
         'Freelancers - portfolio, contact, service offerings':
-          'A portfolio that turns visitors into paid projects.',
-        'Event planners - portfolios, packages, inquiry forms':
-          'Portfolio and package pages with smooth enquiry capture.',
+          'A high-converting portfolio page that quickly highlights your skills and case studies.',
         'NGOs & charities - donation portals, campaigns, volunteers':
-          'Campaign pages with donation and volunteer sign-up forms.',
+          'Informative campaign pages designed to share your mission and secure community support.',
+      },
+    },
+  ],
+  'online-bookings': [
+    {
+      group: 'Small Businesses',
+      items: {
+        'Restaurants & cafés - menus, reservations, delivery':
+          'Interactive table reservations and event room bookings handled seamlessly online.',
+        'Gyms & fitness studios - schedules, memberships, booking':
+          'Class timetables and slot scheduling that let members claim spots in seconds.',
+        'Salons & spas - appointments, showcase, promotions':
+          'An active, real-time appointment booker that slashes phone tag and prevents double-booking.',
+      },
+    },
+    {
+      group: 'Professionals',
+      items: {
+        'Doctors & clinics - booking, patient info, telemedicine':
+          'Patient-facing scheduling pipelines that capture appointments and handle calendar slots.',
+        'Accountants & financial advisors - packages, consultations':
+          'Paid consultation calendars that require commitment before booking a strategy slot.',
+        'Tutors & coaches - courses, booking, payments':
+          'Class slot and private coaching booking modules tied right into your work calendar.',
+      },
+    },
+    {
+      group: 'Growing Enterprises',
+      items: {
+        'Real estate agents - listings, virtual tours, lead capture':
+          'Automated booking links for physical site visits, open houses, or virtual property tours.',
+        'Event planners - portfolios, packages, inquiry forms':
+          'Initial scoping consultation calendars that qualify clients before you sketch a design.',
       },
     },
   ],
@@ -59,152 +84,27 @@ export const SERVICE_INDUSTRIES = {
       group: 'Small Businesses',
       items: {
         'Retail shops - e-commerce for clothing, electronics, furniture':
-          'A complete storefront with categories, product pages and checkout.',
+          'A comprehensive storefront with deep categories, rapid sorting, and secure checkout loops.',
         'Restaurants & cafés - menus, reservations, delivery':
-          'Online ordering and delivery options built into your site.',
+          'Direct online ordering, cart management, and payment portals to bypass third-party app fees.',
         'Gyms & fitness studios - schedules, memberships, booking':
-          'Sell memberships and packages with automated billing.',
+          'Sell equipment, supplements, and digital workout programs directly from your core hub.',
       },
     },
     {
       group: 'Professionals',
       items: {
         'Tutors & coaches - courses, booking, payments':
-          'Sell courses and coaching packages with secure online payments.',
-        'Accountants & financial advisors - packages, consultations':
-          'Package offerings with online checkout and invoicing.',
+          'Sell pre-recorded video modules, e-books, and training masterclasses with instant delivery.',
       },
     },
     {
       group: 'Growing Enterprises',
       items: {
         'Startups - branding, product showcase, investor relations':
-          'Launch products with a store wired into your CRM from day one.',
-        'Event planners - portfolios, packages, inquiry forms':
-          'Sell event packages directly from your portfolio pages.',
+          'Direct-to-consumer (D2C) online checkout engines configured tightly alongside your CRM.',
         'NGOs & charities - donation portals, campaigns, volunteers':
-          'A donation store with recurring giving and campaign pages.',
-      },
-    },
-  ],
-  'marketing-funnels': [
-    {
-      group: 'Small Businesses',
-      items: {
-        'Restaurants & cafés - menus, reservations, delivery':
-          'Promo landing pages that drive orders during slow hours.',
-        'Salons & spas - appointments, showcase, promotions':
-          'Offer-driven pages that fill your appointment book.',
-        'Gyms & fitness studios - schedules, memberships, booking':
-          'Membership funnels that turn leads into sign-ups.',
-        'Travel agencies - packages, itineraries, inquiries':
-          'Package landing pages with limited-time offers.',
-      },
-    },
-    {
-      group: 'Professionals',
-      items: {
-        'Doctors & clinics - booking, patient info, telemedicine':
-          'Consultation funnels that pre-qualify patients before booking.',
-        'Accountants & financial advisors - packages, consultations':
-          'Tax-season and consultation funnels with lead magnets.',
-        'Tutors & coaches - courses, booking, payments':
-          'Webinar and course launch funnels with upsells.',
-      },
-    },
-    {
-      group: 'Growing Enterprises',
-      items: {
-        'Startups - branding, product showcase, investor relations':
-          'Product launch and waitlist funnels that build momentum.',
-        'Real estate agents - listings, virtual tours, lead capture':
-          'Listing landing pages that capture serious buyer leads.',
-        'Event planners - portfolios, packages, inquiry forms':
-          'Enquiry funnels that qualify event leads before you call.',
-        'NGOs & charities - donation portals, campaigns, volunteers':
-          'Campaign funnels that convert donors and volunteers.',
-      },
-    },
-  ],
-  omnisend: [
-    {
-      group: 'Small Businesses',
-      items: {
-        'Retail shops - e-commerce for clothing, electronics, furniture':
-          'Abandoned-cart emails and SMS that recover lost sales.',
-        'Restaurants & cafés - menus, reservations, delivery':
-          'Promo and re-engagement campaigns that drive repeat orders.',
-        'Salons & spas - appointments, showcase, promotions':
-          'Appointment reminders and rebooking campaigns.',
-        'Gyms & fitness studios - schedules, memberships, booking':
-          'Membership nurture flows and renewal reminders.',
-      },
-    },
-    {
-      group: 'Professionals',
-      items: {
-        'Tutors & coaches - courses, booking, payments':
-          'Nurture sequences that turn prospects into enrolled students.',
-        'Accountants & financial advisors - packages, consultations':
-          'Segmented, compliant campaigns for packages and reminders.',
-        'Doctors & clinics - booking, patient info, telemedicine':
-          'Appointment reminders and health-tip email flows.',
-      },
-    },
-    {
-      group: 'Growing Enterprises',
-      items: {
-        'Startups - branding, product showcase, investor relations':
-          'Launch announcements and feature updates to your waitlist.',
-        'Event planners - portfolios, packages, inquiry forms':
-          'Campaigns that promote packages and drive enquiries.',
-        'Real estate agents - listings, virtual tours, lead capture':
-          'New-listing alerts and drip campaigns for buyers.',
-        'NGOs & charities - donation portals, campaigns, volunteers':
-          'Donor stewardship and volunteer recruitment campaigns.',
-      },
-    },
-  ],
-  'whatsapp-crm': [
-    {
-      group: 'Small Businesses',
-      items: {
-        'Restaurants & cafés - menus, reservations, delivery':
-          'Reservations and delivery orders managed in one shared inbox.',
-        'Retail shops - e-commerce for clothing, electronics, furniture':
-          'Order enquiries and support handled from WhatsApp.',
-        'Gyms & fitness studios - schedules, memberships, booking':
-          'Membership queries and renewals tracked as deals.',
-        'Salons & spas - appointments, showcase, promotions':
-          'Appointment bookings and reminders over WhatsApp.',
-        'Travel agencies - packages, itineraries, inquiries':
-          'Package enquiries moved through sales pipelines.',
-      },
-    },
-    {
-      group: 'Professionals',
-      items: {
-        'Doctors & clinics - booking, patient info, telemedicine':
-          'Patient booking and follow-ups organised per patient.',
-        'Lawyers & law firms - services, testimonials, contact forms':
-          'Client conversations with internal notes and assignments.',
-        'Accountants & financial advisors - packages, consultations':
-          'Consultation leads tracked through clear pipelines.',
-        'Tutors & coaches - courses, booking, payments':
-          'Student enquiries converted into booked sessions.',
-      },
-    },
-    {
-      group: 'Growing Enterprises',
-      items: {
-        'Real estate agents - listings, virtual tours, lead capture':
-          'Buyer leads captured and followed up on WhatsApp.',
-        'Event planners - portfolios, packages, inquiry forms':
-          'Event enquiries assigned to team members instantly.',
-        'Freelancers - portfolio, contact, service offerings':
-          'Every contact organised in one professional inbox.',
-        'NGOs & charities - donation portals, campaigns, volunteers':
-          'Donor and volunteer coordination at scale.',
+          'Accept custom recurring donations or sell fundraising merchandise securely.',
       },
     },
   ],
@@ -213,38 +113,93 @@ export const SERVICE_INDUSTRIES = {
       group: 'Small Businesses',
       items: {
         'Restaurants & cafés - menus, reservations, delivery':
-          'Order notifications and delivery updates automated.',
+          'Automated inventory threshold alerts and daily sales reporting bots run over backend engines.',
         'Retail shops - e-commerce for clothing, electronics, furniture':
-          'Order processing and stock alerts on autopilot.',
-        'Gyms & fitness studios - schedules, memberships, booking':
-          'Membership renewals and reminder flows automated.',
+          'Autonomous order tracking, stock updates, and vendor data synchronization pipelines.',
         'Travel agencies - packages, itineraries, inquiries':
-          'Itinerary delivery and enquiry routing automated.',
+          'AI systems that read booking criteria and dynamically draft tailored travel itineraries.',
       },
     },
     {
       group: 'Professionals',
       items: {
         'Doctors & clinics - booking, patient info, telemedicine':
-          'Appointment reminders and patient follow-ups automated.',
+          'Automated follow-up data routing and diagnostic logging scripts that ease administrative loads.',
         'Accountants & financial advisors - packages, consultations':
-          'Data collection, deadline reminders and reports automated.',
-        'Tutors & coaches - courses, booking, payments':
-          'Course enrolment and payment confirmations automated.',
+          'Automated document data extraction (OCR) and bank ledger cross-matching systems.',
       },
     },
     {
       group: 'Growing Enterprises',
       items: {
         'Startups - branding, product showcase, investor relations':
-          'Lead enrichment and internal team notifications automated.',
+          'AI-powered competitor scraping, real-time lead enrichment, and instant slack notification workflows.',
         'Real estate agents - listings, virtual tours, lead capture':
-          'New listings pushed automatically to your channels.',
-        'Event planners - portfolios, packages, inquiry forms':
-          'Enquiry triage and data sync across your tools.',
-        'NGOs & charities - donation portals, campaigns, volunteers':
-          'Donation data synced straight into your CRM.',
+          'Automatic property listing generation and syndication across multiple listing portals.',
       },
     },
   ],
-}
+  'crm-funnels-chatbots': [
+    {
+      group: 'Small Businesses',
+      items: {
+        'Salons & spas - appointments, showcase, promotions':
+          'Automated WhatsApp appointment confirmations and seasonal offer broadcast funnels.',
+        'Gyms & fitness studios - schedules, memberships, booking':
+          'High-converting landing pages offering free trial passes to feed your membership sales pipeline.',
+        'Travel agencies - packages, itineraries, inquiries':
+          'WhatsApp interactive chatbots that answer package FAQs and group leads by destination interest.',
+      },
+    },
+    {
+      group: 'Professionals',
+      items: {
+        'Doctors & clinics - booking, patient info, telemedicine':
+          'Automated clinic SMS reminders and secure digital intake forms that sync with your CRM.',
+        'Lawyers & law firms - services, testimonials, contact forms':
+          'Lead capture landing pages that screen legal inquiries before routing them to internal staff.',
+        'Tutors & coaches - courses, booking, payments':
+          'Multi-step webinar funnels complete with automated email warm-up and checkout bumps.',
+      },
+    },
+    {
+      group: 'Growing Enterprises',
+      items: {
+        'Real estate agents - listings, virtual tours, lead capture':
+          'Targeted property landing pages that dump interested buyers straight into targeted drip pools.',
+        'Event planners - portfolios, packages, inquiry forms':
+          'Smart qualification funnels that gather event budget and date requirements upfront.',
+      },
+    },
+  ],
+  'custom-software': [
+    {
+      group: 'Small Businesses',
+      items: {
+        'Retail shops - e-commerce for clothing, electronics, furniture':
+          'Custom cross-platform desktop POS systems tailored for custom hardware and barcode scanners.',
+        'Gyms & fitness studios - schedules, memberships, booking':
+          'Custom mobile applications allowing members to track progress, check in via QR, and scan logs.',
+      },
+    },
+    {
+      group: 'Professionals',
+      items: {
+        'Doctors & clinics - booking, patient info, telemedicine':
+          'Secure web applications for custom patient records management aligned with regional compliance.',
+        'Lawyers & law firms - services, testimonials, contact forms':
+          'Custom CLI tools or desktop apps for secure, batch-encrypted client archiving and discovery search.',
+      },
+    },
+    {
+      group: 'Growing Enterprises',
+      items: {
+        'Startups - branding, product showcase, investor relations':
+          'Building your core proprietary Software-as-a-Service (SaaS) MVP from code to cloud deployment.',
+        'Event planners - portfolios, packages, inquiry forms':
+          'Interactive, collaborative internal planning platforms built for staff shift scheduling and vendors.',
+      },
+    },
+  ],
+};
+
