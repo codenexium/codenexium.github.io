@@ -8,7 +8,7 @@ import { Menu, X, CalendarCheck } from 'lucide-react'
 import { Logo } from './Logo'
 import { ThemeToggle } from './ThemeToggle'
 import { useCta } from '../lib/cta-context'
-import CalendlyModal from './CalendlyModal'
+import CalIdModal from './CalIdModal'
 
 const NAV = [
   { to: '/', label: 'Home' },
@@ -98,7 +98,7 @@ export function Navbar() {
           >
             Get a Quote
           </button>
-          <CalendlyModal variant="primary" />
+          <CalIdModal variant="primary" />
         </div>
 
         <div className="flex items-center gap-2 lg:hidden">
@@ -144,7 +144,7 @@ export function Navbar() {
                 >
                   Get a Quote
                 </button>
-                <CalendlyModal />
+                <CalIdModal />
               </div>
             </div>
           </motion.div>

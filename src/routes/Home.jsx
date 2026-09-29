@@ -23,7 +23,7 @@ import { ServiceCard } from '../components/ServiceCard'
 import { ServiceIcon } from '../components/icons'
 import { CtaBanner } from '../components/CtaBanner'
 import { useCta } from '../lib/cta-context'
-import CalendlyModal from '../components/CalendlyModal'
+import CalIdModal from '../components/CalIdModal'
 
 function HeroCard() {
   const mx = useMotionValue(0)
@@ -204,7 +204,7 @@ function Hero() {
               Start Your Project
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </button>
-            <CalendlyModal text="Book a Free Call" variant="outline" />
+            <CalIdModal text="Book a Free Call" variant="outline" />
           </motion.div>
 
           <motion.div

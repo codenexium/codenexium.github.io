@@ -2,10 +2,42 @@
 
 import { useEffect, useState } from "react";
 import { CheckCircle2, Loader2, Send, ArrowUpRight } from "lucide-react";
-import { SERVICES, WHATSAPP, submitToHubSpot, submitToEmailFormWorker } from "../lib/config";
+import { SERVICES, WHATSAPP, submitToHubSpot } from "../lib/config";
 
 export const contactInputCls =
   "w-full rounded-xl border border-white/10 bg-ink-850/80 px-4 py-3 text-sm text-white placeholder-zinc-500 outline-none transition-all duration-200 focus:border-brand-400 focus:ring-2 focus:ring-brand-500/30";
+
+/**
+ * Deliberately four inputs only: name, email, phone, message.
+ *
+ * The visitor-facing extras (service, project details, resource URL) are
+ * composed into the single HubSpot `message` property on submit, so the form
+ * stays short enough to convert well and the HubSpot form needs nothing beyond
+ * the four standard contact properties. See buildMessage() below.
+ */
+function buildMessage({ service, project_details, resourceurl }) {
+  const parts = [];
+
+  if (service) parts.push(`Service: ${service}`);
+  if (project_details) parts.push(project_details);
+  if (resourceurl) parts.push(`Resource URL: ${resourceurl}`);
+
+  return parts.join("\n\n");
+}
+
+/** Splits a full name into the firstname/lastname pair HubSpot stores. */
+function splitName(fullName) {
+  const trimmed = fullName.trim().replace(/\s+/g, " ");
+  if (!trimmed) return { firstname: "", lastname: "" };
+
+  const lastSpace = trimmed.lastIndexOf(" ");
+  if (lastSpace === -1) return { firstname: trimmed, lastname: "" };
+
+  return {
+    firstname: trimmed.slice(0, lastSpace),
+    lastname: trimmed.slice(lastSpace + 1),
+  };
+}
 
 export function ContactForm({ defaultService = "", compact = false }) {
   const [form, setForm] = useState({
@@ -13,8 +45,8 @@ export function ContactForm({ defaultService = "", compact = false }) {
     email: "",
     phone: "",
     service: defaultService,
-    message: "",
-    resourceUrl: "",
+    project_details: "",
+    resourceurl: "",
   });
   const [status, setStatus] = useState("idle");
 
@@ -31,12 +63,18 @@ export function ContactForm({ defaultService = "", compact = false }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("sending");
-    // submit form to email-form-worker
-    const emailFormResult = await submitToEmailFormWorker(form);
 
-    // submit form to hubspot
-    const hubSpotResult = await submitToHubSpot(form);
-    setStatus(( emailFormResult.ok || hubSpotResult.ok) ? "success" : "error");
+    const { firstname, lastname } = splitName(form.name);
+
+    const result = await submitToHubSpot({
+      firstname,
+      lastname,
+      email: form.email,
+      phone: form.phone,
+      message: buildMessage(form),
+    });
+
+    setStatus(result.ok ? "success" : "error");
   };
 
   if (status === "success") {
@@ -47,8 +85,8 @@ export function ContactForm({ defaultService = "", compact = false }) {
         </div>
         <h3 className="mt-6 text-2xl font-bold text-white">Message sent!</h3>
         <p className="mt-2 max-w-sm text-sm leading-relaxed text-zinc-400">
-          Thanks {form.name.split(" ")[0] || "there"}-I'll reply within 24
-          hours. For urgent matters, ping me on WhatsApp.
+          Thanks {splitName(form.name).firstname || "there"}. I&apos;ll reply
+          within 24 hours. For urgent matters, ping me on WhatsApp.
         </p>
         <a
           href={WHATSAPP.url}
@@ -67,97 +105,124 @@ export function ContactForm({ defaultService = "", compact = false }) {
       onSubmit={handleSubmit}
       className={compact ? "space-y-4" : "space-y-5"}
     >
+      <div>
+        <label
+          htmlFor="lead-name"
+          className="mb-1.5 block text-xs font-semibold text-zinc-300"
+        >
+          Name *
+        </label>
+        <input
+          id="lead-name"
+          required
+          autoComplete="name"
+          value={form.name}
+          onChange={update("name")}
+          placeholder="Jane Doe"
+          className={contactInputCls}
+        />
+      </div>
+
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="mb-1.5 block text-xs font-semibold text-zinc-300">
-            Full name *
-          </label>
-          <input
-            required
-            value={form.name}
-            onChange={update("name")}
-            placeholder="Jane Doe"
-            className={contactInputCls}
-          />
-        </div>
-        <div>
-          <label className="mb-1.5 block text-xs font-semibold text-zinc-300">
+          <label
+            htmlFor="lead-email"
+            className="mb-1.5 block text-xs font-semibold text-zinc-300"
+          >
             Email *
           </label>
           <input
+            id="lead-email"
             required
             type="email"
+            autoComplete="email"
             value={form.email}
             onChange={update("email")}
             placeholder="jane@company.com"
             className={contactInputCls}
           />
         </div>
-      </div>
-
-      <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="mb-1.5 block text-xs font-semibold text-zinc-300">
+          <label
+            htmlFor="lead-phone"
+            className="mb-1.5 block text-xs font-semibold text-zinc-300"
+          >
             Phone / WhatsApp *
           </label>
           <input
+            id="lead-phone"
             required
             type="tel"
+            autoComplete="tel"
             value={form.phone}
             onChange={update("phone")}
             placeholder="+91 98765 43210"
             className={contactInputCls}
           />
         </div>
-        <div>
-          <label className="mb-1.5 block text-xs font-semibold text-zinc-300">
-            Service you want *
-          </label>
-          <select
-            required
-            value={form.service}
-            onChange={update("service")}
-            className={`${contactInputCls} appearance-none ${form.service ? "text-white" : "text-zinc-500"}`}
-          >
-            <option value="" disabled className="bg-ink-900">
-              Select a service
-            </option>
-            {SERVICES.map((s) => (
-              <option key={s.slug} value={s.name} className="bg-ink-900">
-                {s.name}
-              </option>
-            ))}
-            <option value="Other / Not sure yet" className="bg-ink-900">
-              Other / Not sure yet
-            </option>
-          </select>
-        </div>
       </div>
 
       <div>
-        <label className="mb-1.5 block text-xs font-semibold text-zinc-300">
+        <label
+          htmlFor="lead-service"
+          className="mb-1.5 block text-xs font-semibold text-zinc-300"
+        >
+          Service you want *
+        </label>
+        <select
+          id="lead-service"
+          required
+          value={form.service}
+          onChange={update("service")}
+          className={`${contactInputCls} appearance-none ${form.service ? "text-white" : "text-zinc-500"}`}
+        >
+          <option value="" disabled className="bg-ink-900">
+            Select a service
+          </option>
+          {SERVICES.map((s) => (
+            <option key={s.slug} value={s.name} className="bg-ink-900">
+              {s.name}
+            </option>
+          ))}
+          <option value="Other / Not sure yet" className="bg-ink-900">
+            Other / Not sure yet
+          </option>
+        </select>
+      </div>
+
+      <div>
+        <label
+          htmlFor="lead-project-details"
+          className="mb-1.5 block text-xs font-semibold text-zinc-300"
+        >
           Tell me about your project *
         </label>
         <textarea
+          id="lead-project-details"
           required
           rows={compact ? 3 : 5}
-          value={form.message}
-          onChange={update("message")}
+          value={form.project_details}
+          onChange={update("project_details")}
           placeholder="Your goals, timeline, budget range, existing brand…"
           className={`${contactInputCls} resize-none`}
         />
       </div>
 
       <div>
-        <label className="mb-1.5 block text-xs font-semibold text-zinc-300">
+        <label
+          htmlFor="lead-resourceurl"
+          className="mb-1.5 block text-xs font-semibold text-zinc-300"
+        >
           Resource URL{" "}
           <span className="font-normal text-zinc-500">
             (Google Drive, optional)
           </span>
         </label>
         <input
-          value={form.resourceUrl}
-          onChange={update("resourceUrl")}
+          id="lead-resourceurl"
+          type="url"
+          value={form.resourceurl}
+          onChange={update("resourceurl")}
           placeholder="https://drive.google.com/…"
           className={contactInputCls}
         />
@@ -181,7 +246,7 @@ export function ContactForm({ defaultService = "", compact = false }) {
           </>
         ) : (
           <>
-            <Send className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            <Send className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5" />
             Send Message
           </>
         )}

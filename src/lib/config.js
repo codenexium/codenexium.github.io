@@ -14,20 +14,36 @@ export const SITE = {
 // Replace the placeholder values below with your real credentials.
 //
 // HubSpot:
-//   HUBSPOT_PORTAL_ID & HUBSPOT_FORM_ID are used to submit the CTA / contact
-//   form to HubSpot via the Forms API (CORS enabled). Keep the form field
-//   names in sync with the ones in your HubSpot form.
+//   HUBSPOT.portalId drives the tracking script in app/layout.jsx.
+//   HUBSPOT.formId is the HubSpot form that receives submissions, posted by
+//   submitToHubSpot() below via the Forms API.
+//
+//   We submit through the Forms API rather than the tracking code's
+//   "non-HubSpot forms" auto-capture. Auto-capture was tested and does create
+//   contacts, but it offers no success/error feedback, needs the form to be
+//   visible at submit time, and it auto-generates throwaway form entries in
+//   the HubSpot forms list that you then have to clean up by hand.
+//
+//   The HubSpot form must be published and contain these internal field names.
+//   All four are standard contact properties, so no custom properties are
+//   needed:
+//     firstname, lastname  split from the single full-name input
+//     email, phone         standard contact properties
+//     message              the only other field; service, project details and
+//                          the optional resource URL are composed into it as
+//                          formatted text by ContactForm
 //
 // WhatsApp:
 //   WHATSAPP_NUMBER is the full international number used by wa.me links.
 //
-// Calendly:
-//   CALENDLY_URL is opened by every "Book now" button.
-//  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+// Cal ID:
+//   CALID.username / CALID.event build the booking page URL that the calendar
+//   modal iframes. calIdEmbedUrl() appends the visitor's UTM params and a ref.
+//  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
 export const HUBSPOT = {
   portalId: "246934536",
+  formId: "9e7f8044-c9dd-42f7-bd38-426e0f0b483f",
   region: "na2",
-  formId: "",
   chatEnabled: true,
 };
 
@@ -41,50 +57,86 @@ export const WHATSAPP = {
   },
 };
 
-export const CALENDLY = {
-  url: "https://calendly.com/contactabhisheksharmaji/30min",
+// Cal ID booking calendar. Replaced Calendly: cal.id is a separate product, and
+// its embed.js is a Cal.com leftover that throws "Cal is not defined", so the
+// calendar is embedded as a plain iframe. Verified working - the iframe renders
+// the duration picker, timezone and bookable slots.
+export const CALID = {
+  username: "abhisheksharmaji",
+  event: "client-consultation",
+  get url() {
+    return `https://cal.id/${this.username}/${this.event}`;
+  },
 };
 
-//  -  -  -  -  -  HubSpot Forms API submit  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+/**
+ * Builds the iframe src, forwarding the visitor's UTM parameters and a `ref`
+ * tag so bookings can be traced back to where they came from in the cal.id
+ * dashboard. UTM values are only appended when present, to keep the URL clean.
+ */
+export function calIdEmbedUrl({ ref = "website" } = {}) {
+  if (typeof window === "undefined") return CALID.url;
+
+  const params = new URLSearchParams({ embed: "true" });
+
+  for (const key of ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"]) {
+    const value = new URLSearchParams(window.location.search).get(key);
+    if (value) params.set(key, value);
+  }
+
+  if (ref) params.set("ref", ref);
+
+  return `${CALID.url}?${params.toString()}`;
+}
+
+//  -  -  -  -  -  -  -  -  -  HubSpot Forms API submit  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+// POSTs to the legacy unauthenticated Forms API endpoint, which is safe to call
+// from the browser: it accepts submissions for a given portal + form pair and
+// exposes no data.
 export async function submitToHubSpot(fields) {
   const { portalId, formId } = HUBSPOT;
   if (!portalId || !formId) {
-    // HubSpot not configured yet - simulate success and keep the UX flowing.
     console.warn(
       "[hubspot] Portal ID / Form ID not configured. Set HUBSPOT.portalId and HUBSPOT.formId in src/lib/config.js",
     );
-    return { ok: true, simulated: true };
+    return { ok: false, simulated: true, status: 0 };
   }
 
   const body = {
-    fields: Object.entries(fields).map(([name, value]) => ({ name, value })),
+    fields: Object.entries(fields)
+      .filter(([, value]) => value !== "" && value != null)
+      .map(([name, value]) => ({ name, value })),
     context: {
       pageUri: window.location.href,
       pageName: document.title,
     },
   };
 
-  const res = await fetch(
-    `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`,
-    {
-      method: "POST",
-      headers: { "Content - Type": "application/json" },
-      body: JSON.stringify(body),
-    },
-  );
+  let res;
+  try {
+    res = await fetch(
+      `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      },
+    );
+  } catch (err) {
+    return { ok: false, simulated: false, status: 0, error: String(err) };
+  }
+
+  if (!res.ok) {
+    let detail = "";
+    try {
+      detail = JSON.stringify(await res.json());
+    } catch {
+      detail = res.statusText;
+    }
+    console.error(`[hubspot] submission failed (${res.status}): ${detail}`);
+  }
 
   return { ok: res.ok, simulated: false, status: res.status };
-}
-
-// Email Form Worker URL (for serverless form submission)
-export async function submitToEmailFormWorker(fields) {
-  const res = await fetch("https://email-form-worker.actabhishek.workers.dev", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(fields),
-  });
-
-  return { ok: res.ok, status: res.status };
 }
 
 export const SERVICES = [

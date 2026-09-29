@@ -18,7 +18,7 @@ import { Reveal, Stagger, StaggerItem } from '../components/Reveal'
 import { SectionHeading } from '../components/SectionHeading'
 import { ServiceIcon } from '../components/icons'
 import { CtaBanner } from '../components/CtaBanner'
-import CalendlyModal from '../components/CalendlyModal'
+import CalIdModal from '../components/CalIdModal'
 import { useCta } from '../lib/cta-context'
 
 const MEDIA_PLACEHOLDERS = [
@@ -120,7 +120,7 @@ export function ServiceDetail() {
                 Start this project
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </button>
-              <CalendlyModal text="Book a call" />
+              <CalIdModal text="Book a call" />
             </div>
           </div>
         </PageHero>

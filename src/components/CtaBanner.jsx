@@ -2,10 +2,10 @@
 
 import { motion } from 'framer-motion'
 import { ArrowUpRight, CalendarCheck, MessageCircle } from 'lucide-react'
-import { CALENDLY, WHATSAPP } from '../lib/config'
+import { WHATSAPP } from '../lib/config'
 import { useCta } from '../lib/cta-context'
 import { Reveal } from './Reveal'
-import CalendlyModal from './CalendlyModal'
+import CalIdModal from './CalIdModal'
 
 export function CtaBanner() {
   const { openCta } = useCta()
@@ -45,7 +45,7 @@ export function CtaBanner() {
                 Get a Free Quote
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </button>
-              <CalendlyModal variant="outline" />
+              <CalIdModal variant="outline" />
               <a
                 href={WHATSAPP.url}
                 target="_blank"

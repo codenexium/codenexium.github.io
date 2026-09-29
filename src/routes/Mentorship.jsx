@@ -17,8 +17,7 @@ import { PageHero } from '../components/PageHero'
 import { Stagger, StaggerItem } from '../components/Reveal'
 import { SectionHeading } from '../components/SectionHeading'
 import { CtaBanner } from '../components/CtaBanner'
-import { CALENDLY } from '../lib/config'
-import CalendlyModal from '../components/CalendlyModal'
+import CalIdModal from '../components/CalIdModal'
 
 const TRACKS = [
   {
@@ -140,7 +139,7 @@ export function Mentorship() {
         description="I mentor developers, career switchers and freelancers who want to go from learning to shipping client-ready work with modern tools - WordPress, React, Next.js, n8n and AI."
       >
         <div className="flex flex-wrap items-center gap-4">
-          <CalendlyModal text="Book a Mentorship Intro Call" variant="primary" />
+          <CalIdModal text="Book a Mentorship Intro Call" variant="primary" />
           <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-ink-900/70 px-4 py-2 text-sm text-zinc-300">
             <GraduationCap className="h-4 w-4 text-brand-300" />
             Limited to 5 active mentees
@@ -227,7 +226,7 @@ export function Mentorship() {
                     ))}
                   </ul>
                   <div className="mt-7 rounded-xl px-5 py-3 text-center text-sm font-semibold transition-all duration-300">
-                    <CalendlyModal text="Book this format" variant={i === 1 ? 'primary' : 'outline'} />
+                    <CalIdModal text="Book this format" variant={i === 1 ? 'primary' : 'outline'} />
                   </div>
                 </motion.div>
               </StaggerItem>
