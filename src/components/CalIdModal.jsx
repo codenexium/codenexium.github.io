@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState, Suspense } from "react";
+import { useEffect, useMemo, useState, Suspense } from "react";
+import { createPortal } from "react-dom";
 import { CALID, calIdEmbedUrl } from "../lib/config";
 import { CalendarCheck } from "lucide-react";
 
@@ -10,6 +11,11 @@ import { CalendarCheck } from "lucide-react";
  * cal.id replaces Calendly here. Its own embed.js is a Cal.com leftover that
  * throws "Cal is not defined", so we iframe the booking page directly - verified
  * to render the duration picker, timezone and bookable slots.
+ *
+ * The dialog is portaled to <body>: these buttons sit inside page sections that
+ * carry framer-motion transforms, and a transformed ancestor becomes the
+ * containing block for `position: fixed`, which would otherwise strand the
+ * overlay inside the section instead of over the viewport.
  */
 export default function CalIdModal({
   text = "Book a Discovery Call",
@@ -17,6 +23,16 @@ export default function CalIdModal({
   ref = "website",
 }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
+  useEffect(() => {
+    if (!isOpen) return undefined;
+    const onKey = (e) => e.key === "Escape" && setIsOpen(false);
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [isOpen]);
 
   // Built at open time so UTM params are read from the live URL, and only once
   // the modal actually shows rather than on every render.
@@ -47,49 +63,52 @@ export default function CalIdModal({
         {text}
       </button>
 
-      {isOpen && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4"
-          role="dialog"
-          aria-modal="true"
-          aria-label={text}
-        >
-          <button
-            type="button"
-            aria-label="Close booking calendar"
-            onClick={() => setIsOpen(false)}
-            className="fixed inset-0 h-full w-full cursor-default"
-            tabIndex={-1}
-          />
-
-          <div className="relative w-full max-w-4xl overflow-hidden rounded-2xl border border-white/10 bg-ink-900 shadow-2xl">
+      {isOpen &&
+        mounted &&
+        createPortal(
+          <div
+            className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto overscroll-contain bg-black/70 p-4"
+            role="dialog"
+            aria-modal="true"
+            aria-label={text}
+          >
             <button
               type="button"
+              aria-label="Close booking calendar"
               onClick={() => setIsOpen(false)}
-              className="absolute right-3 top-3 z-10 rounded-full bg-ink-850/90 p-2 text-zinc-300 transition-colors hover:bg-ink-700 hover:text-white"
-            >
-              <span className="sr-only">Close</span>
-              <span aria-hidden="true">&times;</span>
-            </button>
+              className="fixed inset-0 h-full w-full cursor-default"
+              tabIndex={-1}
+            />
 
-            {/* Suspense fallback while the calendar frame loads */}
-            <Suspense
-              fallback={
-                <div className="flex h-[640px] items-center justify-center">
-                  <div className="h-12 w-12 animate-spin-slow rounded-full border-t-2 border-b-2 border-brand-400" />
-                </div>
-              }
-            >
-              <iframe
-                src={src}
-                title={`${CALID.event} booking calendar`}
-                className="h-[640px] w-full border-0"
-                loading="lazy"
-              />
-            </Suspense>
-          </div>
-        </div>
-      )}
+            <div className="relative my-auto w-full max-w-4xl overflow-hidden rounded-2xl border border-white/10 bg-ink-900 shadow-2xl">
+              <button
+                type="button"
+                onClick={() => setIsOpen(false)}
+                className="absolute right-3 top-3 z-10 rounded-full bg-ink-850/90 p-2 text-zinc-300 transition-colors hover:bg-ink-700 hover:text-white"
+              >
+                <span className="sr-only">Close</span>
+                <span aria-hidden="true">&times;</span>
+              </button>
+
+              {/* Suspense fallback while the calendar frame loads */}
+              <Suspense
+                fallback={
+                  <div className="flex h-[min(640px,calc(100dvh-4rem))] items-center justify-center">
+                    <div className="h-12 w-12 animate-spin-slow rounded-full border-t-2 border-b-2 border-brand-400" />
+                  </div>
+                }
+              >
+                <iframe
+                  src={src}
+                  title={`${CALID.event} booking calendar`}
+                  className="h-[min(640px,calc(100dvh-4rem))] w-full border-0"
+                  loading="lazy"
+                />
+              </Suspense>
+            </div>
+          </div>,
+          document.body,
+        )}
     </div>
   );
 }
