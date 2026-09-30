@@ -4,12 +4,9 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Check, ArrowUpRight, Sparkles } from 'lucide-react'
 import { ServiceIcon } from './icons'
-import { useCta } from '../lib/cta-context'
 import { startingPriceLabel } from '../lib/config'
 
 export function ServiceCard({ service }) {
-  const { openCta } = useCta()
-
   return (
     <motion.div
       whileHover={{ y: -6 }}
@@ -66,23 +63,17 @@ export function ServiceCard({ service }) {
         ))}
       </ul>
 
-      <div className="mt-6 flex items-center gap-3 pt-2">
-        <button
-          onClick={() => openCta(service.name)}
-          className={`flex-1 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all duration-300 ${
+      <div className="mt-6 pt-2">
+        <Link
+          href={`/services/${service.slug}`}
+          className={`group flex w-full items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all duration-300 ${
             service.featured
               ? 'bg-gradient-to-r from-brand-600 to-brand-500 text-on-brand shadow-glow hover:brightness-110'
               : 'border border-brand-500/40 text-brand-300 hover:bg-brand-500/10'
           }`}
         >
-          Start this project
-        </button>
-        <Link
-          href={`/services/${service.slug}`}
-          className="grid h-10 w-10 place-items-center rounded-xl border border-white/10 text-zinc-400 transition-all duration-300 hover:border-brand-400 hover:text-white"
-          aria-label={`View ${service.name} details`}
-        >
-          <ArrowUpRight className="h-4 w-4" />
+          Explore this service
+          <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </Link>
       </div>
     </motion.div>

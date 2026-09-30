@@ -17,6 +17,7 @@ import {
   INDUSTRIES,
   TECH_STACKS,
   startingPriceLabel,
+  serviceTierOptionValue,
   formatINR,
   MERGED_SERVICES,
   MERGED_SERVICE_NOTES,
@@ -200,7 +201,7 @@ export function ServiceDetail() {
                           {formatINR(tier.price)}
                         </p>
                       </div>
-                      <ul className="mt-5 space-y-2.5">
+                      <ul className="mt-5 flex-1 space-y-2.5">
                         {tier.features.map((feature) => (
                           <li key={feature} className="flex items-start gap-2.5 text-sm text-zinc-300">
                             <span className="mt-0.5 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-brand-500/15 text-brand-300">
@@ -210,6 +211,13 @@ export function ServiceDetail() {
                           </li>
                         ))}
                       </ul>
+                      <button
+                        onClick={() => openCta(serviceTierOptionValue(service, tier))}
+                        className="group mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 px-4 py-2.5 text-sm font-semibold text-on-brand shadow-glow transition-all duration-300 hover:brightness-110 hover:shadow-glow-cyan"
+                      >
+                        Start this project
+                        <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      </button>
                     </div>
                   </StaggerItem>
                 )

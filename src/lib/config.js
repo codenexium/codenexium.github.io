@@ -645,6 +645,22 @@ export function formatINR(amount) {
  * the HubSpot `message` property - a sales lead should be able to read which
  * stack and budget was quoted without cross-referencing the site.
  */
+/**
+ * Single source of truth for a tier's option value, so the pricing cards and
+ * the contact form's service list always agree on the same string.
+ */
+function tierOptionValue(service, tier, stack) {
+  return `${service.name} - ${tier.label}${stack?.tag ? ` [${stack.tag}]` : ""} - ${formatPrice(tier.price)}`;
+}
+
+/**
+ * The option value for one pricing tier, so a tier's "Start this project"
+ * button can preselect that exact tier in the contact form.
+ */
+export function serviceTierOptionValue(service, tier) {
+  return tierOptionValue(service, tier, TECH_STACKS[tier.stack]);
+}
+
 export const SERVICE_OPTIONS = VISIBLE_SERVICES.flatMap((service) => {
   const tiers = service.pricing ?? [];
 
@@ -682,19 +698,22 @@ export const SERVICE_OPTIONS = VISIBLE_SERVICES.flatMap((service) => {
       stackTag: stack?.tag ?? "",
       price: tier.price,
       label: `${option}${stackAddsInfo ? ` (${stack.label})` : ""} - ${price}`,
-      value: `${service.name} - ${option}${stack?.tag ? ` [${stack.tag}]` : ""} - ${price}`,
+      value: tierOptionValue(service, tier, stack),
     };
   });
 });
 
 /**
- * Resolves the `defaultService` a CTA button passes in (a service name) to the
- * first option of that service, so opening the form from a service card
- * preselects something valid. Returns "" when the name is unknown.
+ * Resolves the `defaultService` a CTA button passes in to a concrete option
+ * value. Accepts either an exact tier value (a pricing card button) or a
+ * service name (a service card), which falls back to that service's first
+ * option. Returns "" when nothing matches.
  */
-export function defaultServiceOption(serviceName) {
-  if (!serviceName) return "";
-  const match = SERVICE_OPTIONS.find((o) => o.service === serviceName);
+export function defaultServiceOption(serviceOrOption) {
+  if (!serviceOrOption) return "";
+  const exact = SERVICE_OPTIONS.find((o) => o.value === serviceOrOption);
+  if (exact) return exact.value;
+  const match = SERVICE_OPTIONS.find((o) => o.service === serviceOrOption);
   return match ? match.value : "";
 }
 
