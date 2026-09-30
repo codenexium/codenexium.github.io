@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { Check, ArrowUpRight, Sparkles } from 'lucide-react'
 import { ServiceIcon } from './icons'
 import { useCta } from '../lib/cta-context'
+import { startingPriceLabel } from '../lib/config'
 
 export function ServiceCard({ service, compact = false }) {
   const { openCta } = useCta()
@@ -42,7 +43,13 @@ export function ServiceCard({ service, compact = false }) {
         <span
           className={`font-display text-2xl font-bold ${service.featured ? 'text-gradient' : 'text-white'}`}
         >
-          {service.priceLabel}
+          {startingPriceLabel(service)}
+        {Array.isArray(service.pricing) && service.pricing.length > 1 && (
+          <span className="text-xs font-medium text-zinc-500">
+            {' '}
+            &middot; {service.pricing.length} options
+          </span>
+        )}
         </span>
       </div>
 

@@ -14,7 +14,7 @@ import {
   Briefcase,
   Building2,
 } from 'lucide-react'
-import { SITE, SERVICES, INDUSTRIES, TESTIMONIALS, PROCESS_STEPS } from '../lib/config'
+import { SITE, VISIBLE_SERVICES, INDUSTRIES, TESTIMONIALS, PROCESS_STEPS } from '../lib/config'
 import { Reveal, Stagger, StaggerItem } from '../components/Reveal'
 import { SectionHeading } from '../components/SectionHeading'
 import { Counter } from '../components/Counter'
@@ -275,7 +275,7 @@ function ServicesPreview() {
       />
 
       <Stagger className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" stagger={0.07}>
-        {SERVICES.map((service) => (
+        {VISIBLE_SERVICES.map((service) => (
           <StaggerItem key={service.slug} className="h-full">
             <ServiceCard service={service} compact />
           </StaggerItem>

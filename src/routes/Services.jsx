@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowRight, Info, BadgeCheck, Wallet, RefreshCw, Headset } from 'lucide-react'
-import { SERVICES, PRICE_NOTE, INDUSTRIES } from '../lib/config'
+import { VISIBLE_SERVICES, PRICE_NOTE, INDUSTRIES } from '../lib/config'
 import { PageHero } from '../components/PageHero'
 import { Reveal, Stagger, StaggerItem } from '../components/Reveal'
 import { ServiceCard } from '../components/ServiceCard'
@@ -68,7 +68,7 @@ export function Services() {
 
       <section className="mx-auto max-w-7xl px-4 pb-8 sm:px-6 lg:px-8">
         <Stagger className="grid gap-6 lg:grid-cols-2" stagger={0.06}>
-          {SERVICES.map((service) => (
+          {VISIBLE_SERVICES.map((service) => (
             <StaggerItem key={service.slug} className="h-full">
               <ServiceCard service={service} />
             </StaggerItem>
@@ -93,43 +93,31 @@ export function Services() {
             {[
               {
                 title: 'Just need a presence?',
-                desc: 'Start with a Business Website - look professional, rank on Google, capture leads.',
+                desc: 'Start with a single page from ₹5,000 - look professional, rank on Google, capture leads.',
                 cta: 'Business Website',
                 slug: 'business-website',
               },
               {
+                title: 'Need clients to book you?',
+                desc: 'Add the booking system to any website - calendar sync, confirmations and reminders.',
+                cta: 'Booking add-on',
+                slug: 'business-website',
+              },
+              {
                 title: 'Selling products?',
-                desc: 'Add the Online Store - product listings, orders and deals synced to your CRM.',
+                desc: 'Add the Online Store - catalogue, cart, checkout and payments managed in one place.',
                 cta: 'Online Store',
                 slug: 'online-store',
               },
               {
-                title: 'Selling on WhatsApp?',
-                desc: 'WhatsApp CRM is the fastest way to turn conversations into managed deals.',
-                cta: 'WhatsApp CRM',
-                slug: 'whatsapp-crm',
-              },
-              {
-                title: 'Growing an email list?',
-                desc: 'Omnisend handles email, SMS and push with automated flows that convert.',
-                cta: 'Omnisend Integration',
-                slug: 'omnisend',
-              },
-              {
-                title: 'Running paid ads?',
-                desc: 'High-converting funnels make every rupee of ad spend work harder.',
-                cta: 'Marketing Funnels',
-                slug: 'marketing-funnels',
-              },
-              {
-                title: 'Drowning in busywork?',
-                desc: 'n8n automation connects your tools and removes repetitive manual tasks.',
-                cta: 'AI Automation',
-                slug: 'ai-automation',
+                title: 'Need a real system?',
+                desc: 'Custom builds for clinics, schools, hotels and restaurants that run on operations.',
+                cta: 'Custom Website',
+                slug: 'custom-business-website',
               },
             ].map((c) => (
               <motion.a
-                key={c.slug}
+                key={c.title}
                 href={`#${c.slug}`}
                 whileHover={{ y: -4 }}
                 className="group rounded-2xl border border-white/8 bg-ink-950/60 p-6 transition-colors duration-300 hover:border-brand-500/30"

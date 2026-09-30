@@ -8,6 +8,8 @@ import {
   Store,
   Briefcase,
   Building2,
+  Calendar,
+  Code,
 } from 'lucide-react'
 
 const ICONS = {
@@ -20,6 +22,8 @@ const ICONS = {
   store: Store,
   briefcase: Briefcase,
   building: Building2,
+  calendar: Calendar,
+  code: Code,
 }
 
 export function ServiceIcon({ name, className = 'h-5 w-5' }) {

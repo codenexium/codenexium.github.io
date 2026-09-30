@@ -139,65 +139,251 @@ export async function submitToHubSpot(fields) {
   return { ok: res.ok, simulated: false, status: res.status };
 }
 
+/**
+ * Technology stacks offered on every web service. The keys are used in the
+ * `pricing` tiers below, so adding a stack to one service does not require
+ * touching any component.
+ */
+export const TECH_STACKS = {
+  simple: { label: "Single page", tag: "HTML / CSS" },
+  nextjs: { label: "Next.js", tag: "React / Next.js" },
+  php: { label: "PHP", tag: "PHP / MySQL" },
+  wordpress: { label: "WordPress", tag: "WordPress / WooCommerce" },
+  custom: { label: "Fully custom build", tag: "Tailored architecture" },
+};
+
 export const SERVICES = [
   {
     slug: "business-website",
     name: "Business Website",
     icon: "globe",
-    price: 10000,
-    priceLabel: "from ₹10,000",
     short:
-      "A polished, fast, SEO-ready website that makes your business look established and turns visitors into enquiries.",
-    deliverables: [
-      "Website design & development - WordPress / PHP / Next.js",
-      "Core pages: Home, Services, About Us, Contact Us, Portfolio",
-      "Speed, security & SEO optimisation plugins",
-      "Complete 1 Year Bundle: Domain, Hosting, and Professional Email",
-      "Form submissions routed directly to your email",
-      "Free Domain registration and hosting setup",
-      "Free Mailbox setup for professional email",
-      "Free 30 days support after launch",
+      "A professional website for any business. Start with a single page and scale up to a full multi-page build - the price you see is the price you pay.",
+    pricingNote:
+      "Base price covers design, development, responsive layout, contact form delivery and a 1 year domain + hosting + business email bundle. Need bookings, payments or a store? Add them below.",
+    pricing: [
+      {
+        stack: "simple",
+        label: "Simple Single Page Website",
+        price: 5000,
+        features: [
+          "One scrolling page - hero, about, services, contact",
+          "Contact form that emails enquiries straight to you",
+          "Mobile-first responsive design",
+          "Basic on-page SEO and Google indexing",
+          "1 year domain, hosting and business email",
+        ],
+      },
+      {
+        stack: "nextjs",
+        label: "Multipage Next.js Website",
+        price: 10000,
+        features: [
+          "Separate pages - Home, About, Services, Portfolio, Contact",
+          "Fast static rendering for better SEO and load times",
+          "Contact forms routed to your inbox",
+          "Editable content so you can update text yourself",
+          "1 year domain, hosting and business email",
+        ],
+      },
+      {
+        stack: "php",
+        label: "Multipage PHP Website",
+        price: 10000,
+        features: [
+          "Separate pages - Home, About, Services, Portfolio, Contact",
+          "Custom PHP backend for forms and simple logic",
+          "Contact forms routed to your inbox",
+          "Lightweight hosting friendly - low running costs",
+          "1 year domain, hosting and business email",
+        ],
+      },
+      {
+        stack: "wordpress",
+        label: "Multipage WordPress Website",
+        price: 10000,
+        features: [
+          "Separate pages - Home, About, Services, Portfolio, Contact",
+          "Admin dashboard to edit pages, blogs and menus yourself",
+          "Speed, security and SEO plugins configured",
+          "Easy to add more content later without a developer",
+          "1 year domain, hosting and business email",
+        ],
+      },
     ],
-  },
-   {
-    slug: "online-store",
-    name: "Business Website + Online Store",
-    icon: "shopping-bag",
-    price: 20000,
-    priceLabel: "from ₹20,000",
-    featured: true,
-    short:
-      "A full e-commerce experience - product listings, orders, and secure revenue, wired into your CRM from day one.",
+    addOns: [
+      {
+        label: "Online Booking System",
+        price: 5000,
+        desc: "Appointment scheduler with Google/Outlook calendar sync, plus automated email and SMS confirmations and reminders.",
+      },
+      {
+        label: "Advanced SEO & Google Business Profile",
+        price: 3000,
+        desc: "Keyword research, on-page fixes, local listings and profile setup so you rank for the searches that matter.",
+      },
+      {
+        label: "Extra page or second language",
+        price: 1500,
+        desc: "Add another content page, or a second language version of the whole site.",
+      },
+      {
+        label: "Additional year of hosting & maintenance",
+        price: 2500,
+        desc: "Hosting renewal, backups, uptime monitoring and a monthly checkup. Priced per year.",
+      },
+    ],
     deliverables: [
-      "Website design & development - WordPress / PHP / Next.js",
-      "Pages: Home, Shop, Product Details, Cart, Checkout, Privacy Policy, Terms & Conditions",
-      "WooCommerce / Custom e-commerce store setup + product listings",
-      "Inventory management, tax calculations, and shipping rule configuration",
-      "Payment gateway integration - Stripe, PayPal, Razorpay",
-      "Speed, security & SEO optimisation plugins",
-      "Complete 1 Year Bundle: Domain, Hosting, and Professional Email",
-      "Free Domain registration and hosting setup",
+      "Website design & development - Next.js / PHP / WordPress",
+      "Mobile, tablet and desktop responsive layouts",
+      "Contact and enquiry forms wired to your inbox",
+      "Speed, security & SEO optimisation",
+      "Complete 1 Year Bundle: Domain, Hosting and Professional Email",
+      "Free domain registration, hosting and mailbox setup",
       "Free 30 days support after launch",
     ],
   },
   {
-    slug: "online-bookings",
-    name: "Business Website + Online Bookings",
-    icon: "calendar",
-    price: 15000,
-    priceLabel: "from ₹15,000",
+    slug: "online-store",
+    name: "Business Website + Online Store",
+    icon: "shopping-bag",
+    featured: true,
     short:
-      "A complete professional website equipped with smart scheduling tools to let clients book your time and services automatically.",
+      "A full e-commerce experience - product listings, cart, checkout and secure payments, with your catalogue and orders managed from one place.",
+    pricingNote:
+      "Base price covers the full storefront, product catalogue, cart, checkout, payment gateway setup, and a 1 year domain + hosting + business email bundle.",
+    pricing: [
+      {
+        stack: "nextjs",
+        label: "Next.js Storefront",
+        price: 10000,
+        features: [
+          "Fast storefront with product catalogue and search",
+          "Cart, checkout and order management",
+          "Razorpay / Stripe / PayPal payment integration",
+          "Customer accounts and order history",
+          "1 year domain, hosting and business email",
+        ],
+      },
+      {
+        stack: "php",
+        label: "PHP Storefront",
+        price: 15000,
+        features: [
+          "Storefront with product catalogue and categories",
+          "Cart, checkout and order management",
+          "Razorpay / Stripe / PayPal payment integration",
+          "Custom PHP backend for orders, stock and customers",
+          "1 year domain, hosting and business email",
+        ],
+      },
+      {
+        stack: "wordpress",
+        label: "WordPress + WooCommerce Store",
+        price: 20000,
+        features: [
+          "WooCommerce setup with products and categories",
+          "Manage stock, taxes and shipping rules yourself",
+          "Razorpay / Stripe / PayPal payment integration",
+          "Extensions and plugins configured and secured",
+          "1 year domain, hosting and business email",
+        ],
+      },
+    ],
+    addOns: [
+      {
+        label: "Inventory, tax & shipping automation",
+        price: 4000,
+        desc: "Automatic stock tracking, tax calculation and shipping rules so orders and inventory stay in sync.",
+      },
+      {
+        label: "Product photography & listing setup",
+        price: 3500,
+        desc: "Upload, optimise and organise your catalogue with clean product descriptions and SEO tags.",
+      },
+      {
+        label: "Abandoned cart & WhatsApp order recovery",
+        price: 5000,
+        desc: "Automated email and WhatsApp follow-ups for abandoned carts and order updates, wired into your CRM.",
+      },
+    ],
     deliverables: [
-      "Website design & development - WordPress / PHP / Next.js",
-      "Pages: Home, Services/Packages, About, Testimonials, Book Appointment",
-      "Interactive appointment scheduler & calendar sync (Google/Outlook)",
-      "Automated email & SMS booking confirmations and reminders",
-      "Payment gateway integration (Stripe, Razorpay) for paid appointments",
-      "Speed, security & SEO optimisation plugins",
-      "Complete 1 Year Bundle: Domain, Hosting, and Professional Email",
-      "Free Domain registration and hosting setup",
+      "Website design & development - Next.js / PHP / WordPress",
+      "Pages: Home, Shop, Product Details, Cart, Checkout, Policies",
+      "Product catalogue setup and listing structure",
+      "Cart, checkout and order management",
+      "Payment gateway integration - Razorpay, Stripe, PayPal",
+      "Speed, security & SEO optimisation",
+      "Complete 1 Year Bundle: Domain, Hosting and Professional Email",
       "Free 30 days support after launch",
+    ],
+  },
+  {
+    slug: "custom-business-website",
+    name: "Custom Business Website",
+    icon: "building",
+    short:
+      "A bespoke web application built around how your business actually operates - built for hospitals, schools, hotels, restaurants and other specialist workflows.",
+    pricingNote:
+      "For teams whose day-to-day work needs a real system behind it: records, roles, dashboards and workflows that a standard website template cannot handle. Scope is agreed before work starts.",
+    pricing: [
+      {
+        stack: "nextjs",
+        label: "Custom Next.js Web Application",
+        price: 30000,
+        features: [
+          "Tailored architecture mapped to your exact workflow",
+          "Admin dashboard, user roles and permissions",
+          "Database design, records and reporting",
+          "Third-party integrations - payments, SMS, WhatsApp, APIs",
+          "Deployment setup and team training",
+        ],
+      },
+      {
+        stack: "php",
+        label: "Custom PHP Web Application",
+        price: 40000,
+        features: [
+          "Tailored architecture mapped to your exact workflow",
+          "Admin dashboard, user roles and permissions",
+          "Database design, records and reporting",
+          "Third-party integrations - payments, SMS, WhatsApp, APIs",
+          "Deployment setup and team training",
+        ],
+      },
+    ],
+    addOns: [
+      {
+        label: "Patient / student / guest record modules",
+        price: 8000,
+        desc: "Detailed profiles, history, documents and status tracking for the people your business serves.",
+      },
+      {
+        label: "Staff scheduling & attendance",
+        price: 6000,
+        desc: "Shift planning, availability, approvals and attendance for teams working in shifts.",
+      },
+      {
+        label: "Online booking, ordering or reservations",
+        price: 5000,
+        desc: "Booking and reservation flows with calendar sync, confirmations and reminders.",
+      },
+      {
+        label: "Owner dashboard & analytics",
+        price: 5000,
+        desc: "A live overview of revenue, occupancy, bookings or stock, with the reports you actually check.",
+      },
+    ],
+    deliverables: [
+      "Discovery workshop to map your real workflow",
+      "Custom UI/UX design around your business processes",
+      "Full Stack Development - Next.js / React, Node.js, PHP",
+      "Scalable database architecture (PostgreSQL, MySQL, MongoDB)",
+      "Secure authentication and role-based access control",
+      "API integrations and third-party service connections",
+      "Cloud deployment setup - AWS, Vercel, DigitalOcean, VPS",
+      "Team training and complete handover documentation",
+      "60 days extended post-launch support",
     ],
   },
   {
@@ -205,7 +391,7 @@ export const SERVICES = [
     name: "AI Agents and Automation",
     icon: "bot",
     price: 25000,
-    priceLabel: "from ₹25,000",
+    hidden: true,
     short:
       "Eliminate manual busywork. Build autonomous AI agents and automated n8n workflows that process data, sync systems, and run 24/7.",
     deliverables: [
@@ -224,7 +410,7 @@ export const SERVICES = [
     name: "CRM, Funnels & Chatbots",
     icon: "filter",
     price: 15000,
-    priceLabel: "from ₹15,000",
+    hidden: true,
     short:
       "Maximize conversions with sales funnels, synchronized CRMs, and WhatsApp/web chatbots that nurture leads automatically.",
     deliverables: [
@@ -243,7 +429,7 @@ export const SERVICES = [
     name: "Custom Software Development",
     icon: "code",
     price: 40000,
-    priceLabel: "from ₹40,000",
+    hidden: true,
     short:
       "Tailor-made Web Apps, Mobile Apps, Desktop software, and CLI tools built to solve specific operational bottlenecks for any industry.",
     deliverables: [
@@ -259,6 +445,45 @@ export const SERVICES = [
   },
 ];
 
+/**
+ * Merged into `business-website`. Kept so the old /services/online-bookings URL
+ * keeps resolving; delete once no links point at it.
+ */
+export const MERGED_SERVICES = {
+  "online-bookings": "business-website",
+};
+
+/**
+ * Services shown across the site. Entries in SERVICES with `hidden: true` stay
+ * in the file so they can be switched back on by deleting one flag, but they
+ * are filtered out of the service listings, the contact form and the footer.
+ * Their /services/<slug> detail pages still build and resolve, so existing
+ * links keep working while a service is paused.
+ */
+export const VISIBLE_SERVICES = SERVICES.filter((service) => !service.hidden);
+
+const formatPrice = (amount) => `₹${amount.toLocaleString("en-IN")}`;
+
+/**
+ * Cheapest option for a service. Website services price per technology stack
+ * and per add-on, so the headline number shown in listings is always the
+ * lowest entry point rather than a hand-maintained number that can drift.
+ */
+export function startingPrice(service) {
+  const tiers = service.pricing ?? [];
+  if (tiers.length === 0) return service.price ?? 0;
+  return Math.min(...tiers.map((tier) => tier.price));
+}
+
+export function startingPriceLabel(service) {
+  const tiers = service.pricing ?? [];
+  if (tiers.length === 0) return service.priceLabel ?? `from ${formatPrice(service.price ?? 0)}`;
+  return `from ${formatPrice(startingPrice(service))}`;
+}
+
+export function formatINR(amount) {
+  return formatPrice(amount);
+}
 
 export const PRICE_NOTE = "All service prices are starting prices.";
 

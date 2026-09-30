@@ -10,8 +10,9 @@ import {
   Image,
   Monitor,
   Clapperboard,
+  Plus,
 } from 'lucide-react'
-import { SERVICES, INDUSTRIES } from '../lib/config'
+import { SERVICES, INDUSTRIES, TECH_STACKS, startingPriceLabel, formatINR, MERGED_SERVICES } from '../lib/config'
 import { normalizeSlug, SERVICE_INDUSTRIES } from '../lib/service-pages'
 import { PageHero } from '../components/PageHero'
 import { Reveal, Stagger, StaggerItem } from '../components/Reveal'
@@ -50,6 +51,35 @@ export function ServiceDetail() {
   const { openCta } = useCta()
 
   if (!service) {
+    const mergedInto = MERGED_SERVICES[slug]
+    if (mergedInto) {
+      return (
+        <div className="flex min-h-screen flex-col items-center justify-center px-4 text-center">
+          <h1 className="text-3xl font-bold">This service has been restructured</h1>
+          <p className="mt-4 max-w-lg text-zinc-400">
+            Online booking is now an add-on inside the Business Website service, so you only
+            pay for the website you need and add scheduling when you want it.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <Link
+              href={`/services/${mergedInto}`}
+              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 px-5 py-3 text-sm font-semibold text-on-brand transition-all hover:brightness-110"
+            >
+              View Business Website
+              <ArrowUpRight className="h-4 w-4" />
+            </Link>
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 rounded-xl border border-brand-500/40 px-5 py-3 text-sm font-semibold text-brand-300 transition-colors hover:bg-brand-500/10"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Back to all services
+            </Link>
+          </div>
+        </div>
+      )
+    }
+
     return (
       <div className="flex min-h-screen flex-col items-center justify-center px-4 text-center">
         <h1 className="text-3xl font-bold">Service not found</h1>
@@ -104,7 +134,7 @@ export function ServiceDetail() {
                 Starting price
               </p>
               <p className="flex items-center gap-2 font-display text-3xl font-bold text-white">
-                {service.priceLabel}
+                {startingPriceLabel(service)}
                 {service.featured && (
                   <span className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-brand-500 to-accent-500 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-on-brand">
                     <Sparkles className="h-3 w-3" /> Most popular
@@ -127,27 +157,117 @@ export function ServiceDetail() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
-        <SectionHeading
-          eyebrow="What You Get"
-          title={
-            <>
-              Everything included in this <span className="text-gradient">service</span>
-            </>
-          }
-          description="A clear, written list of everything delivered - no surprises, no scope creep."
-        />
-        <Stagger className="mt-12 grid gap-4 sm:grid-cols-2" stagger={0.06}>
-          {service.deliverables.map((item) => (
-            <StaggerItem key={item} className="h-full">
-              <div className="flex h-full items-start gap-3 rounded-2xl border border-white/8 bg-ink-900/60 p-5 transition-colors duration-300 hover:border-brand-500/30">
-                <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-brand-500/15 text-brand-300">
-                  <Check className="h-3.5 w-3.5" />
-                </span>
-                <p className="text-sm leading-relaxed text-zinc-300">{item}</p>
-              </div>
-            </StaggerItem>
-          ))}
-        </Stagger>
+        {Array.isArray(service.pricing) && service.pricing.length > 0 && (
+          <>
+            <SectionHeading
+              eyebrow="Pricing"
+              title={
+                <>
+                  Choose the <span className="text-gradient">stack</span> that fits
+                </>
+              }
+              description={service.pricingNote}
+            />
+            <Stagger className="mt-12 grid gap-5 lg:grid-cols-2" stagger={0.06}>
+              {service.pricing.map((tier) => {
+                const stack = TECH_STACKS[tier.stack]
+                return (
+                  <StaggerItem key={tier.stack} className="h-full">
+                    <div className="flex h-full flex-col rounded-3xl border border-white/8 bg-ink-900/60 p-6 transition-colors duration-300 hover:border-brand-500/30">
+                      <div className="flex flex-wrap items-start justify-between gap-3">
+                        <div>
+                          {stack && (
+                            <span className="inline-flex items-center rounded-full bg-brand-500/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-brand-300">
+                              {stack.tag}
+                            </span>
+                          )}
+                          <h3 className="mt-3 font-display text-lg font-bold text-white">
+                            {tier.label}
+                          </h3>
+                        </div>
+                        <p className="font-display text-2xl font-bold text-gradient">
+                          {formatINR(tier.price)}
+                        </p>
+                      </div>
+                      <ul className="mt-5 space-y-2.5">
+                        {tier.features.map((feature) => (
+                          <li key={feature} className="flex items-start gap-2.5 text-sm text-zinc-300">
+                            <span className="mt-0.5 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-brand-500/15 text-brand-300">
+                              <Check className="h-3 w-3" />
+                            </span>
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </StaggerItem>
+                )
+              })}
+            </Stagger>
+          </>
+        )}
+
+        {Array.isArray(service.addOns) && service.addOns.length > 0 && (
+          <div className="mt-20">
+            <SectionHeading
+              eyebrow="Add-ons"
+              title={
+                <>
+                  Add only what you <span className="text-gradient">actually need</span>
+                </>
+              }
+              description="These stack on top of any option above, so you are not pushed into features you do not need."
+            />
+            <Stagger className="mt-12 grid gap-4 sm:grid-cols-2" stagger={0.06}>
+              {service.addOns.map((addOn) => (
+                <StaggerItem key={addOn.label} className="h-full">
+                  <div className="flex h-full items-start gap-4 rounded-2xl border border-white/8 bg-ink-900/60 p-5 transition-colors duration-300 hover:border-brand-500/30">
+                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-500/10 text-brand-300">
+                      <Plus className="h-4 w-4" />
+                    </span>
+                    <div className="min-w-0">
+                      <div className="flex flex-wrap items-baseline justify-between gap-x-3">
+                        <h3 className="font-display text-base font-bold text-white">
+                          {addOn.label}
+                        </h3>
+                        <p className="font-display text-base font-bold text-accent-400">
+                          +{formatINR(addOn.price)}
+                        </p>
+                      </div>
+                      <p className="mt-2 text-sm leading-relaxed text-zinc-400">{addOn.desc}</p>
+                    </div>
+                  </div>
+                </StaggerItem>
+              ))}
+            </Stagger>
+          </div>
+        )}
+      </section>
+
+      <section className="border-t border-white/5 bg-ink-900/40 py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            eyebrow="What You Get"
+            title={
+              <>
+                Everything included in this <span className="text-gradient">service</span>
+              </>
+            }
+            description="A clear, written list of everything delivered - no surprises, no scope creep."
+          />
+          <Stagger className="mt-12 grid gap-4 sm:grid-cols-2" stagger={0.06}>
+            {service.deliverables.map((item) => (
+              <StaggerItem key={item} className="h-full">
+                <div className="flex h-full items-start gap-3 rounded-2xl border border-white/8 bg-ink-900/60 p-5 transition-colors duration-300 hover:border-brand-500/30">
+                  <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-brand-500/15 text-brand-300">
+                    <Check className="h-3.5 w-3.5" />
+                  </span>
+                  <p className="text-sm leading-relaxed text-zinc-300">{item}</p>
+                </div>
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </div>
       </section>
 
       <section className="border-t border-white/5 bg-ink-900/40 py-20">

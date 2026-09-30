@@ -17,8 +17,10 @@ export const SERVICE_INDUSTRIES = {
       items: {
         'Restaurants & cafés - menus, reservations, delivery':
           'Menu-driven informative pages with clear CTAs that turn local searches into physical foot traffic.',
+        'Gyms & fitness studios - schedules, memberships, booking':
+          'Class timetables and, with the booking add-on, slot scheduling that lets members claim spots in seconds.',
         'Salons & spas - appointments, showcase, promotions':
-          'A sleek service showcase that outlines your treatments, packages, and location details.',
+          'A sleek service showcase for treatments and packages - add booking to replace phone tag with a real-time appointment booker.',
         'Travel agencies - packages, itineraries, inquiries':
           'Detailed package and itinerary pages that route lead inquiries straight to your inbox.',
       },
@@ -26,12 +28,16 @@ export const SERVICE_INDUSTRIES = {
     {
       group: 'Professionals',
       items: {
+        'Doctors & clinics - booking, patient info, telemedicine':
+          'Patient-facing pages that build trust, with the booking add-on capturing appointments and holding calendar slots.',
         'Lawyers & law firms - services, testimonials, contact forms':
           'Credible service breakdowns, case studies, and secure contact forms that win client trust.',
+        'Accountants & financial advisors - packages, consultations':
+          'Polished corporate layouts that establish financial expertise and, with booking, paid consultation calendars.',
         'Architects & interior designers - portfolios, project showcases':
           'A high-end visual portfolio showcasing your spatial designs before the first consultation.',
-        'Accountants & financial advisors - packages, consultations':
-          'Polished corporate layouts that establish financial expertise and highlight core services.',
+        'Tutors & coaches - courses, booking, payments':
+          'Course and coaching pages tied to your work calendar with the booking add-on.',
       },
     },
     {
@@ -39,43 +45,14 @@ export const SERVICE_INDUSTRIES = {
       items: {
         'Startups - branding, product showcase, investor relations':
           'A world-class web presence that makes a young company look reliable to investors.',
+        'Event planners - portfolios, packages, inquiry forms':
+          'Portfolio pages with scoping-consultation calendars that qualify clients before you quote them.',
+        'Real estate agents - listings, virtual tours, lead capture':
+          'Automated booking links for physical site visits, open houses, or virtual property tours.',
         'Freelancers - portfolio, contact, service offerings':
           'A high-converting portfolio page that quickly highlights your skills and case studies.',
         'NGOs & charities - donation portals, campaigns, volunteers':
           'Informative campaign pages designed to share your mission and secure community support.',
-      },
-    },
-  ],
-  'online-bookings': [
-    {
-      group: 'Small Businesses',
-      items: {
-        'Restaurants & cafés - menus, reservations, delivery':
-          'Interactive table reservations and event room bookings handled seamlessly online.',
-        'Gyms & fitness studios - schedules, memberships, booking':
-          'Class timetables and slot scheduling that let members claim spots in seconds.',
-        'Salons & spas - appointments, showcase, promotions':
-          'An active, real-time appointment booker that slashes phone tag and prevents double-booking.',
-      },
-    },
-    {
-      group: 'Professionals',
-      items: {
-        'Doctors & clinics - booking, patient info, telemedicine':
-          'Patient-facing scheduling pipelines that capture appointments and handle calendar slots.',
-        'Accountants & financial advisors - packages, consultations':
-          'Paid consultation calendars that require commitment before booking a strategy slot.',
-        'Tutors & coaches - courses, booking, payments':
-          'Class slot and private coaching booking modules tied right into your work calendar.',
-      },
-    },
-    {
-      group: 'Growing Enterprises',
-      items: {
-        'Real estate agents - listings, virtual tours, lead capture':
-          'Automated booking links for physical site visits, open houses, or virtual property tours.',
-        'Event planners - portfolios, packages, inquiry forms':
-          'Initial scoping consultation calendars that qualify clients before you sketch a design.',
       },
     },
   ],
@@ -198,6 +175,49 @@ export const SERVICE_INDUSTRIES = {
           'Building your core proprietary Software-as-a-Service (SaaS) MVP from code to cloud deployment.',
         'Event planners - portfolios, packages, inquiry forms':
           'Interactive, collaborative internal planning platforms built for staff shift scheduling and vendors.',
+      },
+    },
+  ],
+  'custom-business-website': [
+    {
+      group: 'Small Businesses',
+      items: {
+        'Restaurants & cafés - menus, reservations, delivery':
+          'Table, floor and kitchen management with order history, staff roles and a live owner dashboard - not just a menu page.',
+        'Retail shops - e-commerce for clothing, electronics, furniture':
+          'Multi-branch stock, staff permissions and customer records in one system instead of scattered spreadsheets.',
+        'Gyms & fitness studios - schedules, memberships, booking':
+          'Member management, class scheduling, attendance and automated renewal reminders built together.',
+        'Salons & spas - appointments, showcase, promotions':
+          'Stylist schedules, service history and package tracking so every chair and slot is accounted for.',
+        'Travel agencies - packages, itineraries, inquiries':
+          'Booking records, customer documents and enquiry pipelines managed in your own system.',
+      },
+    },
+    {
+      group: 'Professionals',
+      items: {
+        'Doctors & clinics - booking, patient info, telemedicine':
+          'Patient records, appointments, prescriptions, follow-ups and staff access control - the workflow a clinic actually runs on.',
+        'Lawyers & law firms - services, testimonials, contact forms':
+          'Case and client management with secure document handling and matter-level tracking.',
+        'Accountants & financial advisors - packages, consultations':
+          'Client onboarding, document collection and engagement tracking in one place.',
+        'Tutors & coaches - courses, booking, payments':
+          'Batch and individual student tracking, fee management and progress reports.',
+      },
+    },
+    {
+      group: 'Growing Enterprises',
+      items: {
+        'Startups - branding, product showcase, investor relations':
+          'An internal operations platform that scales with the team - dashboards, permissions and reporting built in.',
+        'Event planners - portfolios, packages, inquiry forms':
+          'Enquiry to delivery pipeline with crew assignments, schedules and client reporting.',
+        'Real estate agents - listings, virtual tours, lead capture':
+          'Property and tenant records, rent tracking, maintenance requests and owner reporting.',
+        'NGOs & charities - donation portals, campaigns, volunteers':
+          'Donor records, volunteer management and campaign reporting with role-based access.',
       },
     },
   ],

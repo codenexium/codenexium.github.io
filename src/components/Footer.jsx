@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { Mail, MapPin, MessageCircle, ArrowUpRight } from 'lucide-react'
 import { Logo } from './Logo'
-import { SITE, WHATSAPP, SERVICES } from '../lib/config'
+import { SITE, WHATSAPP, VISIBLE_SERVICES } from '../lib/config'
 import { useCta } from '../lib/cta-context'
 import CalIdModal from './CalIdModal'
 
@@ -72,7 +72,7 @@ export function Footer() {
               Services
             </h4>
             <ul className="mt-5 space-y-3 text-sm text-zinc-400">
-              {SERVICES.map((s) => (
+              {VISIBLE_SERVICES.map((s) => (
                 <li key={s.slug}>
                   <Link
                     href={`/services#${s.slug}`}
