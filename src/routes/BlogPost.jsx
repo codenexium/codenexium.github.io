@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import { ArrowLeft, ArrowRight, Clock } from 'lucide-react'
 import { BLOG_POSTS } from '../lib/config'
 import { BLOG_CONTENT, COVER_COLORS } from '../lib/blog'
+import { centeredRow, centeredItem } from '../lib/centered-row'
 import { CtaBanner } from '../components/CtaBanner'
 import { useCta } from '../lib/cta-context'
 
@@ -119,12 +120,16 @@ export function BlogPost() {
       <section className="border-t border-white/5 bg-ink-900/40 py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="font-display text-2xl font-bold text-white">Keep reading</h2>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className={centeredRow({ cols: { sm: 2, lg: 3 }, className: "mt-8" })}>
             {related.map((p) => (
               <Link
                 key={p.slug}
                 href={`/blog/${p.slug}`}
-                className="group overflow-hidden rounded-3xl border border-white/8 bg-ink-900/70 transition-all duration-300 hover:-translate-y-1.5 hover:border-brand-500/30"
+                className={centeredItem({
+                  cols: { sm: 2, lg: 3 },
+                  className:
+                    "group overflow-hidden rounded-3xl border border-white/8 bg-ink-900/70 transition-all duration-300 hover:-translate-y-1.5 hover:border-brand-500/30",
+                })}
               >
                 <div className="relative h-36 overflow-hidden">
                   <div

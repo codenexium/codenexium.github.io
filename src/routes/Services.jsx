@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowRight, Info, BadgeCheck, Wallet, RefreshCw, Headset } from 'lucide-react'
 import { VISIBLE_SERVICES, PRICE_NOTE, INDUSTRIES } from '../lib/config'
+import { centeredRow, centeredItem } from '../lib/centered-row'
 import { PageHero } from '../components/PageHero'
 import { Reveal, Stagger, StaggerItem } from '../components/Reveal'
 import { ServiceCard } from '../components/ServiceCard'
@@ -67,9 +68,9 @@ export function Services() {
       </PageHero>
 
       <section className="mx-auto max-w-7xl px-4 pb-8 sm:px-6 lg:px-8">
-        <Stagger className="grid gap-6 lg:grid-cols-2" stagger={0.06}>
+        <Stagger className={centeredRow({ cols: { lg: 2 } })} stagger={0.06}>
           {VISIBLE_SERVICES.map((service) => (
-            <StaggerItem key={service.slug} className="h-full">
+            <StaggerItem key={service.slug} className={centeredItem({ cols: { lg: 2 }, className: "h-full" })}>
               <ServiceCard service={service} />
             </StaggerItem>
           ))}
@@ -89,7 +90,7 @@ export function Services() {
             </p>
           </Reveal>
 
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className={centeredRow({ cols: { sm: 2, lg: 3 }, gap: "gap-4", className: "mt-10" })}>
             {[
               {
                 title: 'Just need a presence?',
@@ -126,7 +127,12 @@ export function Services() {
                 key={c.title}
                 href={`#${c.slug}`}
                 whileHover={{ y: -4 }}
-                className="group rounded-2xl border border-white/8 bg-ink-950/60 p-6 transition-colors duration-300 hover:border-brand-500/30"
+                className={centeredItem({
+                  cols: { sm: 2, lg: 3 },
+                  gap: "gap-4",
+                  className:
+                    "group rounded-2xl border border-white/8 bg-ink-950/60 p-6 transition-colors duration-300 hover:border-brand-500/30",
+                })}
               >
                 <h3 className="font-display text-base font-bold text-white">{c.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-zinc-400">{c.desc}</p>
@@ -141,9 +147,9 @@ export function Services() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className={centeredRow({ cols: { sm: 2, lg: 4 }, gap: "gap-4" })}>
           {GUARANTEES.map((g) => (
-            <Reveal key={g.title} className="h-full">
+            <Reveal key={g.title} className={centeredItem({ cols: { sm: 2, lg: 4 }, gap: "gap-4", className: "h-full" })}>
               <div className="flex h-full flex-col rounded-3xl border border-white/8 bg-ink-900/60 p-6 transition-colors duration-300 hover:border-brand-500/30">
                 <span className="grid h-11 w-11 place-items-center rounded-2xl bg-brand-500/10 text-brand-300">
                   <g.icon className="h-5 w-5" />

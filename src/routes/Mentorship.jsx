@@ -14,6 +14,7 @@ import {
   CalendarCheck,
 } from 'lucide-react'
 import { PageHero } from '../components/PageHero'
+import { centeredRow, centeredItem } from '../lib/centered-row'
 import { Stagger, StaggerItem } from '../components/Reveal'
 import { SectionHeading } from '../components/SectionHeading'
 import { CtaBanner } from '../components/CtaBanner'
@@ -157,9 +158,12 @@ export function Mentorship() {
           }
           description="Everything is taught through building-the same projects and workflows I use with paying clients."
         />
-        <Stagger className="mt-12 grid gap-5 sm:grid-cols-2" stagger={0.08}>
+        <Stagger
+          className={centeredRow({ cols: { sm: 2 }, gap: "gap-5", className: "mt-12" })}
+          stagger={0.08}
+        >
           {TRACKS.map((t) => (
-            <StaggerItem key={t.title} className="h-full">
+            <StaggerItem key={t.title} className={centeredItem({ cols: { sm: 2 }, gap: "gap-5", className: "h-full" })}>
               <div className="h-full rounded-3xl border border-white/8 bg-ink-900/60 p-7 transition-colors duration-300 hover:border-brand-500/30">
                 <div className="flex items-center gap-3">
                   <span className="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-brand-500/20 to-accent-500/20 text-brand-300">
@@ -192,9 +196,9 @@ export function Mentorship() {
             }
             description="Flexible formats designed for different goals and budgets. Starting prices vary by commitment."
           />
-          <Stagger className="mt-12 grid gap-6 lg:grid-cols-3" stagger={0.09}>
+          <Stagger className={centeredRow({ cols: { lg: 3 }, className: "mt-12" })} stagger={0.09}>
             {FORMATS.map((f, i) => (
-              <StaggerItem key={f.name} className="h-full">
+              <StaggerItem key={f.name} className={centeredItem({ cols: { lg: 3 }, className: "h-full" })}>
                 <motion.div
                   whileHover={{ y: -6 }}
                   transition={{ type: 'spring', stiffness: 300, damping: 24 }}
@@ -244,9 +248,9 @@ export function Mentorship() {
             </>
           }
         />
-        <Stagger className="mt-12 grid gap-5 lg:grid-cols-3" stagger={0.09}>
+        <Stagger className={centeredRow({ cols: { lg: 3 }, gap: "gap-5", className: "mt-12" })} stagger={0.09}>
           {STUDENT_STORIES.map((s) => (
-            <StaggerItem key={s.name} className="h-full">
+            <StaggerItem key={s.name} className={centeredItem({ cols: { lg: 3 }, gap: "gap-5", className: "h-full" })}>
               <div className="h-full rounded-3xl border border-white/8 bg-ink-900/60 p-6">
                 <p className="text-sm leading-relaxed text-zinc-300">"{s.quote}"</p>
                 <div className="mt-5 flex items-center gap-3 border-t border-white/5 pt-4">

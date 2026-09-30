@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { Check, Clock, MessageSquareText, FileText, Users } from 'lucide-react'
 import { PROCESS_STEPS } from '../lib/config'
+import { centeredRow, centeredItem } from '../lib/centered-row'
 import { PageHero } from '../components/PageHero'
 import { Reveal, Stagger, StaggerItem } from '../components/Reveal'
 import { SectionHeading } from '../components/SectionHeading'
@@ -143,9 +144,15 @@ export function Process() {
             }
             description="Transparency is a feature. Here's what every client gets regardless of project size."
           />
-          <Stagger className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4" stagger={0.08}>
+          <Stagger
+            className={centeredRow({ cols: { sm: 2, lg: 4 }, gap: "gap-5", className: "mt-12" })}
+            stagger={0.08}
+          >
             {EXPECTATIONS.map((e) => (
-              <StaggerItem key={e.title} className="h-full">
+              <StaggerItem
+                key={e.title}
+                className={centeredItem({ cols: { sm: 2, lg: 4 }, gap: "gap-5", className: "h-full" })}
+              >
                 <div className="h-full rounded-3xl border border-white/8 bg-ink-900/60 p-6 transition-colors duration-300 hover:border-brand-500/30">
                   <span className="grid h-11 w-11 place-items-center rounded-2xl bg-brand-500/10 text-brand-300">
                     <e.icon className="h-5 w-5" />

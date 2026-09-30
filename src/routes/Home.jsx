@@ -15,6 +15,7 @@ import {
   Building2,
 } from 'lucide-react'
 import { SITE, VISIBLE_SERVICES, INDUSTRIES, TESTIMONIALS, PROCESS_STEPS } from '../lib/config'
+import { centeredRow, centeredItem } from '../lib/centered-row'
 import { Reveal, Stagger, StaggerItem } from '../components/Reveal'
 import { SectionHeading } from '../components/SectionHeading'
 import { Counter } from '../components/Counter'
@@ -274,9 +275,12 @@ function ServicesPreview() {
         description="Fixed starting prices, no surprises. Pick a service or combine them into a complete growth system."
       />
 
-      <Stagger className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" stagger={0.07}>
+      <Stagger className={centeredRow({ cols: { sm: 2, lg: 3 }, className: "mt-14" })} stagger={0.07}>
         {VISIBLE_SERVICES.map((service) => (
-          <StaggerItem key={service.slug} className="h-full">
+          <StaggerItem
+            key={service.slug}
+            className={centeredItem({ cols: { sm: 2, lg: 3 }, className: "h-full" })}
+          >
             <ServiceCard service={service} compact />
           </StaggerItem>
         ))}
@@ -312,13 +316,17 @@ function Industries() {
           description="I've delivered for clients across small businesses, professionals and growing enterprises-each with its own playbook."
         />
 
-        <Stagger className="mt-14 grid gap-6 lg:grid-cols-3" stagger={0.1}>
+        <Stagger className={centeredRow({ cols: { lg: 3 }, className: "mt-14" })} stagger={0.1}>
           {INDUSTRIES.map((g) => {
             const Icon = INDUSTRY_ICONS[g.icon] || Store
             return (
               <StaggerItem
                 key={g.group}
-                className="group rounded-3xl border border-white/8 bg-ink-950/60 p-7 transition-all duration-300 hover:border-brand-500/30 hover:bg-ink-900/80"
+                className={centeredItem({
+                  cols: { lg: 3 },
+                  className:
+                    "group rounded-3xl border border-white/8 bg-ink-950/60 p-7 transition-all duration-300 hover:border-brand-500/30 hover:bg-ink-900/80",
+                })}
               >
                 <div className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-brand-500/20 to-accent-500/20 text-brand-300 transition-transform duration-300 group-hover:scale-110">
                   <Icon className="h-6 w-6" />
@@ -355,9 +363,12 @@ function ProcessPreview() {
         description="From discovery to launch, you always know what's happening, what's next and what it costs."
       />
 
-      <Stagger className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" stagger={0.08}>
+      <Stagger
+        className={centeredRow({ cols: { sm: 2, lg: 4 }, className: "mt-14" })}
+        stagger={0.08}
+      >
         {PROCESS_STEPS.slice(0, 4).map((p) => (
-          <StaggerItem key={p.step} className="h-full">
+          <StaggerItem key={p.step} className={centeredItem({ cols: { sm: 2, lg: 4 }, className: "h-full" })}>
             <div className="group relative h-full overflow-hidden rounded-3xl border border-white/8 bg-ink-900/70 p-6 transition-all duration-300 hover:border-brand-500/30">
               <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-brand-500 to-accent-500 font-display text-base font-bold text-on-brand shadow-glow">
                 {p.step}
@@ -427,11 +438,16 @@ function WhyMe() {
             launches and supports your project - no agencies, no hand-offs, no vanishing act.
           </p>
 
-          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+          <div className={centeredRow({ cols: { sm: 2 }, gap: "gap-4", className: "mt-8" })}>
             {points.map((p) => (
               <div
                 key={p.title}
-                className="flex items-start gap-3 rounded-2xl border border-white/8 bg-ink-900/60 p-4 transition-colors duration-300 hover:border-brand-500/30"
+                className={centeredItem({
+                  cols: { sm: 2 },
+                  gap: "gap-4",
+                  className:
+                    "flex items-start gap-3 rounded-2xl border border-white/8 bg-ink-900/60 p-4 transition-colors duration-300 hover:border-brand-500/30",
+                })}
               >
                 <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-500/10 text-brand-300">
                   <p.icon className="h-5 w-5" />

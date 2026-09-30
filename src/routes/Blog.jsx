@@ -8,6 +8,7 @@ import { BLOG_POSTS } from '../lib/config'
 import { BLOG_CONTENT, COVER_COLORS } from '../lib/blog'
 import { PageHero } from '../components/PageHero'
 import { Reveal } from '../components/Reveal'
+import { centeredRow, centeredItem } from '../lib/centered-row'
 
 function CoverVisual({ cover, className = '' }) {
   const colors = COVER_COLORS[cover] || COVER_COLORS.stack
@@ -122,7 +123,7 @@ export function Blog() {
               No articles match "{query}". Try a different search or category.
             </motion.p>
           ) : (
-            <motion.div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <motion.div className={centeredRow({ cols: { sm: 2, lg: 3 }, className: "mt-8" })}>
               {filtered.map((post, i) => {
                 const content = BLOG_CONTENT[post.slug]
                 return (
@@ -133,6 +134,7 @@ export function Blog() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.96 }}
                     transition={{ duration: 0.4, delay: i * 0.04 }}
+                    className={centeredItem({ cols: { sm: 2, lg: 3 } })}
                   >
                     <Link
                       href={`/blog/${post.slug}`}

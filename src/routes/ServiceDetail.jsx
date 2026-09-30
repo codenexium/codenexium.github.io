@@ -22,6 +22,7 @@ import {
   MERGED_SERVICE_NOTES,
 } from '../lib/config'
 import { normalizeSlug, SERVICE_INDUSTRIES } from '../lib/service-pages'
+import { centeredRow, centeredItem } from '../lib/centered-row'
 import { PageHero } from '../components/PageHero'
 import { Reveal, Stagger, StaggerItem } from '../components/Reveal'
 import { SectionHeading } from '../components/SectionHeading'
@@ -175,11 +176,14 @@ export function ServiceDetail() {
               }
               description={service.pricingNote}
             />
-            <Stagger className="mt-12 grid gap-5 lg:grid-cols-2" stagger={0.06}>
+            <Stagger className={centeredRow({ cols: { lg: 2 }, gap: "gap-5", className: "mt-12" })} stagger={0.06}>
               {service.pricing.map((tier) => {
                 const stack = TECH_STACKS[tier.stack]
                 return (
-                  <StaggerItem key={tier.stack} className="h-full">
+                  <StaggerItem
+                    key={tier.stack}
+                    className={centeredItem({ cols: { lg: 2 }, gap: "gap-5", className: "h-full" })}
+                  >
                     <div className="flex h-full flex-col rounded-3xl border border-white/8 bg-ink-900/60 p-6 transition-colors duration-300 hover:border-brand-500/30">
                       <div className="flex flex-wrap items-start justify-between gap-3">
                         <div>
@@ -225,9 +229,12 @@ export function ServiceDetail() {
               }
               description="These stack on top of any option above, so you are not pushed into features you do not need."
             />
-            <Stagger className="mt-12 grid gap-4 sm:grid-cols-2" stagger={0.06}>
+            <Stagger className={centeredRow({ cols: { sm: 2 }, gap: "gap-4", className: "mt-12" })} stagger={0.06}>
               {service.addOns.map((addOn) => (
-                <StaggerItem key={addOn.label} className="h-full">
+                <StaggerItem
+                  key={addOn.label}
+                  className={centeredItem({ cols: { sm: 2 }, gap: "gap-4", className: "h-full" })}
+                >
                   <div className="flex h-full items-start gap-4 rounded-2xl border border-white/8 bg-ink-900/60 p-5 transition-colors duration-300 hover:border-brand-500/30">
                     <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-500/10 text-brand-300">
                       <Plus className="h-4 w-4" />
@@ -264,9 +271,9 @@ export function ServiceDetail() {
             }
             description="A clear, written list of everything delivered - no surprises, no scope creep."
           />
-          <Stagger className="mt-12 grid gap-4 sm:grid-cols-2" stagger={0.06}>
+          <Stagger className={centeredRow({ cols: { sm: 2 }, gap: "gap-4", className: "mt-12" })} stagger={0.06}>
             {service.deliverables.map((item) => (
-              <StaggerItem key={item} className="h-full">
+              <StaggerItem key={item} className={centeredItem({ cols: { sm: 2 }, gap: "gap-4", className: "h-full" })}>
                 <div className="flex h-full items-start gap-3 rounded-2xl border border-white/8 bg-ink-900/60 p-5 transition-colors duration-300 hover:border-brand-500/30">
                   <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-brand-500/15 text-brand-300">
                     <Check className="h-3.5 w-3.5" />
@@ -290,11 +297,11 @@ export function ServiceDetail() {
             }
             description="How this service maps to the real needs of the industries I work with."
           />
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+          <div className={centeredRow({ cols: { lg: 3 }, className: "mt-12" })}>
             {industries.map(({ group, items }) => {
               const meta = INDUSTRIES.find((i) => i.group === group)
               return (
-                <Reveal key={group} className="h-full">
+                <Reveal key={group} className={centeredItem({ cols: { lg: 3 }, className: "h-full" })}>
                   <div className="flex h-full flex-col rounded-3xl border border-white/8 bg-ink-950/60 p-6 transition-colors duration-300 hover:border-brand-500/30">
                     <div className="flex items-center gap-3">
                       <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-brand-500/10 text-brand-300">
@@ -334,9 +341,9 @@ export function ServiceDetail() {
           }
           description="Screenshots, a live demo and a walkthrough video will be added here soon."
         />
-        <Stagger className="mt-12 grid gap-6 md:grid-cols-3" stagger={0.08}>
+        <Stagger className={centeredRow({ cols: { md: 3 }, className: "mt-12" })} stagger={0.08}>
           {MEDIA_PLACEHOLDERS.map(({ icon: Icon, title, note, desc }) => (
-            <StaggerItem key={title} className="h-full">
+            <StaggerItem key={title} className={centeredItem({ cols: { md: 3 }, className: "h-full" })}>
               <div className="flex h-full flex-col items-center rounded-3xl border border-white/8 bg-ink-900/60 p-6 text-center transition-colors duration-300 hover:border-brand-500/30">
                 <div className="grid aspect-video w-full place-items-center rounded-2xl border border-dashed border-white/15 bg-ink-950/50">
                   <div className="flex flex-col items-center gap-3 px-6">
