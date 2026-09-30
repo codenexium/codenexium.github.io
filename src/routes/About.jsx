@@ -221,7 +221,7 @@ export function About() {
             {VALUES.map((v) => (
               <StaggerItem
                 key={v.title}
-                className={centeredItem({ cols: { sm: 2, lg: 4 }, gap: "gap-5", className: "h-full" })}
+                className={centeredItem({ cols: { sm: 2, lg: 4 }, gap: "gap-5"})}
               >
                 <div className="h-full rounded-3xl border border-white/8 bg-ink-900/60 p-6 transition-colors duration-300 hover:border-brand-500/30">
                   <span className="grid h-11 w-11 place-items-center rounded-2xl bg-brand-500/10 text-brand-300">

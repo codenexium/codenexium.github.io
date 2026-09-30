@@ -15,7 +15,7 @@ import {
   Building2,
 } from 'lucide-react'
 import { SITE, VISIBLE_SERVICES, INDUSTRIES, TESTIMONIALS, PROCESS_STEPS } from '../lib/config'
-import { centeredRow, centeredItem } from '../lib/centered-row'
+import { centeredRow, centeredItem, EqualHeightRow } from '../lib/centered-row'
 import { Reveal, Stagger, StaggerItem } from '../components/Reveal'
 import { SectionHeading } from '../components/SectionHeading'
 import { Counter } from '../components/Counter'
@@ -275,16 +275,16 @@ function ServicesPreview() {
         description="Fixed starting prices, no surprises. Pick a service or combine them into a complete growth system."
       />
 
-      <Stagger className={centeredRow({ cols: { sm: 2, lg: 3 }, className: "mt-14" })} stagger={0.07}>
+      <EqualHeightRow cols={{ sm: 2, lg: 3 }} className="mt-14">
         {VISIBLE_SERVICES.map((service) => (
           <StaggerItem
             key={service.slug}
-            className={centeredItem({ cols: { sm: 2, lg: 3 }, className: "h-full" })}
+            className={centeredItem({ cols: { sm: 2, lg: 3 }})}
           >
-            <ServiceCard service={service} compact />
+            <ServiceCard service={service} />
           </StaggerItem>
         ))}
-      </Stagger>
+      </EqualHeightRow>
 
       <Reveal className="mt-12 text-center">
         <Link
@@ -368,7 +368,7 @@ function ProcessPreview() {
         stagger={0.08}
       >
         {PROCESS_STEPS.slice(0, 4).map((p) => (
-          <StaggerItem key={p.step} className={centeredItem({ cols: { sm: 2, lg: 4 }, className: "h-full" })}>
+          <StaggerItem key={p.step} className={centeredItem({ cols: { sm: 2, lg: 4 }})}>
             <div className="group relative h-full overflow-hidden rounded-3xl border border-white/8 bg-ink-900/70 p-6 transition-all duration-300 hover:border-brand-500/30">
               <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-brand-500 to-accent-500 font-display text-base font-bold text-on-brand shadow-glow">
                 {p.step}

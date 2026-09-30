@@ -163,7 +163,7 @@ export function Mentorship() {
           stagger={0.08}
         >
           {TRACKS.map((t) => (
-            <StaggerItem key={t.title} className={centeredItem({ cols: { sm: 2 }, gap: "gap-5", className: "h-full" })}>
+            <StaggerItem key={t.title} className={centeredItem({ cols: { sm: 2 }, gap: "gap-5"})}>
               <div className="h-full rounded-3xl border border-white/8 bg-ink-900/60 p-7 transition-colors duration-300 hover:border-brand-500/30">
                 <div className="flex items-center gap-3">
                   <span className="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-brand-500/20 to-accent-500/20 text-brand-300">
@@ -198,7 +198,7 @@ export function Mentorship() {
           />
           <Stagger className={centeredRow({ cols: { lg: 3 }, className: "mt-12" })} stagger={0.09}>
             {FORMATS.map((f, i) => (
-              <StaggerItem key={f.name} className={centeredItem({ cols: { lg: 3 }, className: "h-full" })}>
+              <StaggerItem key={f.name} className={centeredItem({ cols: { lg: 3 }})}>
                 <motion.div
                   whileHover={{ y: -6 }}
                   transition={{ type: 'spring', stiffness: 300, damping: 24 }}
@@ -250,7 +250,7 @@ export function Mentorship() {
         />
         <Stagger className={centeredRow({ cols: { lg: 3 }, gap: "gap-5", className: "mt-12" })} stagger={0.09}>
           {STUDENT_STORIES.map((s) => (
-            <StaggerItem key={s.name} className={centeredItem({ cols: { lg: 3 }, gap: "gap-5", className: "h-full" })}>
+            <StaggerItem key={s.name} className={centeredItem({ cols: { lg: 3 }, gap: "gap-5"})}>
               <div className="h-full rounded-3xl border border-white/8 bg-ink-900/60 p-6">
                 <p className="text-sm leading-relaxed text-zinc-300">"{s.quote}"</p>
                 <div className="mt-5 flex items-center gap-3 border-t border-white/5 pt-4">

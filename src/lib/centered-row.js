@@ -23,7 +23,12 @@
  *   const row = { cols: { sm: 2, lg: 3 }, gap: "gap-6" }
  *   <Stagger className={centeredRow(row)}>
  *     <StaggerItem className={centeredItem({ ...row, className: "h-full" })}>
+ *
+ * `EqualHeightRow` is the drop-in when every child must also match height
+ * across all lines, not just within one.
  */
+
+import React, { useLayoutEffect, useRef } from 'react'
 
 /** Tailwind's default breakpoints. */
 const PREFIXES = { sm: true, md: true, lg: true, xl: true };
@@ -119,7 +124,64 @@ function resolve({ cols, gap }, fallback) {
  */
 export function centeredRow({ cols, gap = "gap-6", className = "" } = {}) {
   const bases = resolve({ cols, gap }, (columns, g, bp) => BASIS[columns][g][bp]);
-  return `flex flex-wrap justify-center ${gap} ${bases} ${className}`.replace(/\s+/g, " ").trim();
+  return `flex flex-wrap items-stretch justify-center ${gap} ${bases} ${className}`
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/**
+ * A `centeredRow` whose children all share one height.
+ *
+ * `items-stretch` only equalizes children within a single flex line, and
+ * flex-wrap sizes each line from its own content. So a 3 + 1 layout still
+ * renders line 1 at the tallest of the first three and line 2 at the height of
+ * the orphan, and the section looks ragged. Measuring the tallest child and
+ * pushing that height onto all of them is the only way to get a uniform grid
+ * while keeping the centered last row.
+ *
+ * The height is written to a custom property rather than inline styles so it
+ * stays overridable, and it is recomputed on resize and whenever the content
+ * changes (images, web fonts, translated copy).
+ */
+export function EqualHeightRow({ cols, gap = "gap-6", className = "", style, children }) {
+  const ref = useRef(null);
+
+  useLayoutEffect(() => {
+    const node = ref.current;
+    if (!node) return undefined;
+
+    const measure = () => {
+      const tallest = Math.max(
+        0,
+        ...[...node.children].map((child) => child.getBoundingClientRect().height),
+      );
+      node.style.setProperty('--row-h', tallest ? `${Math.ceil(tallest)}px` : '');
+    };
+
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(node);
+    for (const child of node.children) observer.observe(child);
+    document.fonts?.ready.then(measure).catch(() => {});
+
+    return () => observer.disconnect();
+  }, [children]);
+
+  return (
+    <div
+      ref={ref}
+      className={centeredRow({ cols, gap, className: `items-stretch ${className}` })}
+      style={style}
+    >
+      {React.Children.map(children, (child) =>
+        React.isValidElement(child) && child.props?.className
+          ? React.cloneElement(child, {
+              className: `${child.props.className} min-h-[var(--row-h)]`,
+            })
+          : child,
+      )}
+    </div>
+  );
 }
 
 /** Classes for one child of a centering row. */

@@ -7,7 +7,7 @@ import { ServiceIcon } from './icons'
 import { useCta } from '../lib/cta-context'
 import { startingPriceLabel } from '../lib/config'
 
-export function ServiceCard({ service, compact = false }) {
+export function ServiceCard({ service }) {
   const { openCta } = useCta()
 
   return (
@@ -55,8 +55,8 @@ export function ServiceCard({ service, compact = false }) {
 
       <p className="mt-3 text-sm leading-relaxed text-zinc-400">{service.short}</p>
 
-      <ul className="mt-5 space-y-2.5">
-        {(compact ? service.deliverables.slice(0, 4) : service.deliverables).map((item) => (
+      <ul className="mt-5 flex-1 space-y-2.5">
+        {service.deliverables.map((item) => (
           <li key={item} className="flex items-start gap-2.5 text-sm text-zinc-300">
             <span className="mt-0.5 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-brand-500/15 text-brand-300">
               <Check className="h-3 w-3" />
