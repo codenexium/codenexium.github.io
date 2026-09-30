@@ -51,7 +51,6 @@ export function Footer() {
               {[
                 { to: '/services', label: 'Services' },
                 { to: '/process', label: 'Process' },
-                { to: '/mentorship', label: 'Mentorship' },
                 { to: '/blog', label: 'Blog' },
                 { to: '/about', label: 'About' },
               ].map((l) => (
