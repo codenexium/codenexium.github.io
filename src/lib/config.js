@@ -636,6 +636,68 @@ export function formatINR(amount) {
   return formatPrice(amount);
 }
 
+/**
+ * Every bookable option, derived from the same `pricing` tiers the service
+ * pages render, so the contact form can never drift from the published prices.
+ *
+ * Each entry keeps the service name, the option label, the tech stack and the
+ * price. The `value` is the human-readable string because it is what lands in
+ * the HubSpot `message` property - a sales lead should be able to read which
+ * stack and budget was quoted without cross-referencing the site.
+ */
+export const SERVICE_OPTIONS = VISIBLE_SERVICES.flatMap((service) => {
+  const tiers = service.pricing ?? [];
+
+  if (tiers.length === 0) {
+    return [
+      {
+        key: service.slug,
+        service: service.name,
+        slug: service.slug,
+        option: service.priceLabel ?? "Standard",
+        stack: "",
+        price: service.price ?? null,
+        label: `${service.name} - ${service.priceLabel ?? "Standard"}`,
+        value: service.name,
+      },
+    ];
+  }
+
+  return tiers.map((tier) => {
+    const stack = TECH_STACKS[tier.stack];
+    const price = formatPrice(tier.price);
+    const option = tier.label;
+    // Several option labels already name their stack ("Simple Single Page
+    // Website", "Mobile, Desktop & CLI Software"), so only add the stack when
+    // it actually adds information.
+    const stackAddsInfo =
+      stack?.label && !option.toLowerCase().includes(stack.label.toLowerCase());
+
+    return {
+      key: `${service.slug}::${tier.stack}`,
+      service: service.name,
+      slug: service.slug,
+      option,
+      stack: stack?.label ?? "",
+      stackTag: stack?.tag ?? "",
+      price: tier.price,
+      label: `${option}${stackAddsInfo ? ` (${stack.label})` : ""} - ${price}`,
+      value: `${service.name} - ${option}${stack?.tag ? ` [${stack.tag}]` : ""} - ${price}`,
+    };
+  });
+});
+
+/**
+ * Resolves the `defaultService` a CTA button passes in (a service name) to the
+ * first option of that service, so opening the form from a service card
+ * preselects something valid. Returns "" when the name is unknown.
+ */
+export function defaultServiceOption(serviceName) {
+  if (!serviceName) return "";
+  const match = SERVICE_OPTIONS.find((o) => o.service === serviceName);
+  return match ? match.value : "";
+}
+
 export const PRICE_NOTE = "All service prices are starting prices.";
 
 export const PROCESS_STEPS = [

@@ -2,7 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { CheckCircle2, Loader2, Send, ArrowUpRight } from "lucide-react";
-import { VISIBLE_SERVICES, WHATSAPP, submitToHubSpot } from "../lib/config";
+import {
+  VISIBLE_SERVICES,
+  SERVICE_OPTIONS,
+  defaultServiceOption,
+  WHATSAPP,
+  submitToHubSpot,
+} from "../lib/config";
 
 export const contactInputCls =
   "w-full rounded-xl border border-white/10 bg-ink-850/80 px-4 py-3 text-sm text-white placeholder-zinc-500 outline-none transition-all duration-200 focus:border-brand-400 focus:ring-2 focus:ring-brand-500/30";
@@ -44,7 +50,7 @@ export function ContactForm({ defaultService = "", compact = false }) {
     name: "",
     email: "",
     phone: "",
-    service: defaultService,
+    service: defaultServiceOption(defaultService),
     project_details: "",
     resourceurl: "",
   });
@@ -53,7 +59,7 @@ export function ContactForm({ defaultService = "", compact = false }) {
   useEffect(() => {
     setForm((currentForm) => ({
       ...currentForm,
-      service: defaultService,
+      service: defaultServiceOption(defaultService),
     }));
   }, [defaultService]);
 
@@ -179,11 +185,20 @@ export function ContactForm({ defaultService = "", compact = false }) {
           <option value="" disabled className="bg-ink-900">
             Select a service
           </option>
-          {VISIBLE_SERVICES.map((s) => (
-            <option key={s.slug} value={s.name} className="bg-ink-900">
-              {s.name}
-            </option>
-          ))}
+          {VISIBLE_SERVICES.map((s) => {
+            const options = SERVICE_OPTIONS.filter((o) => o.slug === s.slug);
+            if (options.length === 0) return null;
+
+            return (
+              <optgroup key={s.slug} label={s.name} className="bg-ink-900">
+                {options.map((o) => (
+                  <option key={o.key} value={o.value} className="bg-ink-900">
+                    {o.label}
+                  </option>
+                ))}
+              </optgroup>
+            );
+          })}
           <option value="Other / Not sure yet" className="bg-ink-900">
             Other / Not sure yet
           </option>
