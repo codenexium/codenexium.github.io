@@ -149,35 +149,6 @@ export const SERVICE_INDUSTRIES = {
       },
     },
   ],
-  'custom-software': [
-    {
-      group: 'Small Businesses',
-      items: {
-        'Retail shops - e-commerce for clothing, electronics, furniture':
-          'Custom cross-platform desktop POS systems tailored for custom hardware and barcode scanners.',
-        'Gyms & fitness studios - schedules, memberships, booking':
-          'Custom mobile applications allowing members to track progress, check in via QR, and scan logs.',
-      },
-    },
-    {
-      group: 'Professionals',
-      items: {
-        'Doctors & clinics - booking, patient info, telemedicine':
-          'Secure web applications for custom patient records management aligned with regional compliance.',
-        'Lawyers & law firms - services, testimonials, contact forms':
-          'Custom CLI tools or desktop apps for secure, batch-encrypted client archiving and discovery search.',
-      },
-    },
-    {
-      group: 'Growing Enterprises',
-      items: {
-        'Startups - branding, product showcase, investor relations':
-          'Building your core proprietary Software-as-a-Service (SaaS) MVP from code to cloud deployment.',
-        'Event planners - portfolios, packages, inquiry forms':
-          'Interactive, collaborative internal planning platforms built for staff shift scheduling and vendors.',
-      },
-    },
-  ],
   'custom-business-website': [
     {
       group: 'Small Businesses',
@@ -185,9 +156,9 @@ export const SERVICE_INDUSTRIES = {
         'Restaurants & cafés - menus, reservations, delivery':
           'Table, floor and kitchen management with order history, staff roles and a live owner dashboard - not just a menu page.',
         'Retail shops - e-commerce for clothing, electronics, furniture':
-          'Multi-branch stock, staff permissions and customer records in one system instead of scattered spreadsheets.',
+          'Multi-branch stock, staff permissions and customer records in one system instead of scattered spreadsheets. Custom POS and desktop builds that talk to your barcode scanners.',
         'Gyms & fitness studios - schedules, memberships, booking':
-          'Member management, class scheduling, attendance and automated renewal reminders built together.',
+          'Member management, class scheduling, attendance and automated renewal reminders built together, with an optional mobile app for check-in via QR and workout log scanning.',
         'Salons & spas - appointments, showcase, promotions':
           'Stylist schedules, service history and package tracking so every chair and slot is accounted for.',
         'Travel agencies - packages, itineraries, inquiries':
@@ -200,7 +171,7 @@ export const SERVICE_INDUSTRIES = {
         'Doctors & clinics - booking, patient info, telemedicine':
           'Patient records, appointments, prescriptions, follow-ups and staff access control - the workflow a clinic actually runs on.',
         'Lawyers & law firms - services, testimonials, contact forms':
-          'Case and client management with secure document handling and matter-level tracking.',
+          'Case and client management with secure document handling and matter-level tracking. Optional desktop or CLI tooling for batch-encrypted archiving and discovery search.',
         'Accountants & financial advisors - packages, consultations':
           'Client onboarding, document collection and engagement tracking in one place.',
         'Tutors & coaches - courses, booking, payments':
@@ -211,9 +182,9 @@ export const SERVICE_INDUSTRIES = {
       group: 'Growing Enterprises',
       items: {
         'Startups - branding, product showcase, investor relations':
-          'An internal operations platform that scales with the team - dashboards, permissions and reporting built in.',
+          'Your core SaaS MVP taken from code to cloud deployment, plus an internal operations platform that scales with the team - dashboards, permissions and reporting built in.',
         'Event planners - portfolios, packages, inquiry forms':
-          'Enquiry to delivery pipeline with crew assignments, schedules and client reporting.',
+          'Enquiry to delivery pipeline with crew assignments, schedules and client reporting, with a collaborative internal planning platform for staff and vendors.',
         'Real estate agents - listings, virtual tours, lead capture':
           'Property and tenant records, rent tracking, maintenance requests and owner reporting.',
         'NGOs & charities - donation portals, campaigns, volunteers':

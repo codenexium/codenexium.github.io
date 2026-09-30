@@ -149,7 +149,7 @@ export const TECH_STACKS = {
   nextjs: { label: "Next.js", tag: "React / Next.js" },
   php: { label: "PHP", tag: "PHP / MySQL" },
   wordpress: { label: "WordPress", tag: "WordPress / WooCommerce" },
-  custom: { label: "Fully custom build", tag: "Tailored architecture" },
+  custom: { label: "Mobile, desktop & CLI", tag: "Any platform" },
 };
 
 export const SERVICES = [
@@ -171,19 +171,21 @@ export const SERVICES = [
           "Contact form that emails enquiries straight to you",
           "Mobile-first responsive design",
           "Basic on-page SEO and Google indexing",
-          "1 year domain, hosting and business email",
+          "Editable content so you can update text yourself",
+          "1 year domain, life time hosting and business email",
         ],
       },
       {
         stack: "nextjs",
-        label: "Multipage Next.js Website",
+        label: "Multipage Next.js/Static Website",
         price: 10000,
         features: [
           "Separate pages - Home, About, Services, Portfolio, Contact",
           "Fast static rendering for better SEO and load times",
           "Contact forms routed to your inbox",
           "Editable content so you can update text yourself",
-          "1 year domain, hosting and business email",
+          "Admin dashboard for contacts, leads, bookings etc.",
+          "1 year domain, life time hosting and business email",
         ],
       },
       {
@@ -195,6 +197,7 @@ export const SERVICES = [
           "Custom PHP backend for forms and simple logic",
           "Contact forms routed to your inbox",
           "Lightweight hosting friendly - low running costs",
+          "Admin dashboard for contacts, leads, bookings etc.",
           "1 year domain, hosting and business email",
         ],
       },
@@ -207,6 +210,7 @@ export const SERVICES = [
           "Admin dashboard to edit pages, blogs and menus yourself",
           "Speed, security and SEO plugins configured",
           "Easy to add more content later without a developer",
+          "Wordpress Admin dashboard for full content control, bookings, contacts, leads and blog management",
           "1 year domain, hosting and business email",
         ],
       },
@@ -218,25 +222,50 @@ export const SERVICES = [
         desc: "Appointment scheduler with Google/Outlook calendar sync, plus automated email and SMS confirmations and reminders.",
       },
       {
+        label: "Additional year of hosting & maintenance",
+        price: 5000,
+        desc: "Hosting renewal, backups, uptime monitoring and a monthly checkup. Priced per year.",
+      },
+      {
         label: "Advanced SEO & Google Business Profile",
         price: 3000,
         desc: "Keyword research, on-page fixes, local listings and profile setup so you rank for the searches that matter.",
       },
       {
         label: "Extra page or second language",
-        price: 1500,
+        price: 2000,
         desc: "Add another content page, or a second language version of the whole site.",
       },
       {
-        label: "Additional year of hosting & maintenance",
-        price: 2500,
-        desc: "Hosting renewal, backups, uptime monitoring and a monthly checkup. Priced per year.",
+        label: "WhatsApp Business API Integration",
+        price: 2000,
+        desc: "Official WhatsApp Business API setup for automated messaging and customer engagement.",
       },
+      {
+        label: "Social Media Integration & Automation",
+        price: 2000,
+        desc: "Connect your website to social media platforms for automated posting and engagement.",
+      },
+      {
+        label: "Professional Email mail box setup",
+        price: 1000,
+        desc: "5 Zoho email inboxes for your team, with 5GB storage each, and webmail access. Free for lifetime.",
+      },
+      {
+        label: "Hubspot/zoho CRM & Lead Management",
+        price: 1000,
+        desc: "Centralized customer relationship management and lead tracking system.",
+      },
+      {
+        label: "Free hosting for nextjs/staic websites for lifetime",
+        price: 0,
+        desc: "Free hosting for Next.js and static websites for lifetime.",
+      }
     ],
     deliverables: [
       "Website design & development - Next.js / PHP / WordPress",
       "Mobile, tablet and desktop responsive layouts",
-      "Contact and enquiry forms wired to your inbox",
+      "Contact, booking and enquiry forms wired to your inbox",
       "Speed, security & SEO optimisation",
       "Complete 1 Year Bundle: Domain, Hosting and Professional Email",
       "Free domain registration, hosting and mailbox setup",
@@ -292,13 +321,18 @@ export const SERVICES = [
     ],
     addOns: [
       {
+        label: "Additional year of hosting & maintenance",
+        price: 5000,
+        desc: "Hosting renewal, backups, uptime monitoring and a monthly checkup. Priced per year.",
+      },
+      {
         label: "Inventory, tax & shipping automation",
-        price: 4000,
+        price: 5000,
         desc: "Automatic stock tracking, tax calculation and shipping rules so orders and inventory stay in sync.",
       },
       {
         label: "Product photography & listing setup",
-        price: 3500,
+        price: 5000,
         desc: "Upload, optimise and organise your catalogue with clean product descriptions and SEO tags.",
       },
       {
@@ -306,6 +340,31 @@ export const SERVICES = [
         price: 5000,
         desc: "Automated email and WhatsApp follow-ups for abandoned carts and order updates, wired into your CRM.",
       },
+      {
+        label: "Advanced SEO & Google Business Profile",
+        price: 3000,
+        desc: "Keyword research, on-page fixes, local listings and profile setup so you rank for the searches that matter.",
+      },
+      {
+        label: "Social Media Integration & Automation",
+        price: 2000,
+        desc: "Connect your website to social media platforms for automated posting and engagement.",
+      },
+      {
+        label: "Professional Email mail box setup",
+        price: 1000,
+        desc: "5 Zoho email inboxes for your team, with 5GB storage each, and webmail access. Free for lifetime.",
+      },
+      {
+        label: "Hubspot/zoho CRM & Lead Management",
+        price: 1000,
+        desc: "Centralized customer relationship management and lead tracking system.",
+      },
+      {
+        label: "Free hosting for nextjs/staic websites for lifetime",
+        price: 0,
+        desc: "Free hosting for Next.js and static websites for lifetime.",
+      }
     ],
     deliverables: [
       "Website design & development - Next.js / PHP / WordPress",
@@ -320,12 +379,12 @@ export const SERVICES = [
   },
   {
     slug: "custom-business-website",
-    name: "Custom Business Website",
-    icon: "building",
+    name: "Custom Business Software",
+    icon: "code",
     short:
-      "A bespoke web application built around how your business actually operates - built for hospitals, schools, hotels, restaurants and other specialist workflows.",
+      "A bespoke system built around how your business actually operates - websites, web apps, mobile and desktop software for hospitals, schools, hotels, restaurants and other specialist workflows.",
     pricingNote:
-      "For teams whose day-to-day work needs a real system behind it: records, roles, dashboards and workflows that a standard website template cannot handle. Scope is agreed before work starts.",
+      "For teams whose day-to-day work needs a real system behind it: records, roles, dashboards and workflows that a standard template cannot handle. Mobile, desktop and CLI builds carry their own tier. Scope is agreed before work starts.",
     pricing: [
       {
         stack: "nextjs",
@@ -337,30 +396,52 @@ export const SERVICES = [
           "Database design, records and reporting",
           "Third-party integrations - payments, SMS, WhatsApp, APIs",
           "Deployment setup and team training",
+          "Admin dashboard for all administrative tasks.",
+          "1 year domain, life time hosting and business email",
         ],
       },
       {
         stack: "php",
         label: "Custom PHP Web Application",
-        price: 40000,
+        price: 30000,
         features: [
           "Tailored architecture mapped to your exact workflow",
           "Admin dashboard, user roles and permissions",
           "Database design, records and reporting",
           "Third-party integrations - payments, SMS, WhatsApp, APIs",
           "Deployment setup and team training",
+          "Admin dashboard for all administrative tasks.",
+          "1 year domain, life time hosting and business email",
+        ],
+      },
+      {
+        stack: "custom",
+        label: "Mobile, Desktop & CLI Software",
+        price: 40000,
+        features: [
+          "Cross-platform mobile apps for iOS and Android",
+          "Native desktop software or internal admin tools",
+          "Custom CLI utilities for advanced scripting and automation",
+          "Offline-capable builds with sync to your web backend",
+          "Secure authentication (OAuth, JWT) and role-based access",
+          "API documentation, unit testing and deployment setup",
         ],
       },
     ],
     addOns: [
       {
+        label: "Additional year of hosting & maintenance",
+        price: 5000,
+        desc: "Hosting renewal, backups, uptime monitoring and a monthly checkup. Priced per year.",
+      },
+      {
         label: "Patient / student / guest record modules",
-        price: 8000,
+        price: 5000,
         desc: "Detailed profiles, history, documents and status tracking for the people your business serves.",
       },
       {
         label: "Staff scheduling & attendance",
-        price: 6000,
+        price: 5000,
         desc: "Shift planning, availability, approvals and attendance for teams working in shifts.",
       },
       {
@@ -373,14 +454,41 @@ export const SERVICES = [
         price: 5000,
         desc: "A live overview of revenue, occupancy, bookings or stock, with the reports you actually check.",
       },
+      {
+        label: "WhatsApp Business API Integration",
+        price: 2000,
+        desc: "Official WhatsApp Business API setup for automated messaging and customer engagement.",
+      },
+      {
+        label: "Advanced SEO & Google Business Profile",
+        price: 3000,
+        desc: "Keyword research, on-page fixes, local listings and profile setup so you rank for the searches that matter.",
+      },
+      {
+        label: "Social Media Integration & Automation",
+        price: 2000,
+        desc: "Connect your website to social media platforms for automated posting and engagement.",
+      },
+      {
+        label: "Professional Email mail box setup",
+        price: 1000,
+        desc: "5 Zoho email inboxes for your team, with 5GB storage each, and webmail access. Free for lifetime.",
+      },
+      {
+        label: "Free hosting for nextjs/staic websites for lifetime",
+        price: 0,
+        desc: "Free hosting for Next.js and static websites for lifetime.",
+      }
     ],
     deliverables: [
       "Discovery workshop to map your real workflow",
       "Custom UI/UX design around your business processes",
-      "Full Stack Development - Next.js / React, Node.js, PHP",
+      "Full Stack Development - Next.js, React, Node.js, PHP",
+      "Cross-platform Mobile Apps (iOS & Android) or native Desktop software",
+      "Custom CLI utilities for advanced scripting and automation",
       "Scalable database architecture (PostgreSQL, MySQL, MongoDB)",
-      "Secure authentication and role-based access control",
-      "API integrations and third-party service connections",
+      "Secure authentication (OAuth, JWT) and role-based access control",
+      "API integrations, documentation and unit testing",
       "Cloud deployment setup - AWS, Vercel, DigitalOcean, VPS",
       "Team training and complete handover documentation",
       "60 days extended post-launch support",
@@ -424,25 +532,6 @@ export const SERVICES = [
       "Complete 1 Year Bundle: VPS Hosting for WhatsApp CRM setups",
     ],
   },
-  {
-    slug: "custom-software",
-    name: "Custom Software Development",
-    icon: "code",
-    price: 40000,
-    hidden: true,
-    short:
-      "Tailor-made Web Apps, Mobile Apps, Desktop software, and CLI tools built to solve specific operational bottlenecks for any industry.",
-    deliverables: [
-      "Full Stack Development using modern stacks - Next.js, React, Node.js, PHP",
-      "Cross-platform Mobile Apps (iOS & Android) or native Desktop software",
-      "Custom CLI (Command Line Interface) utilities for advanced scripting and automation",
-      "Scalable database architecture setup (PostgreSQL, MySQL, MongoDB)",
-      "Secure user authentication (OAuth, JWT) and role-based permissions",
-      "Comprehensive API documentation and unit testing",
-      "Cloud deployment setup - AWS, Vercel, DigitalOcean, or VPS",
-      "60 Days extended post-launch support and maintenance blueprint",
-    ],
-  },
 ];
 
 /**
@@ -451,6 +540,7 @@ export const SERVICES = [
  */
 export const MERGED_SERVICES = {
   "online-bookings": "business-website",
+  "custom-software": "custom-business-website",
 };
 
 /**

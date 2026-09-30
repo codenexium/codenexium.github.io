@@ -112,7 +112,7 @@ export function Services() {
               {
                 title: 'Need a real system?',
                 desc: 'Custom builds for clinics, schools, hotels and restaurants that run on operations.',
-                cta: 'Custom Website',
+                cta: 'Custom Software',
                 slug: 'custom-business-website',
               },
             ].map((c) => (

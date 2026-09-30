@@ -55,19 +55,20 @@ export function ServiceDetail() {
     if (mergedInto) {
       return (
         <div className="flex min-h-screen flex-col items-center justify-center px-4 text-center">
-          <h1 className="text-3xl font-bold">This service has been restructured</h1>
-          <p className="mt-4 max-w-lg text-zinc-400">
-            Online booking is now an add-on inside the Business Website service, so you only
-            pay for the website you need and add scheduling when you want it.
-          </p>
+            <h1 className="text-3xl font-bold">This service has been restructured</h1>
+            <p className="mt-4 max-w-lg text-zinc-400">
+              {slug === 'online-bookings'
+                ? 'Online booking is now an add-on inside the Business Website service, so you only pay for the website you need and add scheduling when you want it.'
+                : 'Custom software is now part of Custom Business Software, which covers bespoke web, mobile and desktop builds in one place.'}
+            </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href={`/services/${mergedInto}`}
-              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 px-5 py-3 text-sm font-semibold text-on-brand transition-all hover:brightness-110"
-            >
-              View Business Website
-              <ArrowUpRight className="h-4 w-4" />
-            </Link>
+              <Link
+                href={`/services/${mergedInto}`}
+                className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 px-5 py-3 text-sm font-semibold text-on-brand transition-all hover:brightness-110"
+              >
+                View {SERVICES.find((s) => s.slug === mergedInto)?.name ?? 'the service'}
+                <ArrowUpRight className="h-4 w-4" />
+              </Link>
             <Link
               href="/services"
               className="inline-flex items-center gap-2 rounded-xl border border-brand-500/40 px-5 py-3 text-sm font-semibold text-brand-300 transition-colors hover:bg-brand-500/10"
