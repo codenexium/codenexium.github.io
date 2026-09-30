@@ -110,6 +110,12 @@ export function Services() {
                 slug: 'online-store',
               },
               {
+                title: 'Drowning in busywork?',
+                desc: 'AI agents and automation take over the repetitive work - data entry, lead follow-up, reporting.',
+                cta: 'AI Automation',
+                slug: 'ai-automation',
+              },
+              {
                 title: 'Need a real system?',
                 desc: 'Custom builds for clinics, schools, hotels and restaurants that run on operations.',
                 cta: 'Custom Software',

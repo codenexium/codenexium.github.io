@@ -116,39 +116,6 @@ export const SERVICE_INDUSTRIES = {
       },
     },
   ],
-  'crm-funnels-chatbots': [
-    {
-      group: 'Small Businesses',
-      items: {
-        'Salons & spas - appointments, showcase, promotions':
-          'Automated WhatsApp appointment confirmations and seasonal offer broadcast funnels.',
-        'Gyms & fitness studios - schedules, memberships, booking':
-          'High-converting landing pages offering free trial passes to feed your membership sales pipeline.',
-        'Travel agencies - packages, itineraries, inquiries':
-          'WhatsApp interactive chatbots that answer package FAQs and group leads by destination interest.',
-      },
-    },
-    {
-      group: 'Professionals',
-      items: {
-        'Doctors & clinics - booking, patient info, telemedicine':
-          'Automated clinic SMS reminders and secure digital intake forms that sync with your CRM.',
-        'Lawyers & law firms - services, testimonials, contact forms':
-          'Lead capture landing pages that screen legal inquiries before routing them to internal staff.',
-        'Tutors & coaches - courses, booking, payments':
-          'Multi-step webinar funnels complete with automated email warm-up and checkout bumps.',
-      },
-    },
-    {
-      group: 'Growing Enterprises',
-      items: {
-        'Real estate agents - listings, virtual tours, lead capture':
-          'Targeted property landing pages that dump interested buyers straight into targeted drip pools.',
-        'Event planners - portfolios, packages, inquiry forms':
-          'Smart qualification funnels that gather event budget and date requirements upfront.',
-      },
-    },
-  ],
   'custom-business-website': [
     {
       group: 'Small Businesses',

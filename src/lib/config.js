@@ -150,6 +150,9 @@ export const TECH_STACKS = {
   php: { label: "PHP", tag: "PHP / MySQL" },
   wordpress: { label: "WordPress", tag: "WordPress / WooCommerce" },
   custom: { label: "Mobile, desktop & CLI", tag: "Any platform" },
+  automation: { label: "Workflow automation", tag: "n8n / Node.js" },
+  "ai-agents": { label: "AI agents", tag: "OpenAI / Anthropic" },
+  "full-automation": { label: "Full department", tag: "Orchestrated agents" },
 };
 
 export const SERVICES = [
@@ -498,49 +501,107 @@ export const SERVICES = [
     slug: "ai-automation",
     name: "AI Agents and Automation",
     icon: "bot",
-    price: 25000,
-    hidden: true,
     short:
-      "Eliminate manual busywork. Build autonomous AI agents and automated n8n workflows that process data, sync systems, and run 24/7.",
+      "Eliminate manual busywork. Build autonomous AI agents and automated workflows that process data, sync systems, and run 24/7.",
+    pricingNote:
+      "Price scales with how much of your process is handed over. Start with one workflow that removes a specific daily chore, or hand over the whole operation. Pricing is for the build - hosting and the AI API usage you consume are billed separately.",
+    pricing: [
+      {
+        stack: "automation",
+        label: "Single Workflow Automation",
+        price: 15000,
+        features: [
+          "One workflow built end to end, replacing a manual task",
+          "n8n or Node.js backend wired to your existing tools",
+          "3-5 app integrations - CRM, email, sheets, WhatsApp",
+          "Error alerts and run logs so failures are visible",
+          "1 year VPS hosting for the automation engine",
+        ],
+      },
+      {
+        stack: "ai-agents",
+        label: "AI Agent Build",
+        price: 25000,
+        features: [
+          "Autonomous agent using OpenAI, Anthropic or Hugging Face",
+          "Agent reads, decides and acts - classify, enrich, draft, route",
+          "RAG or fine-tuning setup so it knows your business context",
+          "Unlimited integrations across your CRM, ERP and internal tools",
+          "Guardrails, fallbacks and escalation to a human",
+          "1 year VPS hosting for the automation engine",
+        ],
+      },
+      {
+        stack: "full-automation",
+        label: "Full Department Automation",
+        price: 40000,
+        features: [
+          "End to end automation of a whole department's workflow",
+          "Multiple agents and pipelines orchestrated together",
+          "Lead enrichment, data processing and ETL pipelines",
+          "Marketing and social publishing workflows",
+          "Operational dashboards, analytics and SLA reporting",
+          "Team training so your staff can maintain and extend it",
+          "1 year VPS hosting for the automation engine",
+        ],
+      },
+    ],
+    addOns: [
+      {
+        label: "Additional workflow or agent",
+        price: 10000,
+        desc: "Add another automated process on top of the tier above, built to the same standard.",
+      },
+      {
+        label: "AI API usage & model hosting",
+        price: 0,
+        freeLabel: "At cost",
+        desc: "Third-party AI API calls and self-hosted model compute are billed at cost, so you only pay for what you actually use.",
+      },
+      {
+        label: "CRM & lead management setup",
+        price: 1000,
+        desc: "Centralized customer relationship management and lead tracking for the automation to write into.",
+      },
+      {
+        label: "Additional year of hosting & monitoring",
+        price: 2500,
+        desc: "VPS renewal, backups, uptime monitoring and workflow health checks. Priced per year.",
+      },
+    ],
     deliverables: [
+      "Discovery session to find the workflows worth automating",
       "n8n / Node.js backend workflow automation setup",
-      "Autonomous AI Agents leveraging OpenAI, Anthropic, or Hugging Face",
-      "API integrations connecting your CRM, ERP, and internal SaaS tools",
-      "Automated lead enrichment, data processing, and ETL pipelines",
-      "Social media and marketing workflow automation",
-      "Error monitoring, alert logs, and operational dashboards",
+      "Autonomous AI Agents leveraging OpenAI, Anthropic or Hugging Face",
+      "API integrations connecting your CRM, ERP and internal SaaS tools",
+      "Automated lead enrichment, data processing and ETL pipelines",
+      "Marketing and social publishing workflow automation",
+      "Error monitoring, alert logs and operational dashboards",
       "Includes 1 Year VPS hosting setup for self-hosted automation engines",
       "Complete handover documentation and 1-on-1 team training",
-    ],
-  },
-  {
-    slug: "crm-funnels-chatbots",
-    name: "CRM, Funnels & Chatbots",
-    icon: "filter",
-    price: 15000,
-    hidden: true,
-    short:
-      "Maximize conversions with sales funnels, synchronized CRMs, and WhatsApp/web chatbots that nurture leads automatically.",
-    deliverables: [
-      "Conversion-optimised landing pages with target CTAs & lead magnets",
-      "CRM architecture & setup - HubSpot, Zoho, or custom platforms",
-      "Multi-stage sales pipelines with automated deal tracking",
-      "No-code / code-driven visual chatbot builders for Web & WhatsApp",
-      "Omnichannel marketing workflows - automated email, SMS, and WhatsApp alerts",
-      "Analytics & tracking setup - GA4, Meta Pixel, heatmaps",
-      "Meta Business profile & official WhatsApp Business API integration",
-      "Complete 1 Year Bundle: VPS Hosting for WhatsApp CRM setups",
     ],
   },
 ];
 
 /**
- * Merged into `business-website`. Kept so the old /services/online-bookings URL
- * keeps resolving; delete once no links point at it.
+ * Slugs that no longer exist as standalone services. Kept so old
+ * /services/<slug> URLs keep resolving to the service that absorbed them;
+ * delete an entry once no links point at it.
  */
 export const MERGED_SERVICES = {
   "online-bookings": "business-website",
   "custom-software": "custom-business-website",
+  "crm-funnels-chatbots": "ai-automation",
+};
+
+/** Shown on the "restructured" page for each slug in MERGED_SERVICES. */
+export const MERGED_SERVICE_NOTES = {
+  "online-bookings":
+    "Online booking is now an add-on inside the Business Website service, so you only pay for the website you need and add scheduling when you want it.",
+  "custom-software":
+    "Custom software is now part of Custom Business Software, which covers bespoke web, mobile and desktop builds in one place.",
+  "crm-funnels-chatbots":
+    "CRM, funnels and chatbots are now delivered through AI Agents and Automation. Lead capture, WhatsApp and email sequences run as automated workflows, so you get the same outcome with the maintenance handled for you.",
 };
 
 /**

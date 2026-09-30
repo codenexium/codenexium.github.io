@@ -12,7 +12,15 @@ import {
   Clapperboard,
   Plus,
 } from 'lucide-react'
-import { SERVICES, INDUSTRIES, TECH_STACKS, startingPriceLabel, formatINR, MERGED_SERVICES } from '../lib/config'
+import {
+  SERVICES,
+  INDUSTRIES,
+  TECH_STACKS,
+  startingPriceLabel,
+  formatINR,
+  MERGED_SERVICES,
+  MERGED_SERVICE_NOTES,
+} from '../lib/config'
 import { normalizeSlug, SERVICE_INDUSTRIES } from '../lib/service-pages'
 import { PageHero } from '../components/PageHero'
 import { Reveal, Stagger, StaggerItem } from '../components/Reveal'
@@ -57,9 +65,7 @@ export function ServiceDetail() {
         <div className="flex min-h-screen flex-col items-center justify-center px-4 text-center">
             <h1 className="text-3xl font-bold">This service has been restructured</h1>
             <p className="mt-4 max-w-lg text-zinc-400">
-              {slug === 'online-bookings'
-                ? 'Online booking is now an add-on inside the Business Website service, so you only pay for the website you need and add scheduling when you want it.'
-                : 'Custom software is now part of Custom Business Software, which covers bespoke web, mobile and desktop builds in one place.'}
+              {MERGED_SERVICE_NOTES[slug]}
             </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
               <Link
@@ -232,7 +238,9 @@ export function ServiceDetail() {
                           {addOn.label}
                         </h3>
                         <p className="font-display text-base font-bold text-accent-400">
-                          +{formatINR(addOn.price)}
+                          {addOn.price > 0
+                            ? `+${formatINR(addOn.price)}`
+                            : (addOn.freeLabel ?? 'Free')}
                         </p>
                       </div>
                       <p className="mt-2 text-sm leading-relaxed text-zinc-400">{addOn.desc}</p>
