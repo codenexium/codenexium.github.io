@@ -3,13 +3,22 @@
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X } from 'lucide-react'
+import { Check, X } from 'lucide-react'
+import { formatINR } from '../lib/config'
 import { useCta } from '../lib/cta-context'
 import { ContactForm } from './ContactForm'
 
 export function CtaModal() {
-  const { open, closeCta, defaultService } = useCta()
+  const {
+    open,
+    closeCta,
+    defaultService,
+    addOns,
+    requiresAddOnSelection,
+  } = useCta()
   const [service, setService] = useState('')
+  const [step, setStep] = useState('form')
+  const [selectedAddOns, setSelectedAddOns] = useState([])
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => setMounted(true), [])
@@ -17,6 +26,8 @@ export function CtaModal() {
   useEffect(() => {
     if (open) {
       setService(defaultService)
+      setStep(requiresAddOnSelection ? 'add-ons' : 'form')
+      setSelectedAddOns([])
       document.body.style.overflow = 'hidden'
     } else {
       document.body.style.overflow = ''
@@ -24,11 +35,20 @@ export function CtaModal() {
     return () => {
       document.body.style.overflow = ''
     }
-  }, [open, defaultService])
+  }, [open, defaultService, requiresAddOnSelection])
 
   const close = () => {
     setService('')
+    setSelectedAddOns([])
     closeCta()
+  }
+
+  const toggleAddOn = (addOn) => {
+    setSelectedAddOns((selected) =>
+      selected.some((item) => item.label === addOn.label)
+        ? selected.filter((item) => item.label !== addOn.label)
+        : [...selected, addOn],
+    )
   }
 
   return (
@@ -67,12 +87,76 @@ export function CtaModal() {
                 Let's build something that works
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-zinc-400">
-                Tell me about your project. I'll review it and reply within 24 hours with a clear
-                plan and fixed price.
+                {step === 'add-ons'
+                  ? 'Choose any extras you want included. You can review the selection before sending your project details.'
+                  : "Tell me about your project. I'll review it and reply within 24 hours with a clear plan and fixed price."}
               </p>
 
               <div className="mt-6">
-                <ContactForm defaultService={service} compact />
+                {step === 'add-ons' ? (
+                  <>
+                    <div className="space-y-3">
+                      {addOns.length > 0 ? (
+                        addOns.map((addOn) => {
+                          const selected = selectedAddOns.some(
+                            (item) => item.label === addOn.label,
+                          )
+
+                          return (
+                            <label
+                              key={addOn.label}
+                              className={`flex cursor-pointer items-start gap-3 rounded-2xl border p-4 transition-colors ${
+                                selected
+                                  ? 'border-brand-400/60 bg-brand-500/10'
+                                  : 'border-white/10 bg-ink-850/60 hover:border-white/20'
+                              }`}
+                            >
+                              <input
+                                type="checkbox"
+                                checked={selected}
+                                onChange={() => toggleAddOn(addOn)}
+                                className="mt-1 h-4 w-4 accent-cyan-400"
+                              />
+                              <span className="min-w-0 flex-1">
+                                <span className="flex flex-wrap items-center justify-between gap-2">
+                                  <span className="text-sm font-semibold text-white">
+                                    {addOn.label}
+                                  </span>
+                                  <span className="text-sm font-semibold text-accent-400">
+                                    {addOn.price > 0
+                                      ? `+${formatINR(addOn.price)}`
+                                      : (addOn.freeLabel ?? 'At cost')}
+                                  </span>
+                                </span>
+                                <span className="mt-1 block text-xs leading-relaxed text-zinc-400">
+                                  {addOn.desc}
+                                </span>
+                              </span>
+                            </label>
+                          )
+                        })
+                      ) : (
+                        <p className="rounded-2xl border border-white/10 bg-ink-850/60 p-4 text-sm text-zinc-400">
+                          There are no add-ons available for this service.
+                        </p>
+                      )}
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setStep('form')}
+                      className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 px-5 py-3 text-sm font-semibold text-on-brand shadow-glow transition-all hover:brightness-110"
+                    >
+                      <Check className="h-4 w-4" />
+                      Confirm selection
+                    </button>
+                  </>
+                ) : (
+                  <ContactForm
+                    defaultService={service}
+                    defaultAddOns={selectedAddOns}
+                    compact
+                  />
+                )}
               </div>
             </div>
           </motion.div>

@@ -7,13 +7,21 @@ const CtaContext = createContext(null)
 export function CtaProvider({ children }) {
   const [open, setOpen] = useState(false)
   const [defaultService, setDefaultService] = useState('')
+  const [addOns, setAddOns] = useState([])
+  const [requiresAddOnSelection, setRequiresAddOnSelection] = useState(false)
 
-  const openCta = useCallback((service = '') => {
+  const openCta = useCallback((service = '', options = {}) => {
     setDefaultService(service)
+    setAddOns(options.addOns ?? [])
+    setRequiresAddOnSelection(options.requiresAddOnSelection ?? false)
     setOpen(true)
   }, [])
 
-  const closeCta = useCallback(() => setOpen(false), [])
+  const closeCta = useCallback(() => {
+    setOpen(false)
+    setAddOns([])
+    setRequiresAddOnSelection(false)
+  }, [])
 
   useEffect(() => {
     const handler = (e) => {
@@ -24,7 +32,16 @@ export function CtaProvider({ children }) {
   }, [])
 
   return (
-    <CtaContext.Provider value={{ open, defaultService, openCta, closeCta }}>
+    <CtaContext.Provider
+      value={{
+        open,
+        defaultService,
+        addOns,
+        requiresAddOnSelection,
+        openCta,
+        closeCta,
+      }}
+    >
       {children}
     </CtaContext.Provider>
   )

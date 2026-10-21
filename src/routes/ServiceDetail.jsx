@@ -153,7 +153,12 @@ export function ServiceDetail() {
             </div>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <button
-                onClick={() => openCta(service.name)}
+                onClick={() =>
+                  openCta(service.name, {
+                    addOns: service.addOns ?? [],
+                    requiresAddOnSelection: true,
+                  })
+                }
                 className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 px-5 py-3 text-sm font-semibold text-on-brand shadow-glow transition-all duration-300 hover:brightness-110 hover:shadow-glow-cyan"
               >
                 Start this project
@@ -212,7 +217,12 @@ export function ServiceDetail() {
                         ))}
                       </ul>
                       <button
-                        onClick={() => openCta(serviceTierOptionValue(service, tier))}
+                        onClick={() =>
+                          openCta(serviceTierOptionValue(service, tier), {
+                            addOns: service.addOns ?? [],
+                            requiresAddOnSelection: true,
+                          })
+                        }
                         className="group mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 px-4 py-2.5 text-sm font-semibold text-on-brand shadow-glow transition-all duration-300 hover:brightness-110 hover:shadow-glow-cyan"
                       >
                         Start this project

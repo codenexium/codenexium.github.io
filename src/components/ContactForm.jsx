@@ -7,6 +7,7 @@ import {
   SERVICE_OPTIONS,
   defaultServiceOption,
   WHATSAPP,
+  formatINR,
   submitToHubSpot,
 } from "../lib/config";
 
@@ -45,13 +46,26 @@ function splitName(fullName) {
   };
 }
 
-export function ContactForm({ defaultService = "", compact = false }) {
+export function ContactForm({
+  defaultService = "",
+  defaultAddOns = [],
+  compact = false,
+}) {
+  const addOnsMessage = defaultAddOns.length
+    ? `Selected add-ons:\n${defaultAddOns
+        .map((addOn) => {
+          const price =
+            addOn.price > 0 ? formatINR(addOn.price) : (addOn.freeLabel ?? "At cost");
+          return `- ${addOn.label} (${price})`;
+        })
+        .join("\n")}`
+    : "";
   const [form, setForm] = useState({
     name: "",
     email: "",
     phone: "",
     service: defaultServiceOption(defaultService),
-    project_details: "",
+    project_details: addOnsMessage,
     resourceurl: "",
   });
   const [status, setStatus] = useState("idle");
