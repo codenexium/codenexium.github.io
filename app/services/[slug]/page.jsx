@@ -1,12 +1,10 @@
 import { ServiceDetail } from '../../../src/routes/ServiceDetail'
-import { SERVICES, MERGED_SERVICES, startingPriceLabel } from '../../../src/lib/config'
+import { SERVICES, startingPriceLabel } from '../../../src/lib/config'
 import { normalizeSlug } from '../../../src/lib/service-pages'
 
 export function generateStaticParams() {
   return [
     ...SERVICES.map((service) => ({ slug: normalizeSlug(service.slug) })),
-    // Merged services keep building a page so old links land on the new service.
-    ...Object.keys(MERGED_SERVICES).map((slug) => ({ slug: normalizeSlug(slug) })),
   ]
 }
 

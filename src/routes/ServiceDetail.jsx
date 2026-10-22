@@ -19,8 +19,6 @@ import {
   startingPriceLabel,
   serviceTierOptionValue,
   formatINR,
-  MERGED_SERVICES,
-  MERGED_SERVICE_NOTES,
 } from '../lib/config'
 import { normalizeSlug, SERVICE_INDUSTRIES } from '../lib/service-pages'
 import { centeredRow, centeredItem } from '../lib/centered-row'
@@ -59,49 +57,6 @@ export function ServiceDetail() {
   const service = SERVICES.find((s) => normalizeSlug(s.slug) === slug)
   const industries = SERVICE_INDUSTRIES[slug] || []
   const { openCta } = useCta()
-
-  if (!service) {
-    const mergedInto = MERGED_SERVICES[slug]
-    if (mergedInto) {
-      return (
-        <div className="flex min-h-screen flex-col items-center justify-center px-4 text-center">
-            <h1 className="text-3xl font-bold">This service has been restructured</h1>
-            <p className="mt-4 max-w-lg text-zinc-400">
-              {MERGED_SERVICE_NOTES[slug]}
-            </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-              <Link
-                href={`/services/${mergedInto}`}
-                className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 px-5 py-3 text-sm font-semibold text-on-brand transition-all hover:brightness-110"
-              >
-                View {SERVICES.find((s) => s.slug === mergedInto)?.name ?? 'the service'}
-                <ArrowUpRight className="h-4 w-4" />
-              </Link>
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-2 rounded-xl border border-brand-500/40 px-5 py-3 text-sm font-semibold text-brand-300 transition-colors hover:bg-brand-500/10"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              Back to all services
-            </Link>
-          </div>
-        </div>
-      )
-    }
-
-    return (
-      <div className="flex min-h-screen flex-col items-center justify-center px-4 text-center">
-        <h1 className="text-3xl font-bold">Service not found</h1>
-        <Link
-          href="/services"
-          className="mt-6 inline-flex items-center gap-2 rounded-xl border border-brand-500/40 px-5 py-3 text-sm font-semibold text-brand-300 transition-colors hover:bg-brand-500/10"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Back to all services
-        </Link>
-      </div>
-    )
-  }
 
   const words = service.name.split(' ')
   const lastName = words[words.length - 1]

@@ -147,15 +147,12 @@ export async function submitToHubSpot(fields) {
 export const TECH_STACKS = {
   "singlepage-with-contact-form": { label: "Single page", tag: "HTML/CSS/js" },
   "multipage-with-contact-form": { label: "Next.js", tag: "Next.js" },
-  "multipage-with-booking": { label: "PHP", tag: "Next.js" },
+  "multipage-with-booking": { label: "Next.js", tag: "Next.js" },
   "wordpress-business": { label: "WordPress", tag: "WordPress" },
   "wordpress-store": { label: "WordPress", tag: "WordPress / WooCommerce" },
-  "nextjs-store": { label: "Next.js", tag: "React / Next.js / cloudflare" },
+  "nextjs-store": { label: "Next.js", tag: "React / Next.js / Cloudflare" },
   "php-store": { label: "PHP", tag: "PHP / MySQL / Next.js" },
-  custom: { label: "Mobile, desktop & CLI", tag: "Nextjs/React Native/Cloudflare" },
-  automation: { label: "Workflow automation", tag: "n8n / Node.js" },
-  "ai-agents": { label: "AI agents", tag: "OpenAI / Anthropic" },
-  "full-automation": { label: "Full department", tag: "Orchestrated agents" },
+  "nextjs-premade-store": { label: "Next.js", tag: "Next.js / Shopify / Zoho Commerce" },
 };
 
 export const SERVICES = [
@@ -173,14 +170,14 @@ export const SERVICES = [
         label: "Single page website with contact form",
         price: 3000,
         features: [
-          "One scrolling page - hero, about, services, reviews, contact",
+          "One scrolling page - home, about, services, reviews, contact",
           "Contact form submissions sent to your existing email and whatsapp",
           "Contact section with Google Maps embed and directions",
           "Direct whatsapp button for instant enquiries",
           "Mobile-first responsive design",
           "Fast, secure and SEO optimised",
           "Basic on-page SEO and Google indexing",
-          "For one year you will get free domain, hosting and business email",
+          "For one year free hosting and business email",
         ],
       },
       {
@@ -195,7 +192,7 @@ export const SERVICES = [
           "Mobile-first responsive design",
           "Fast, secure and SEO optimised",
           "Basic on-page SEO and Google indexing",
-          "For one year you will get free domain, hosting and business email with mailbox",
+          "For one year free hosting and business email with mailbox",
         ],
       },
       {
@@ -211,7 +208,7 @@ export const SERVICES = [
           "Mobile-first responsive design",
           "Fast, secure and SEO optimised",
           "Basic on-page SEO and Google indexing",
-          "For one year you will get free domain, hosting and business email with mailbox",
+          "For one year free hosting and business email with mailbox",
         ],
       },
       {
@@ -220,20 +217,36 @@ export const SERVICES = [
         price: 10000,
         features: [
           "Separate pages - Home, About, Services, Gallery, Blogs, Bookings, Contact",
-          "Wordpress admin dashboard for full website control and management", 
+          "Wordpress admin dashboard for full website control and management",
           "Manage pages, gallery, blog, forms & leads and bookings from wordpress dashboard",
           "Website is built with elementor page builder for easy editing and management",
           "Easy to add more content later without a developer",
           "Speed, security and SEO plugins configured",
-          "For one year you will get free domain, hosting and business email with mailbox",
+          "Mobile-first responsive design",
+          "For one year free hosting and business email with mailbox",
         ],
       },
     ],
     addOns: [
       {
-        label: "Renewal & maintenance",
+        label: "Domain Registration",
+        price: 1000,
+        desc: "Domain registration and setup. Priced per year.",
+      },
+      {
+        label: "Domain, hosting and email renewal",
         price: 3000,
-        desc: "Domain and hosting renewal, backups, 24x7 uptime monitoring and monthly checkup. Priced per year.",
+        desc: "Domain, hosting and email renewal. Priced per year.",
+      },
+      {
+        label: "Maintenance & support",
+        price: 3000,
+        desc: "Maintenance and support services, 24x7 uptime monitoring and weekly checkup, bug fixes and security updates. Priced per year.",
+      },
+      {
+        label: "Custom CMS or admin dashboard",
+        price: 3000,
+        desc: "Custom content management system or admin dashboard for managing your website content, bookings, leads and enquiries.",
       },
       {
         label: "Payment gateway integration",
@@ -241,7 +254,7 @@ export const SERVICES = [
         desc: "Integrate popular payment gateways (Razorpay/Paypal/Stripe) for secure and seamless transactions.",
       },
       {
-        label: "Advanced SEO & Google Business Profile",
+        label: "Advanced SEO, Google Analytics & Google Business Profile",
         price: 3000,
         desc: "Keyword research, on-page fixes, local listings and profile setup so you rank for the searches that matter.",
       },
@@ -253,7 +266,7 @@ export const SERVICES = [
       {
         label: "Social Media Integration & Automation",
         price: 3000,
-        desc: "Connect your website to social media platforms for automated posting and engagement.",
+        desc: "Connect your website to social media platforms for automated posting and engagement using zoho socials.",
       },
     ],
     deliverables: [
@@ -264,14 +277,12 @@ export const SERVICES = [
       "Contact, booking and enquiry forms wired to your inbox",
       "Speed, security & SEO optimisation",
       "Free 30 days support after launch",
-      "Complete 1 Year Bundle: Domain, Hosting and Professional Email",
-      "Free domain registration, hosting and mailbox setup",
-      "Free one year backup, 24x7 uptime monitoring and monthly checkup",
+      "Complete 1 Year Bundle: Hosting and Professional Email",
     ],
   },
   {
     slug: "online-store",
-    name: "Business Website + Online Store",
+    name: "Business Website + Online Store/Subscriptions",
     icon: "shopping-bag",
     featured: true,
     short:
@@ -280,19 +291,33 @@ export const SERVICES = [
       "Base price covers the full storefront, product catalogue, cart, checkout, payment gateway setup, and a 1 year domain + hosting + business email bundle.",
     pricing: [
       {
+        stack: "nextjs-premade-store",
+        label: "Next.js website + Store (Shopify/Etsy/Banzena/Ballwool/Zoho Commerce)",
+        price: 10000,
+        features: [
+          "Pages - Home, Shop, About, Contact",
+          "Manage your product store, orders, payment yourself at third party platform",
+          "Manage stock, taxes and shipping rules yourself",
+          "Mobile-first responsive design",
+          "Fast, secure and SEO optimised",
+          "Basic on-page SEO and Google indexing",
+          "1 year free hosting and business email with mailboxS",
+        ],
+      },
+      {
         stack: "wordpress-store",
-        label: "WordPress + WooCommerce Store",
+        label: "WordPress Website + Store (WooCommerce/EDD/Surecart/WP EasyCart/Ecwid/CartFlows/Dokan)",
         price: 15000,
         features: [
           "Pages - Home, Shop, Product Details, Cart, Checkout, Policies, About, Gallery, Blogs, Contact",
-          "Wordpress admin dashboard for full website control and management", 
+          "Wordpress admin dashboard for full website control and management",
           "Manage pages, gallery, blog, forms & leads and orders from wordpress dashboard",
           "Website is built with elementor page builder for easy editing and management",
           "WooCommerce setup with products and categories",
           "Manage stock, taxes and shipping rules yourself",
           "Razorpay / Stripe / PayPal payment integration",
           "Extensions and plugins configured and secured",
-          "1 year domain, hosting and business email",
+          "1 year free hosting and business email with mailboxS",
         ],
       },
       {
@@ -305,7 +330,7 @@ export const SERVICES = [
           "Cart, checkout and order management",
           "Razorpay / Stripe / PayPal payment integration",
           "Custom PHP backend for orders, stock and customers",
-          "1 year domain, hosting and business email",
+          "1 year free hosting and business email with mailbox",
         ],
       },
       {
@@ -318,15 +343,25 @@ export const SERVICES = [
           "Cart, checkout and order management",
           "Razorpay / Stripe / PayPal payment integration",
           "Customer accounts and order history",
-          "1 year domain, hosting and business email",
+          "1 year free hosting and business email with mailbox",
         ],
       },
     ],
     addOns: [
       {
-        label: "Additional year of hosting & maintenance",
+        label: "Domain Registration",
+        price: 1000,
+        desc: "Domain registration and setup. Priced per year.",
+      },
+      {
+        label: "Domain, hosting and email renewal",
         price: 5000,
-        desc: "Hosting renewal, backups, uptime monitoring and a monthly checkup. Priced per year.",
+        desc: "Domain, hosting and email renewal. Priced per year.",
+      },
+      {
+        label: "Maintenance & support",
+        price: 5000,
+        desc: "Maintenance and support services, 24x7 uptime monitoring and weekly checkup, bug fixes and security updates. Priced per year.",
       },
       {
         label: "Inventory, tax & shipping automation",
@@ -334,7 +369,7 @@ export const SERVICES = [
         desc: "Automatic stock tracking, tax calculation and shipping rules so orders and inventory stay in sync.",
       },
       {
-        label: "Product photography & listing setup",
+        label: "Product image cleanup & listing setup",
         price: 5000,
         desc: "Upload, optimise and organise your catalogue with clean product descriptions and SEO tags.",
       },
@@ -344,14 +379,14 @@ export const SERVICES = [
         desc: "Automated email and WhatsApp follow-ups for abandoned carts and order updates, wired into your CRM.",
       },
       {
-        label: "Advanced SEO & Google Business Profile",
+        label: "Advanced SEO, Google Analytics  & Google Business Profile",
         price: 3000,
         desc: "Keyword research, on-page fixes, local listings and profile setup so you rank for the searches that matter.",
       },
       {
         label: "Social Media Integration & Automation",
         price: 3000,
-        desc: "Connect your website to social media platforms for automated posting and engagement.",
+        desc: "Connect your website to social media platforms for automated posting and engagement using zoho socials.",
       },
     ],
     deliverables: [
@@ -362,214 +397,10 @@ export const SERVICES = [
       "Payment gateway integration - Razorpay, Stripe, PayPal",
       "Speed, security & SEO optimisation",
       "Free 30 days support after launch",
-      "Complete 1 Year Bundle: Domain, Hosting and Professional Email",
-      "Free domain registration, hosting and mailbox setup",
-      "Free one year backup, 24x7 uptime monitoring and monthly checkup",
-    ],
-  },
-  {
-    slug: "custom-business-website",
-    name: "Custom Business Software",
-    icon: "code",
-    short:
-      "A system built around how your business actually operates - websites, web apps, mobile and desktop software for hospitals, schools, coaching centers, hotels, restaurants and other specialist workflows.",
-    pricingNote:
-      "For teams whose day-to-day work needs a real system behind it: records, roles, dashboards and workflows that a standard template cannot handle. Mobile, desktop and CLI builds carry their own tier. Scope is agreed before work starts.",
-    pricing: [
-      {
-        stack: "custom",
-        label: "Custom Software for businesses",
-        price: 30000,
-        features: [
-          "Tailored architecture mapped to your exact workflow",
-          "Multi tier architecture with frontend, backend and database",
-          "Support multiple websites, web apps, mobile and desktop software",
-          "Admin dashboard for all administrative tasks with role based access control.",
-          "Third-party integrations - payments, SMS, WhatsApp, APIs",
-          "Responsive frontend web app and backend admin dashboard",
-          "Cross-platform mobile apps for iOS and Android",
-          "Native desktop software or internal admin tools",
-          "Custom CLI utilities for advanced scripting and automation",
-          "Secure authentication (OAuth, JWT) and role-based access",
-          "API documentation, unit testing and deployment setup",
-          "1 year domain, life time hosting and business email",
-          "Deployment setup and team training",
-        ],
-      },
-    ],
-    addOns: [
-      {
-        label: "Additional year of hosting & maintenance",
-        price: 5000,
-        desc: "Hosting renewal, backups, uptime monitoring and a monthly checkup. Priced per year.",
-      },
-      {
-        label: "Patient / student / guest record modules",
-        price: 5000,
-        desc: "Detailed profiles, history, documents and status tracking for the people your business serves.",
-      },
-      {
-        label: "Staff scheduling & attendance",
-        price: 5000,
-        desc: "Shift planning, availability, approvals and attendance for teams working in shifts.",
-      },
-      {
-        label: "Online booking, ordering or reservations",
-        price: 5000,
-        desc: "Booking and reservation flows with calendar sync, confirmations and reminders.",
-      },
-      {
-        label: "Owner dashboard & analytics",
-        price: 5000,
-        desc: "A live overview of revenue, occupancy, bookings or stock, with the reports you actually check.",
-      },
-      {
-        label: "WhatsApp Business API Integration",
-        price: 2000,
-        desc: "Official WhatsApp Business API setup for automated messaging and customer engagement.",
-      },
-      {
-        label: "Advanced SEO & Google Business Profile",
-        price: 3000,
-        desc: "Keyword research, on-page fixes, local listings and profile setup so you rank for the searches that matter.",
-      },
-      {
-        label: "Social Media Integration & Automation",
-        price: 2000,
-        desc: "Connect your website to social media platforms for automated posting and engagement.",
-      },
-      {
-        label: "Professional Email mail box setup",
-        price: 1000,
-        desc: "5 Zoho email inboxes for your team, with 5GB storage each, and webmail access. Free for lifetime.",
-      },
-      {
-        label: "Free hosting for nextjs/staic websites for lifetime",
-        price: 0,
-        desc: "Free hosting for Next.js and static websites for lifetime.",
-      }
-    ],
-    deliverables: [
-      "Discovery workshop to map your real workflow",
-      "Custom UI/UX design around your business processes",
-      "Full Stack Development - Next.js, React, Node.js, PHP",
-      "Cross-platform Mobile Apps (iOS & Android) or native Desktop software",
-      "Custom CLI utilities for advanced scripting and automation",
-      "Scalable database architecture (PostgreSQL, MySQL, MongoDB)",
-      "Secure authentication (OAuth, JWT) and role-based access control",
-      "API integrations, documentation and unit testing",
-      "Cloud deployment setup - AWS, Vercel, DigitalOcean, VPS",
-      "Team training and complete handover documentation",
-      "60 days extended post-launch support",
-    ],
-  },
-  {
-    slug: "ai-automation",
-    name: "AI Agents and Automation",
-    icon: "bot",
-    hidden: true,
-    short:
-      "Eliminate manual busywork. Build autonomous AI agents and automated workflows that process data, sync systems, and run 24/7.",
-    pricingNote:
-      "Price scales with how much of your process is handed over. Start with one workflow that removes a specific daily chore, or hand over the whole operation. Pricing is for the build - hosting and the AI API usage you consume are billed separately.",
-    pricing: [
-      {
-        stack: "automation",
-        label: "Single Workflow Automation",
-        price: 15000,
-        features: [
-          "One workflow built end to end, replacing a manual task",
-          "n8n or Node.js backend wired to your existing tools",
-          "3-5 app integrations - CRM, email, sheets, WhatsApp",
-          "Error alerts and run logs so failures are visible",
-          "1 year VPS hosting for the automation engine",
-        ],
-      },
-      {
-        stack: "ai-agents",
-        label: "AI Agent Build",
-        price: 25000,
-        features: [
-          "Autonomous agent using OpenAI, Anthropic or Hugging Face",
-          "Agent reads, decides and acts - classify, enrich, draft, route",
-          "RAG or fine-tuning setup so it knows your business context",
-          "Unlimited integrations across your CRM, ERP and internal tools",
-          "Guardrails, fallbacks and escalation to a human",
-          "1 year VPS hosting for the automation engine",
-        ],
-      },
-      {
-        stack: "full-automation",
-        label: "Full Department Automation",
-        price: 40000,
-        features: [
-          "End to end automation of a whole department's workflow",
-          "Multiple agents and pipelines orchestrated together",
-          "Lead enrichment, data processing and ETL pipelines",
-          "Marketing and social publishing workflows",
-          "Operational dashboards, analytics and SLA reporting",
-          "Team training so your staff can maintain and extend it",
-          "1 year VPS hosting for the automation engine",
-        ],
-      },
-    ],
-    addOns: [
-      {
-        label: "Additional workflow or agent",
-        price: 10000,
-        desc: "Add another automated process on top of the tier above, built to the same standard.",
-      },
-      {
-        label: "AI API usage & model hosting",
-        price: 0,
-        freeLabel: "At cost",
-        desc: "Third-party AI API calls and self-hosted model compute are billed at cost, so you only pay for what you actually use.",
-      },
-      {
-        label: "CRM & lead management setup",
-        price: 1000,
-        desc: "Centralized customer relationship management and lead tracking for the automation to write into.",
-      },
-      {
-        label: "Additional year of hosting & monitoring",
-        price: 2500,
-        desc: "VPS renewal, backups, uptime monitoring and workflow health checks. Priced per year.",
-      },
-    ],
-    deliverables: [
-      "Discovery session to find the workflows worth automating",
-      "n8n / Node.js backend workflow automation setup",
-      "Autonomous AI Agents leveraging OpenAI, Anthropic or Hugging Face",
-      "API integrations connecting your CRM, ERP and internal SaaS tools",
-      "Automated lead enrichment, data processing and ETL pipelines",
-      "Marketing and social publishing workflow automation",
-      "Error monitoring, alert logs and operational dashboards",
-      "Includes 1 Year VPS hosting setup for self-hosted automation engines",
-      "Complete handover documentation and 1-on-1 team training",
+      "Complete 1 Year Bundle: Hosting and Professional Email",
     ],
   },
 ];
-
-/**
- * Slugs that no longer exist as standalone services. Kept so old
- * /services/<slug> URLs keep resolving to the service that absorbed them;
- * delete an entry once no links point at it.
- */
-export const MERGED_SERVICES = {
-  "online-bookings": "business-website",
-  "custom-software": "custom-business-website",
-  "crm-funnels-chatbots": "ai-automation",
-};
-
-/** Shown on the "restructured" page for each slug in MERGED_SERVICES. */
-export const MERGED_SERVICE_NOTES = {
-  "online-bookings":
-    "Online booking is now an add-on inside the Business Website service, so you only pay for the website you need and add scheduling when you want it.",
-  "custom-software":
-    "Custom software is now part of Custom Business Software, which covers bespoke web, mobile and desktop builds in one place.",
-  "crm-funnels-chatbots":
-    "CRM, funnels and chatbots are now delivered through AI Agents and Automation. Lead capture, WhatsApp and email sequences run as automated workflows, so you get the same outcome with the maintenance handled for you.",
-};
 
 /**
  * Services shown across the site. Entries in SERVICES with `hidden: true` stay
@@ -799,11 +630,12 @@ export const TECH_STACK = [
   "TailwindCSS",
   "WooCommerce",
   "HubSpot",
-  "n8n",
-  "OpenAI",
+  "Zoho",
   "Omnisend",
   "WhatsApp API",
   "Node.js",
+  "Hono",
+  "Cloudflare",
   "Razorpay",
   "Stripe",
   "PayPal",
