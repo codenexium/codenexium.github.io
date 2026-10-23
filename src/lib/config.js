@@ -231,7 +231,7 @@ export const SERVICES = [
       {
         label: "Domain Registration",
         price: 1000,
-        desc: "Domain registration and setup. Priced per year.",
+        desc: "Domain registration and setup.",
       },
       {
         label: "Domain, hosting and email renewal",
@@ -351,7 +351,7 @@ export const SERVICES = [
       {
         label: "Domain Registration",
         price: 1000,
-        desc: "Domain registration and setup. Priced per year.",
+        desc: "Domain registration and setup.",
       },
       {
         label: "Domain, hosting and email renewal",
