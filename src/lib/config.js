@@ -25,7 +25,7 @@ export const SITE = {
 //   the HubSpot forms list that you then have to clean up by hand.
 //
 //   The HubSpot form must be published and contain these internal field names.
-//   All four are standard contact properties, so no custom properties are
+//   All of these are standard contact properties, so no custom properties are
 //   needed:
 //     firstname, lastname  split from the single full-name input
 //     email, phone         standard contact properties
@@ -145,7 +145,7 @@ export async function submitToHubSpot(fields) {
  * touching any component.
  */
 export const TECH_STACKS = {
-  "singlepage-with-contact-form": { label: "Single page", tag: "HTML/CSS/js" },
+  "singlepage-with-contact-form": { label: "Single page", tag: "HTML/CSS/JS" },
   "multipage-with-contact-form": { label: "Next.js", tag: "Next.js" },
   "multipage-with-booking": { label: "Next.js", tag: "Next.js" },
   "wordpress-business": { label: "WordPress", tag: "WordPress" },
@@ -163,21 +163,21 @@ export const SERVICES = [
     short:
       "A professional website for any business. Start with a single page and scale up to a full multi-page build - the price you see is the price you pay.",
     pricingNote:
-      "Base price covers design, development, setup, deployment, and a 1 year domain + hosting + business email. Need bookings, payments, crm, automation ? Add them below.",
+      "Base price covers design, development, setup, deployment, and a one-year domain, hosting and business email bundle. Need bookings, payments, CRM or automation? Add them below.",
     pricing: [
       {
         stack: "singlepage-with-contact-form",
         label: "Single page website with contact form",
         price: 3000,
         features: [
-          "One scrolling page - home, about, services, reviews, contact",
-          "Contact form submissions sent to your existing email and whatsapp",
+          "One scrolling page - Home, About, Services, Reviews, Contact",
+          "Contact form submissions sent to your existing email and WhatsApp",
           "Contact section with Google Maps embed and directions",
-          "Direct whatsapp button for instant enquiries",
+          "Direct WhatsApp button for instant enquiries",
           "Mobile-first responsive design",
           "Fast, secure and SEO optimised",
           "Basic on-page SEO and Google indexing",
-          "For one year free hosting and business email",
+          "Includes one year of free hosting and business email",
         ],
       },
       {
@@ -186,29 +186,29 @@ export const SERVICES = [
         price: 5000,
         features: [
           "Separate pages - Home, About, Services, Contact",
-          "Contact form submissions sent to crm, email and whatsapp",
-          "Manage every contacts and communication into zoho crm",
-          "Contact form prewired with zoho forms",
+          "Contact form submissions sent to CRM, email and WhatsApp",
+          "Manage all contacts and communication in Zoho CRM",
+          "Contact form prewired with Zoho Forms",
           "Mobile-first responsive design",
           "Fast, secure and SEO optimised",
           "Basic on-page SEO and Google indexing",
-          "For one year free hosting and business email with mailbox",
+          "Includes one year of free hosting and business email with mailbox",
         ],
       },
       {
         stack: "multipage-with-booking",
-        label: "Multipage website with booking/appintment",
+        label: "Multipage website with booking/appointment",
         price: 7000,
         features: [
           "Separate pages - Home, About, Services, Bookings, Contact",
-          "Contact form submissions sent to crm, email and whatsapp",
-          "Manage bookings/appointment in zoho crm",
-          "Manage contacts and communication in zoho crm",
-          "Contact form prewired with zoho forms and Booking forms with zoho bookings",
+          "Contact form submissions sent to CRM, email and WhatsApp",
+          "Manage bookings and appointments in Zoho CRM",
+          "Manage contacts and communication in Zoho CRM",
+          "Contact form prewired with Zoho Forms, and booking forms with Zoho Bookings",
           "Mobile-first responsive design",
           "Fast, secure and SEO optimised",
           "Basic on-page SEO and Google indexing",
-          "For one year free hosting and business email with mailbox",
+          "Includes one year of free hosting and business email with mailbox",
         ],
       },
       {
@@ -217,13 +217,13 @@ export const SERVICES = [
         price: 10000,
         features: [
           "Separate pages - Home, About, Services, Gallery, Blogs, Bookings, Contact",
-          "Wordpress admin dashboard for full website control and management",
-          "Manage pages, gallery, blog, forms & leads and bookings from wordpress dashboard",
-          "Website is built with elementor page builder for easy editing and management",
+          "WordPress admin dashboard for full website control and management",
+          "Manage pages, gallery, blog, forms & leads and bookings from the WordPress dashboard",
+          "The website is built with the Elementor page builder for easy editing and management",
           "Easy to add more content later without a developer",
           "Speed, security and SEO plugins configured",
           "Mobile-first responsive design",
-          "For one year free hosting and business email with mailbox",
+          "Includes one year of free hosting and business email with mailbox",
         ],
       },
     ],
@@ -241,7 +241,7 @@ export const SERVICES = [
       {
         label: "Maintenance & support",
         price: 3000,
-        desc: "Maintenance and support services, 24x7 uptime monitoring and weekly checkup, bug fixes and security updates. Priced per year.",
+        desc: "Maintenance and support services, 24/7 uptime monitoring and weekly checkups, bug fixes and security updates. Priced per year.",
       },
       {
         label: "Custom CMS or admin dashboard",
@@ -251,7 +251,7 @@ export const SERVICES = [
       {
         label: "Payment gateway integration",
         price: 3000,
-        desc: "Integrate popular payment gateways (Razorpay/Paypal/Stripe) for secure and seamless transactions.",
+        desc: "Integrate popular payment gateways (Razorpay/PayPal/Stripe) for secure and seamless transactions.",
       },
       {
         label: "Advanced SEO, Google Analytics & Google Business Profile",
@@ -266,18 +266,18 @@ export const SERVICES = [
       {
         label: "Social Media Integration & Automation",
         price: 3000,
-        desc: "Connect your website to social media platforms for automated posting and engagement using zoho socials.",
+        desc: "Connect your website to social media platforms for automated posting and engagement using Zoho Social.",
       },
     ],
     deliverables: [
       "Website design & development - Next.js/WordPress",
-      "You will get a fully functional website with all the features and functionalities",
-      "You will get complete code and files of the website",
+      "You will get a fully functional website with all the features and functionality",
+      "You will get the complete code and files for the website",
       "Mobile, tablet and desktop responsive layouts",
       "Contact, booking and enquiry forms wired to your inbox",
       "Speed, security & SEO optimisation",
-      "Free 30 days support after launch",
-      "Complete 1 Year Bundle: Hosting and Professional Email",
+      "Free 30-day support after launch",
+      "Complete 1-Year Bundle: Hosting and Professional Email",
     ],
   },
   {
@@ -288,7 +288,7 @@ export const SERVICES = [
     short:
       "A full e-commerce experience - product listings, cart, checkout and secure payments, with your catalogue and orders managed from one place.",
     pricingNote:
-      "Base price covers the full storefront, product catalogue, cart, checkout, payment gateway setup, and a 1 year domain + hosting + business email bundle.",
+      "Base price covers the full storefront, product catalogue, cart, checkout, payment gateway setup, and a one-year domain, hosting and business email bundle.",
     pricing: [
       {
         stack: "nextjs-premade-store",
@@ -296,12 +296,12 @@ export const SERVICES = [
         price: 10000,
         features: [
           "Pages - Home, Shop, About, Contact",
-          "Manage your product store, orders, payment yourself at third party platform",
+          "Manage your product store, orders and payments yourself on the third-party platform",
           "Manage stock, taxes and shipping rules yourself",
           "Mobile-first responsive design",
           "Fast, secure and SEO optimised",
           "Basic on-page SEO and Google indexing",
-          "1 year free hosting and business email with mailboxS",
+          "Includes one year of free hosting and business email with mailbox",
         ],
       },
       {
@@ -310,14 +310,14 @@ export const SERVICES = [
         price: 15000,
         features: [
           "Pages - Home, Shop, Product Details, Cart, Checkout, Policies, About, Gallery, Blogs, Contact",
-          "Wordpress admin dashboard for full website control and management",
-          "Manage pages, gallery, blog, forms & leads and orders from wordpress dashboard",
-          "Website is built with elementor page builder for easy editing and management",
+          "WordPress admin dashboard for full website control and management",
+          "Manage pages, gallery, blog, forms & leads and orders from the WordPress dashboard",
+          "The website is built with the Elementor page builder for easy editing and management",
           "WooCommerce setup with products and categories",
           "Manage stock, taxes and shipping rules yourself",
           "Razorpay / Stripe / PayPal payment integration",
           "Extensions and plugins configured and secured",
-          "1 year free hosting and business email with mailboxS",
+          "Includes one year of free hosting and business email with mailbox",
         ],
       },
       {
@@ -330,7 +330,7 @@ export const SERVICES = [
           "Cart, checkout and order management",
           "Razorpay / Stripe / PayPal payment integration",
           "Custom PHP backend for orders, stock and customers",
-          "1 year free hosting and business email with mailbox",
+          "Includes one year of free hosting and business email with mailbox",
         ],
       },
       {
@@ -343,7 +343,7 @@ export const SERVICES = [
           "Cart, checkout and order management",
           "Razorpay / Stripe / PayPal payment integration",
           "Customer accounts and order history",
-          "1 year free hosting and business email with mailbox",
+          "Includes one year of free hosting and business email with mailbox",
         ],
       },
     ],
@@ -361,7 +361,7 @@ export const SERVICES = [
       {
         label: "Maintenance & support",
         price: 5000,
-        desc: "Maintenance and support services, 24x7 uptime monitoring and weekly checkup, bug fixes and security updates. Priced per year.",
+        desc: "Maintenance and support services, 24/7 uptime monitoring and weekly checkups, bug fixes and security updates. Priced per year.",
       },
       {
         label: "Inventory, tax & shipping automation",
@@ -379,14 +379,14 @@ export const SERVICES = [
         desc: "Automated email and WhatsApp follow-ups for abandoned carts and order updates, wired into your CRM.",
       },
       {
-        label: "Advanced SEO, Google Analytics  & Google Business Profile",
+        label: "Advanced SEO, Google Analytics & Google Business Profile",
         price: 3000,
         desc: "Keyword research, on-page fixes, local listings and profile setup so you rank for the searches that matter.",
       },
       {
         label: "Social Media Integration & Automation",
         price: 3000,
-        desc: "Connect your website to social media platforms for automated posting and engagement using zoho socials.",
+        desc: "Connect your website to social media platforms for automated posting and engagement using Zoho Social.",
       },
     ],
     deliverables: [
@@ -396,8 +396,8 @@ export const SERVICES = [
       "Cart, checkout and order management",
       "Payment gateway integration - Razorpay, Stripe, PayPal",
       "Speed, security & SEO optimisation",
-      "Free 30 days support after launch",
-      "Complete 1 Year Bundle: Hosting and Professional Email",
+      "Free 30-day support after launch",
+      "Complete 1-Year Bundle: Hosting and Professional Email",
     ],
   },
 ];
@@ -435,15 +435,6 @@ export function formatINR(amount) {
 }
 
 /**
- * Every bookable option, derived from the same `pricing` tiers the service
- * pages render, so the contact form can never drift from the published prices.
- *
- * Each entry keeps the service name, the option label, the tech stack and the
- * price. The `value` is the human-readable string because it is what lands in
- * the HubSpot `message` property - a sales lead should be able to read which
- * stack and budget was quoted without cross-referencing the site.
- */
-/**
  * Single source of truth for a tier's option value, so the pricing cards and
  * the contact form's service list always agree on the same string.
  */
@@ -459,6 +450,15 @@ export function serviceTierOptionValue(service, tier) {
   return tierOptionValue(service, tier, TECH_STACKS[tier.stack]);
 }
 
+/**
+ * Every bookable option, derived from the same `pricing` tiers the service
+ * pages render, so the contact form can never drift from the published prices.
+ *
+ * Each entry keeps the service name, the option label, the tech stack and the
+ * price. The `value` is the human-readable string because it is what lands in
+ * the HubSpot `message` property - a sales lead should be able to read which
+ * stack and budget was quoted without cross-referencing the site.
+ */
 export const SERVICE_OPTIONS = VISIBLE_SERVICES.flatMap((service) => {
   const tiers = service.pricing ?? [];
 
@@ -481,9 +481,9 @@ export const SERVICE_OPTIONS = VISIBLE_SERVICES.flatMap((service) => {
     const stack = TECH_STACKS[tier.stack];
     const price = formatPrice(tier.price);
     const option = tier.label;
-    // Several option labels already name their stack ("Simple Single Page
-    // Website", "Mobile, Desktop & CLI Software"), so only add the stack when
-    // it actually adds information.
+    // Several option labels already name their stack ("Multipage WordPress
+    // website", "Next.js website + Store"), so only add the stack when it
+    // actually adds information.
     const stackAddsInfo =
       stack?.label && !option.toLowerCase().includes(stack.label.toLowerCase());
 
@@ -525,7 +525,7 @@ export const PROCESS_STEPS = [
     description:
       'We talk through your business, goals, audience and competitors. I learn exactly what "done" looks like for you.',
     items: [
-      "Free 30 min intro call",
+      "Free 30-minute intro call",
       "Requirements mapping",
       "Scope & timeline estimate",
     ],
@@ -539,7 +539,7 @@ export const PROCESS_STEPS = [
     items: [
       "Sitemap & wireframes",
       "Tech stack selection",
-      "Fixed price proposal",
+      "Fixed-price proposal",
     ],
   },
   {
@@ -547,7 +547,7 @@ export const PROCESS_STEPS = [
     title: "Design & Build",
     duration: "Weeks 1–3",
     description:
-      "Modern, brand design followed by clean, fast, SEO-friendly development. You get a staging link to review as we go.",
+      "Modern, on-brand design followed by clean, fast, SEO-friendly development. You get a staging link to review as we go.",
     items: [
       "UI/UX design",
       "Development & integrations",
@@ -571,9 +571,9 @@ export const PROCESS_STEPS = [
     title: "Growth & Support",
     duration: "Ongoing",
     description:
-      "Post-launch I keep everything running - updates, backups, and optional retainer work for improvements and marketing.",
+      "Post-launch, I keep everything running - updates, backups, and optional retainer work for improvements and marketing.",
     items: [
-      "30 days free support",
+      "30 days of free support",
       "Maintenance options",
       "Analytics & reporting",
     ],
@@ -591,14 +591,14 @@ export const INDUSTRIES = [
       "Retail shops - e-commerce for clothing, electronics, furniture",
       "Gyms & fitness studios - schedules, memberships, booking",
       "Salons & spas - appointments, showcase, promotions",
-      "Travel agencies - packages, itineraries, inquiries",
+      "Travel agencies - packages, itineraries, enquiries",
     ],
   },
   {
     group: "Professionals",
     icon: "briefcase",
     description:
-      "Trust - building websites that turn searches into booked consultations.",
+      "Trust-building websites that turn searches into booked consultations.",
     items: [
       "Doctors & clinics - booking, patient info, telemedicine",
       "Lawyers & law firms - services, testimonials, contact forms",
@@ -614,7 +614,7 @@ export const INDUSTRIES = [
       "Scalable web systems for teams that need to look bigger and sell faster.",
     items: [
       "Startups - branding, product showcase, investor relations",
-      "Event planners - portfolios, packages, inquiry forms",
+      "Event planners - portfolios, packages, enquiry forms",
       "Real estate agents - listings, virtual tours, lead capture",
       "Freelancers - portfolio, contact, service offerings",
       "NGOs & charities - donation portals, campaigns, volunteers",
@@ -670,7 +670,7 @@ export const TESTIMONIALS = [
     name: "Meera Iyer",
     role: "Principal · Bloom Events",
     quote:
-      "Our portfolio site looks world - class and the booking flow is seamless. Abhishek treated our small event business like a big enterprise. Highly recommended.",
+      "Our portfolio site looks world-class and the booking flow is seamless. Abhishek treated our small event business like a big enterprise. Highly recommended.",
   },
   {
     name: "Vikram Singh",
