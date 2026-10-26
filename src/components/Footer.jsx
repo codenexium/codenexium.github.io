@@ -50,6 +50,7 @@ export function Footer() {
             <ul className="mt-5 space-y-3 text-sm text-zinc-400">
               {[
                 { to: '/services', label: 'Services' },
+                { to: '/addons', label: 'Add-ons' },
                 { to: '/process', label: 'Process' },
                 { to: '/blog', label: 'Blog' },
                 { to: '/about', label: 'About' },

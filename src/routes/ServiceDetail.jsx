@@ -2,22 +2,16 @@
 
 import { useParams } from 'next/navigation'
 import Link from 'next/link'
-import {
-  ArrowLeft,
-  ArrowUpRight,
-  Check,
-  Sparkles,
-  Image,
-  Monitor,
-  Clapperboard,
-  Plus,
-} from 'lucide-react'
+import { ArrowLeft, ArrowRight, ArrowUpRight, Check, Sparkles } from 'lucide-react'
 import {
   SERVICES,
   INDUSTRIES,
   TECH_STACKS,
   startingPriceLabel,
   serviceTierOptionValue,
+  addOnsForPlan,
+  addOnsForService,
+  addOnBillingLabel,
   formatINR,
 } from '../lib/config'
 import { normalizeSlug, SERVICE_INDUSTRIES } from '../lib/service-pages'
@@ -30,32 +24,12 @@ import { CtaBanner } from '../components/CtaBanner'
 import CalIdModal from '../components/CalIdModal'
 import { useCta } from '../lib/cta-context'
 
-const MEDIA_PLACEHOLDERS = [
-  {
-    icon: Image,
-    title: 'Screenshots & Gallery',
-    note: 'Image placeholder',
-    desc: 'Key pages and highlights of the finished work will be showcased here.',
-  },
-  {
-    icon: Monitor,
-    title: 'Live Demo Website',
-    note: 'Demo link placeholder',
-    desc: 'A clickable demo of this service will be linked here for you to explore.',
-  },
-  {
-    icon: Clapperboard,
-    title: 'Video Walkthrough',
-    note: 'Video placeholder',
-    desc: 'A short walkthrough video will be embedded here.',
-  },
-]
-
 export function ServiceDetail() {
   const { slug: rawSlug } = useParams()
   const slug = Array.isArray(rawSlug) ? rawSlug[0] : rawSlug
   const service = SERVICES.find((s) => normalizeSlug(s.slug) === slug)
   const industries = SERVICE_INDUSTRIES[slug] || []
+  const serviceAddOns = service ? addOnsForService(service) : []
   const { openCta } = useCta()
 
   const words = service.name.split(' ')
@@ -110,7 +84,7 @@ export function ServiceDetail() {
               <button
                 onClick={() =>
                   openCta(service.name, {
-                    addOns: service.addOns ?? [],
+                    addOns: serviceAddOns,
                     requiresAddOnSelection: true,
                   })
                 }
@@ -140,6 +114,7 @@ export function ServiceDetail() {
             <Stagger className={centeredRow({ cols: { lg: 2 }, gap: "gap-5", className: "mt-12" })} stagger={0.06}>
               {service.pricing.map((tier) => {
                 const stack = TECH_STACKS[tier.stack]
+                const planAddOns = addOnsForPlan(service, tier)
                 return (
                   <StaggerItem
                     key={tier.stack}
@@ -171,10 +146,29 @@ export function ServiceDetail() {
                           </li>
                         ))}
                       </ul>
+                      {planAddOns.length > 0 && (
+                        <div className="mt-5 border-t border-white/5 pt-4">
+                          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-zinc-500">
+                            Add-ons for this plan
+                          </p>
+                          <div className="mt-3 flex flex-wrap gap-2">
+                            {planAddOns.map((addOn) => (
+                              <Link
+                                key={addOn.slug}
+                                href={`/addons/${addOn.slug}`}
+                                className="inline-flex items-center gap-1 rounded-full border border-white/8 bg-ink-950/60 px-2.5 py-1 text-[11px] text-zinc-300 transition-colors duration-300 hover:border-brand-500/30 hover:text-brand-200"
+                              >
+                                {addOn.name}
+                                <ArrowUpRight className="h-3 w-3" />
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                       <button
                         onClick={() =>
                           openCta(serviceTierOptionValue(service, tier), {
-                            addOns: service.addOns ?? [],
+                            addOns: planAddOns,
                             requiresAddOnSelection: true,
                           })
                         }
@@ -191,7 +185,7 @@ export function ServiceDetail() {
           </>
         )}
 
-        {Array.isArray(service.addOns) && service.addOns.length > 0 && (
+        {serviceAddOns.length > 0 && (
           <div className="mt-20">
             <SectionHeading
               eyebrow="Add-ons"
@@ -200,32 +194,40 @@ export function ServiceDetail() {
                   Add only what you <span className="text-gradient">actually need</span>
                 </>
               }
-              description="These stack on top of any option above, so you are not pushed into features you do not need."
+              description="Each add-on is available on selected plans above. Open one to see exactly what is included, how it works and where it fits."
             />
             <Stagger className={centeredRow({ cols: { sm: 2 }, gap: "gap-4", className: "mt-12" })} stagger={0.06}>
-              {service.addOns.map((addOn) => (
+              {serviceAddOns.map((addOn) => (
                 <StaggerItem
-                  key={addOn.label}
+                  key={addOn.slug}
                   className={centeredItem({ cols: { sm: 2 }, gap: "gap-4"})}
                 >
-                  <div className="flex h-full items-start gap-4 rounded-2xl border border-white/8 bg-ink-900/60 p-5 transition-colors duration-300 hover:border-brand-500/30">
+                  <Link
+                    href={`/addons/${addOn.slug}`}
+                    className="group flex h-full items-start gap-4 rounded-2xl border border-white/8 bg-ink-900/60 p-5 transition-colors duration-300 hover:border-brand-500/30"
+                  >
                     <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-500/10 text-brand-300">
-                      <Plus className="h-4 w-4" />
+                      <ServiceIcon name={addOn.icon} className="h-4 w-4" />
                     </span>
                     <div className="min-w-0">
                       <div className="flex flex-wrap items-baseline justify-between gap-x-3">
-                        <h3 className="font-display text-base font-bold text-white">
-                          {addOn.label}
+                        <h3 className="font-display text-base font-bold text-white transition-colors group-hover:text-brand-200">
+                          {addOn.name}
                         </h3>
                         <p className="font-display text-base font-bold text-accent-400">
-                          {addOn.price > 0
-                            ? `+${formatINR(addOn.price)}`
-                            : (addOn.freeLabel ?? 'Free')}
+                          +{formatINR(addOn.price)}{' '}
+                          <span className="text-xs font-medium text-zinc-500">
+                            {addOnBillingLabel(addOn)}
+                          </span>
                         </p>
                       </div>
-                      <p className="mt-2 text-sm leading-relaxed text-zinc-400">{addOn.desc}</p>
+                      <p className="mt-2 text-sm leading-relaxed text-zinc-400">{addOn.summary}</p>
+                      <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-brand-300">
+                        View add-on details
+                        <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                      </span>
                     </div>
-                  </div>
+                  </Link>
                 </StaggerItem>
               ))}
             </Stagger>

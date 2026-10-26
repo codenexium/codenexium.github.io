@@ -74,8 +74,9 @@ export function ContactForm({
     setForm((currentForm) => ({
       ...currentForm,
       service: defaultServiceOption(defaultService),
+      project_details: addOnsMessage || currentForm.project_details,
     }));
-  }, [defaultService]);
+  }, [defaultService, addOnsMessage]);
 
   const update = (key) => (e) =>
     setForm((f) => ({ ...f, [key]: e.target.value }));

@@ -10,6 +10,15 @@ import {
   Building2,
   Calendar,
   Code,
+  ShieldCheck,
+  Search,
+  Megaphone,
+  CreditCard,
+  Boxes,
+  Image as ImageIcon,
+  ShoppingCart,
+  LayoutDashboard,
+  Server,
 } from 'lucide-react'
 
 const ICONS = {
@@ -24,6 +33,15 @@ const ICONS = {
   building: Building2,
   calendar: Calendar,
   code: Code,
+  shield: ShieldCheck,
+  search: Search,
+  megaphone: Megaphone,
+  'credit-card': CreditCard,
+  boxes: Boxes,
+  image: ImageIcon,
+  cart: ShoppingCart,
+  dashboard: LayoutDashboard,
+  server: Server,
 }
 
 export function ServiceIcon({ name, className = 'h-5 w-5' }) {

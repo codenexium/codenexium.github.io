@@ -14,6 +14,7 @@ export function CtaModal() {
     closeCta,
     defaultService,
     addOns,
+    selectedAddOns: preselectedAddOns,
     requiresAddOnSelection,
   } = useCta()
   const [service, setService] = useState('')
@@ -27,7 +28,7 @@ export function CtaModal() {
     if (open) {
       setService(defaultService)
       setStep(requiresAddOnSelection ? 'add-ons' : 'form')
-      setSelectedAddOns([])
+      setSelectedAddOns(preselectedAddOns)
       document.body.style.overflow = 'hidden'
     } else {
       document.body.style.overflow = ''
@@ -35,7 +36,7 @@ export function CtaModal() {
     return () => {
       document.body.style.overflow = ''
     }
-  }, [open, defaultService, requiresAddOnSelection])
+  }, [open, defaultService, preselectedAddOns, requiresAddOnSelection])
 
   const close = () => {
     setService('')

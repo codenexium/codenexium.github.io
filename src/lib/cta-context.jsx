@@ -8,11 +8,13 @@ export function CtaProvider({ children }) {
   const [open, setOpen] = useState(false)
   const [defaultService, setDefaultService] = useState('')
   const [addOns, setAddOns] = useState([])
+  const [selectedAddOns, setSelectedAddOns] = useState([])
   const [requiresAddOnSelection, setRequiresAddOnSelection] = useState(false)
 
   const openCta = useCallback((service = '', options = {}) => {
     setDefaultService(service)
     setAddOns(options.addOns ?? [])
+    setSelectedAddOns(options.selectedAddOns ?? [])
     setRequiresAddOnSelection(options.requiresAddOnSelection ?? false)
     setOpen(true)
   }, [])
@@ -20,6 +22,7 @@ export function CtaProvider({ children }) {
   const closeCta = useCallback(() => {
     setOpen(false)
     setAddOns([])
+    setSelectedAddOns([])
     setRequiresAddOnSelection(false)
   }, [])
 
@@ -37,6 +40,7 @@ export function CtaProvider({ children }) {
         open,
         defaultService,
         addOns,
+        selectedAddOns,
         requiresAddOnSelection,
         openCta,
         closeCta,

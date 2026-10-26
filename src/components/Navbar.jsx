@@ -13,6 +13,7 @@ import CalIdModal from './CalIdModal'
 const NAV = [
   { to: '/', label: 'Home' },
   { to: '/services', label: 'Services' },
+  { to: '/addons', label: 'Add-ons' },
   { to: '/process', label: 'Process' },
   { to: '/blog', label: 'Blog' },
   { to: '/about', label: 'About' },
@@ -60,7 +61,7 @@ export function Navbar() {
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Logo />
 
-        <div className="hidden items-center gap-1 lg:flex">
+        <div className="hidden items-center gap-1 xl:flex">
           {NAV.map((item) => (
             <NavLink
               key={item.to}
@@ -89,7 +90,7 @@ export function Navbar() {
           ))}
         </div>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-3 xl:flex">
           <ThemeToggle />
           <button
             onClick={() => openCta()}
@@ -100,7 +101,7 @@ export function Navbar() {
           <CalIdModal variant="primary" />
         </div>
 
-        <div className="flex items-center gap-2 lg:hidden">
+        <div className="flex items-center gap-2 xl:hidden">
           <ThemeToggle />
           <button
             onClick={() => setMobileOpen((v) => !v)}
@@ -119,7 +120,7 @@ export function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="overflow-hidden border-t border-white/5 lg:hidden"
+            className="overflow-hidden border-t border-white/5 xl:hidden"
           >
             <div className="space-y-1 bg-ink-900/95 px-4 py-4 backdrop-blur-xl">
               {NAV.map((item) => (
