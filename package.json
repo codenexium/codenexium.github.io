@@ -9,6 +9,7 @@
     "preview": "next build && npx serve out"
   },
   "dependencies": {
+    "abhishek-freelance": "link:",
     "clsx": "^2.1.1",
     "framer-motion": "^12.43.0",
     "lucide-react": "^1.28.0",

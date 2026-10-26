@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      abhishek-freelance:
+        specifier: 'link:'
+        version: 'link:'
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
