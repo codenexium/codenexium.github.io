@@ -145,14 +145,10 @@ export async function submitToHubSpot(fields) {
  * touching any component.
  */
 export const TECH_STACKS = {
-  "singlepage-with-contact-form": { label: "Single page", tag: "HTML/CSS/JS" },
-  "multipage-with-contact-form": { label: "Next.js", tag: "Next.js" },
-  "multipage-with-booking": { label: "Next.js", tag: "Next.js" },
-  "wordpress-business": { label: "WordPress", tag: "WordPress" },
+  "multipage-business-website": { label: "Next.js", tag: "Next.js" },
+  "wordpress-business-website": { label: "WordPress", tag: "WordPress" },
   "wordpress-store": { label: "WordPress", tag: "WordPress / WooCommerce" },
-  "nextjs-store": { label: "Next.js", tag: "React / Next.js / Cloudflare" },
-  "php-store": { label: "PHP", tag: "PHP / MySQL / Next.js" },
-  "nextjs-premade-store": { label: "Next.js", tag: "Next.js / Shopify / Zoho Commerce" },
+  "nextjs-php-store": { label: "Next.js/php", tag: "Next.js / Php/ Cloudflare" },
 };
 
 /**
@@ -372,71 +368,70 @@ export const ADDONS = [
     ],
   },
   {
-    slug: "custom-cms-admin-dashboard",
-    name: "Custom CMS or admin dashboard",
-    icon: "dashboard",
-    category: "Build",
-    price: 3000,
-    billing: "one-time",
-    summary:
-      "A simple admin area to edit pages, posts, bookings, leads and enquiries without touching code.",
-    intro: [
-      "Not every content change should need a developer. A focused CMS or dashboard lets your team update offers, publish articles and follow up on enquiries in minutes.",
-      "I build the admin area around the content you actually manage, with role-based access, a media library and a layout that matches the live site, so edits cannot break the design.",
+    "slug": "zoho-bigin-ecosystem-integration",
+    "name": "Zoho Bigin CMS Integration",
+    "icon": "dashboard",
+    "category": "Build",
+    "price": 3000,
+    "billing": "one-time",
+    "summary": "Supercharge your pipeline by connecting Zoho Bigin CMS with Email, Forms, Bookings, Social, Books, and SalesIQ into one unified revenue engine.",
+    "intro": [
+      "Stop wasting time switching between disjointed apps and manual data entry.",
+      "Our Zoho Bigin CMS Integration bridges the gap between your sales pipeline, marketing channels, and financial tools.",
+      "We unify Zoho Bigin CMS with Email, Forms, Bookings, Social, Books, and SalesIQ to give your small team a powerful, enterprise-grade workflow."
     ],
-    features: [
-      "Secure login with role-based permissions",
-      "Edit page sections, headings and images",
-      "Create and publish blog posts or case studies",
-      "Manage bookings, leads and enquiries in one place",
-      "Media library with image compression",
-      "Draft, preview and scheduled publishing",
-      "Activity log for accountability",
-      "Short training walkthrough and written notes",
+    "features": [
+      "Bi-directional Zoho Email syncing directly to contact and deal timelines.",
+      "Automated lead capture and pipeline routing via custom Zoho Forms.",
+      "Real-time appointment scheduling and automated activity logging with Zoho Bookings.",
+      "Social media lead generation and interaction tracking using Zoho Social.",
+      "Instant invoice generation and client payment status syncing with Zoho Books.",
+      "Live website visitor tracking and proactive chat triggers via Zoho SalesIQ.",
+      "A unified 360-degree dashboard consolidating all customer touchpoints."
     ],
-    benefits: [
+    "benefits": [
       {
-        title: "Independence from developers",
-        desc: "Routine updates no longer wait for a quote or a slot in someone else's schedule.",
+        "title": "Eliminate Manual Admin Work",
+        "desc": "Automate data transfer between your website, emails, calendar, and accounting so your team can focus exclusively on closing deals."
       },
       {
-        title: "Fewer emergency costs",
-        desc: "Fixing a typo or swapping a banner becomes a two-minute job instead of a billable change request.",
+        "title": "Never Lose a Warm Lead",
+        "desc": "Capture every web form submission, social media mention, and high-intent website visitor instantly inside your pipeline before they go cold."
       },
       {
-        title: "Consistent design",
-        desc: "Editors choose from approved blocks and fields, so new content still looks like it belongs on the site.",
-      },
+        "title": "Full Visibility on Cash Flow",
+        "desc": "Bridge the gap between sales and finance by letting your reps track invoice statuses directly inside the CRM without opening accounting software."
+      }
     ],
-    process: [
+    "process": [
       {
-        title: "Map the content",
-        desc: "We list what changes regularly and who needs to change it, then agree on the simplest set of screens.",
+        "title": "1. Discovery & Mapping",
+        "desc": "We analyze your current tools, workflows, and pipelines to map out the ideal integration pathways for your specific business model."
       },
       {
-        title: "Build and connect",
-        desc: "The dashboard is built, connected to the live content and tested with real edits.",
+        "title": "2. Configuration & Connection",
+        "desc": "Our team configures Zoho Bigin and deploys the add-ons (Email, Forms, Bookings, Social, Books, SalesIQ), setting up clean automation rules."
       },
       {
-        title: "Train and hand over",
-        desc: "You get a walkthrough, test credentials and a short guide covering the tasks you will actually do.",
-      },
+        "title": "3. Testing & Handoff",
+        "desc": "We run end-to-end data validation tests to ensure zero data loss, followed by a walkthrough to get your team up and running smoothly."
+      }
     ],
-    bestFor: ["Teams updating offers", "Booking-based businesses", "Blogs and resource libraries"],
-    faq: [
+    "bestFor": ["Contacts & Leads", "Booking-based businesses", "Micro-businesses & Startups", "Service Providers"],
+    "faq": [
       {
-        q: "Can I edit everything on the site?",
-        a: "You can edit the content types we agree on. Layout-level changes and new sections stay with a developer to protect the design.",
+        "q": "Do I need separate licenses for all these Zoho apps?",
+        "a": "Yes, you will need active subscriptions for Zoho Bigin and the respective add-ons you wish to integrate, though many are included in Zoho One bundles."
       },
       {
-        q: "Is this WordPress?",
-        a: "It can be a WordPress admin setup or a custom dashboard, depending on the plan. The WordPress website tier already includes its own dashboard.",
+        "q": "Can we choose to integrate only some of these add-ons?",
+        "a": "Absolutely. We can modularly activate only the specific add-ons (like just Forms and Bookings) that your business currently requires."
       },
       {
-        q: "What happens if I get stuck?",
-        a: "The handover includes written notes and a walkthrough. Additional training or support is available as part of the maintenance add-on.",
-      },
-    ],
+        "q": "How long does the setup process take?",
+        "a": "The entire integration, mapping, and testing process is typically completed within 5 to 7 business days."
+      }
+    ]
   },
   {
     slug: "payment-gateway-integration",
@@ -1014,26 +1009,28 @@ export const SERVICES = [
     name: "Business Website",
     icon: "globe",
     short:
-      "A professional website for any business. Start with a single page and scale up to a full multi-page build - the price you see is the price you pay.",
+      "A professional website for any business. The price you see is the price you pay.",
     pricingNote:
-      "Base price covers design, development, setup, deployment, and a one-year domain, hosting and business email bundle. Need bookings, payments, CRM or automation? Add them below.",
+      "Base price covers design, development, setup, deployment, hosting and business email bundle. Need bookings, payments, CRM or automation? Add addons.",
     pricing: [
       {
-        stack: "singlepage-with-contact-form",
-        label: "Single page website with contact form",
-        price: 3000,
+        stack: "multipage-business-website",
+        label: "Multipage business website",
+        price: 5000,
         addons: [
           "Domain Registration",
           "Domain, hosting and email renewal",
           "Maintenance & support",
+          "Zoho Bigin CMS Integration",
           "Payment gateway integration",
           "Advanced SEO, Google Analytics & Google Business Profile",
           "WhatsApp Business API Integration",
           "Social Media Integration & Automation",
         ],
         features: [
-          "One scrolling page - Home, About, Services, Reviews, Contact",
-          "Contact form submissions sent to your existing email and WhatsApp",
+          "Separate pages - Home, Services, About, gallery, blogs, Contact",
+          "Contact form submissions sent to your existing email",
+          "Manage all contacts and forms submissions in admin panel",
           "Contact section with Google Maps embed and directions",
           "Direct WhatsApp button for instant enquiries",
           "Mobile-first responsive design",
@@ -1043,76 +1040,24 @@ export const SERVICES = [
         ],
       },
       {
-        stack: "multipage-with-contact-form",
-        label: "Multipage website with contact form",
-        price: 5000,
-        addons: [
-          "Domain Registration",
-          "Domain, hosting and email renewal",
-          "Maintenance & support",
-          "Custom CMS or admin dashboard",
-          "Payment gateway integration",
-          "Advanced SEO, Google Analytics & Google Business Profile",
-          "WhatsApp Business API Integration",
-          "Social Media Integration & Automation",
-        ],
-        features: [
-          "Separate pages - Home, About, Services, Contact",
-          "Contact form submissions sent to CRM, email and WhatsApp",
-          "Manage all contacts and communication in Zoho CRM",
-          "Contact form prewired with Zoho Forms",
-          "Mobile-first responsive design",
-          "Fast, secure and SEO optimised",
-          "Basic on-page SEO and Google indexing",
-          "Includes one year of free hosting and business email with mailbox",
-        ],
-      },
-      {
-        stack: "multipage-with-booking",
-        label: "Multipage website with booking/appointment",
-        price: 7000,
-        addons: [
-          "Domain Registration",
-          "Domain, hosting and email renewal",
-          "Maintenance & support",
-          "Custom CMS or admin dashboard",
-          "Payment gateway integration",
-          "Advanced SEO, Google Analytics & Google Business Profile",
-          "WhatsApp Business API Integration",
-          "Social Media Integration & Automation",
-        ],
-        features: [
-          "Separate pages - Home, About, Services, Bookings, Contact",
-          "Contact form submissions sent to CRM, email and WhatsApp",
-          "Manage bookings and appointments in Zoho CRM",
-          "Manage contacts and communication in Zoho CRM",
-          "Contact form prewired with Zoho Forms, and booking forms with Zoho Bookings",
-          "Mobile-first responsive design",
-          "Fast, secure and SEO optimised",
-          "Basic on-page SEO and Google indexing",
-          "Includes one year of free hosting and business email with mailbox",
-        ],
-      },
-      {
-        stack: "wordpress-business",
+        stack: "wordpress-business-website",
         label: "Multipage WordPress website",
         price: 10000,
         addons: [
           "Domain Registration",
           "Domain, hosting and email renewal",
           "Maintenance & support",
-          "Custom CMS or admin dashboard",
+          "Zoho Bigin CMS Integration",
           "Payment gateway integration",
           "Advanced SEO, Google Analytics & Google Business Profile",
           "WhatsApp Business API Integration",
           "Social Media Integration & Automation",
         ],
         features: [
-          "Separate pages - Home, About, Services, Gallery, Blogs, Bookings, Contact",
+          "Separate pages - Home, Services, About, Gallery, Blogs, Contact",
           "WordPress admin dashboard for full website control and management",
-          "Manage pages, gallery, blog, forms & leads and bookings from the WordPress dashboard",
+          "Manage pages, gallery, blog, forms submissions from the WordPress dashboard",
           "The website is built with the Elementor page builder for easy editing and management",
-          "Easy to add more content later without a developer",
           "Speed, security and SEO plugins configured",
           "Mobile-first responsive design",
           "Includes one year of free hosting and business email with mailbox",
@@ -1132,7 +1077,7 @@ export const SERVICES = [
   },
   {
     slug: "online-store",
-    name: "Business Website + Online Store/Subscriptions",
+    name: "Business Website + Online Store",
     icon: "shopping-bag",
     featured: true,
     short:
@@ -1141,29 +1086,6 @@ export const SERVICES = [
       "Base price covers the full storefront, product catalogue, cart, checkout, payment gateway setup, and a one-year domain, hosting and business email bundle.",
     pricing: [
       {
-        stack: "nextjs-premade-store",
-        label: "Next.js website + Store (Shopify/Etsy/Banzena/Ballwool/Zoho Commerce)",
-        price: 10000,
-        addons: [
-          "Domain Registration",
-          "Domain, hosting and email renewal",
-          "Maintenance & support",
-          "Product image cleanup & listing setup",
-          "Abandoned cart & WhatsApp order recovery",
-          "Advanced SEO, Google Analytics & Google Business Profile",
-          "Social Media Integration & Automation",
-        ],
-        features: [
-          "Pages - Home, Shop, About, Contact",
-          "Manage your product store, orders and payments yourself on the third-party platform",
-          "Manage stock, taxes and shipping rules yourself",
-          "Mobile-first responsive design",
-          "Fast, secure and SEO optimised",
-          "Basic on-page SEO and Google indexing",
-          "Includes one year of free hosting and business email with mailbox",
-        ],
-      },
-      {
         stack: "wordpress-store",
         label: "WordPress Website + Store (WooCommerce/EDD/Surecart/WP EasyCart/Ecwid/CartFlows/Dokan)",
         price: 15000,
@@ -1171,6 +1093,7 @@ export const SERVICES = [
           "Domain Registration",
           "Domain, hosting and email renewal",
           "Maintenance & support",
+          "Zoho Bigin CMS Integration",
           "Inventory, tax & shipping automation",
           "Product image cleanup & listing setup",
           "Abandoned cart & WhatsApp order recovery",
@@ -1197,6 +1120,7 @@ export const SERVICES = [
           "Domain Registration",
           "Domain, hosting and email renewal",
           "Maintenance & support",
+          "Zoho Bigin CMS Integration",
           "Inventory, tax & shipping automation",
           "Product image cleanup & listing setup",
           "Abandoned cart & WhatsApp order recovery",
@@ -1209,29 +1133,6 @@ export const SERVICES = [
           "Cart, checkout and order management",
           "Razorpay / Stripe / PayPal payment integration",
           "Custom PHP backend for orders, stock and customers",
-          "Includes one year of free hosting and business email with mailbox",
-        ],
-      },
-      {
-        stack: "nextjs-store",
-        label: "Next.js Storefront",
-        price: 25000,
-        addons: [
-          "Domain Registration",
-          "Domain, hosting and email renewal",
-          "Maintenance & support",
-          "Inventory, tax & shipping automation",
-          "Product image cleanup & listing setup",
-          "Abandoned cart & WhatsApp order recovery",
-          "Advanced SEO, Google Analytics & Google Business Profile",
-          "Social Media Integration & Automation",
-        ],
-        features: [
-          "Pages - Home, Shop, Product Details, Cart, Checkout, Policies, About, Gallery, Blogs, Contact",
-          "Fast storefront with product catalogue and search",
-          "Cart, checkout and order management",
-          "Razorpay / Stripe / PayPal payment integration",
-          "Customer accounts and order history",
           "Includes one year of free hosting and business email with mailbox",
         ],
       },
