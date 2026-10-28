@@ -73,6 +73,10 @@ export const SERVICE_INDUSTRIES = {
       items: {
         'Tutors & coaches - courses, booking, payments':
           'Sell pre-recorded video modules, e-books, and training masterclasses with instant delivery.',
+        'Accountants & financial advisors - packages, consultations':
+          'Sell financial planning packages, tax prep services, and consultation hours with secure payment capture.',
+        'Lawyers & law firms - services, testimonials, contact forms':
+          'Sell legal service packages, retainers, and document review sessions with integrated payment processing.',
       },
     },
     {
@@ -82,6 +86,8 @@ export const SERVICE_INDUSTRIES = {
           'Direct-to-consumer (D2C) online checkout engines configured tightly alongside your CRM.',
         'NGOs & charities - donation portals, campaigns, volunteers':
           'Accept custom recurring donations or sell fundraising merchandise securely.',
+        'Real estate agents - listings, virtual tours, lead capture':
+          'Sell property-related services, virtual tours, and premium listings with integrated payment gateways.',
       },
     },
   ],

@@ -59,18 +59,18 @@ const VALUES = [
 const TIMELINE = [
   {
     year: '2021',
-    title: 'Started freelancing',
-    desc: 'Built my first websites for local cafés and clinics and learned the hard way what business owners actually care about.',
+    title: 'Started working in startup as full stack developer intern',
+    desc: 'Built and maintained web applications, gaining experience in both frontend and backend development.',
   },
   {
     year: '2022',
-    title: 'Went deep on WordPress + PHP',
-    desc: 'Shipped dozens of business sites and WooCommerce stores, refining speed, SEO and the plugins that actually matter.',
+    title: 'Worked as permanent full stack developer in startup',
+    desc: 'Gained experience in building and maintaining web applications, working with a team of developers and designers.',
   },
   {
     year: '2023',
-    title: 'Moved to modern stacks',
-    desc: 'Adopted React and Next.js for high-performance builds and started wiring HubSpot and marketing tools into every project.',
+    title: 'Started freelancing and building websites for clients',
+    desc: 'Worked with clients from various industries, building websites and web applications that met their business needs.',
   },
   {
     year: '2024',
@@ -166,9 +166,7 @@ export function About() {
                 </div>
 
                 <div className="mt-8 flex items-center gap-4">
-                  <span className="grid h-20 w-20 shrink-0 place-items-center rounded-3xl bg-gradient-to-br from-brand-500 to-accent-500 font-display text-3xl font-bold text-on-brand shadow-glow">
-                    A
-                  </span>
+                  <img src="/Abhishek-Sharma.jpg" alt="Abhishek Sharma" className="h-20 w-20 shrink-0 rounded-3xl" />
                   <div>
                     <p className="font-display text-xl font-bold text-white">Abhishek Sharma</p>
                     <p className="text-sm text-zinc-400">{SITE.role}</p>

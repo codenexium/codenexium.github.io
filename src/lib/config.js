@@ -145,7 +145,7 @@ export async function submitToHubSpot(fields) {
  * touching any component.
  */
 export const TECH_STACKS = {
-  "multipage-business-website": { label: "Next.js", tag: "Next.js" },
+  "nextjs-business-website": { label: "Next.js", tag: "Next.js" },
   "wordpress-business-website": { label: "WordPress", tag: "WordPress" },
   "wordpress-store": { label: "WordPress", tag: "WordPress / WooCommerce" },
   "nextjs-php-store": { label: "Next.js/php", tag: "Next.js / Php/ Cloudflare" },
@@ -706,73 +706,6 @@ export const ADDONS = [
     ],
   },
   {
-    slug: "inventory-tax-shipping-automation",
-    name: "Inventory, tax & shipping automation",
-    icon: "boxes",
-    category: "Store",
-    price: 5000,
-    billing: "one-time",
-    summary:
-      "Automate stock counts, tax rules and shipping rates so every order stays accurate without spreadsheets.",
-    intro: [
-      "Manual inventory works until orders arrive faster than someone can update a sheet. Then come oversells, wrong tax lines and shipping quotes that eat the margin.",
-      "This add-on configures your store's stock, tax and shipping rules, connects them to the tools you already use, and adds alerts so problems surface before a customer does.",
-    ],
-    features: [
-      "Product and variant stock setup",
-      "Low-stock alerts and reorder thresholds",
-      "GST and tax rules by product or region",
-      "Shipping zones, weight bands and rate rules",
-      "Automatic stock reduction on paid orders",
-      "Order-status and fulfilment automation",
-      "Supplier cost and margin tracking",
-      "Reports for stock, tax and shipping",
-    ],
-    benefits: [
-      {
-        title: "Fewer oversells",
-        desc: "Stock updates as orders are paid, and low-stock alerts give you time to restock before a listing runs dry.",
-      },
-      {
-        title: "Accurate totals",
-        desc: "Tax and shipping rules are configured once and applied consistently, instead of being corrected after checkout.",
-      },
-      {
-        title: "Less admin per order",
-        desc: "Status changes, stock movements and fulfilment steps stop depending on a spreadsheet update.",
-      },
-    ],
-    process: [
-      {
-        title: "Audit the catalogue",
-        desc: "We review products, variants, current stock, tax treatment and the shipping regions you actually serve.",
-      },
-      {
-        title: "Configure the rules",
-        desc: "Stock, tax and shipping logic is set up and connected to your store, POS or accounting tools.",
-      },
-      {
-        title: "Test and monitor",
-        desc: "Test orders are run across regions and payment states, then alerts and reports are handed over.",
-      },
-    ],
-    bestFor: ["Growing stores", "Multi-channel sellers", "Large catalogues", "Stores shipping across states"],
-    faq: [
-      {
-        q: "Does this work with WooCommerce?",
-        a: "Yes. It works with WooCommerce and other platforms that expose stock, tax and shipping rules through their admin or API.",
-      },
-      {
-        q: "Can it handle multiple warehouses?",
-        a: "Yes, where the platform supports locations. Multi-location stock is scoped after reviewing the catalogue and fulfilment flow.",
-      },
-      {
-        q: "Do you file my taxes?",
-        a: "No. This is store configuration, not accounting or tax filing. Your accountant should confirm the rates and rules before they go live.",
-      },
-    ],
-  },
-  {
     slug: "product-image-cleanup",
     name: "Product image cleanup & listing setup",
     icon: "image",
@@ -1014,8 +947,8 @@ export const SERVICES = [
       "Base price covers design, development, setup, deployment, hosting and business email bundle. Need bookings, payments, CRM or automation? Add addons.",
     pricing: [
       {
-        stack: "multipage-business-website",
-        label: "Multipage business website",
+        stack: "nextjs-business-website",
+        label: "Nextjs business website",
         price: 5000,
         addons: [
           "Domain Registration",
@@ -1028,7 +961,7 @@ export const SERVICES = [
           "Social Media Integration & Automation",
         ],
         features: [
-          "Separate pages - Home, Services, About, gallery, blogs, Contact",
+          "Pages - Home, Services, About, Gallery, Blogs, Contact",
           "Contact form submissions sent to your existing email",
           "Manage all contacts and forms submissions in admin panel",
           "Contact section with Google Maps embed and directions",
@@ -1041,7 +974,7 @@ export const SERVICES = [
       },
       {
         stack: "wordpress-business-website",
-        label: "Multipage WordPress website",
+        label: "WordPress business website",
         price: 10000,
         addons: [
           "Domain Registration",
@@ -1054,22 +987,25 @@ export const SERVICES = [
           "Social Media Integration & Automation",
         ],
         features: [
-          "Separate pages - Home, Services, About, Gallery, Blogs, Contact",
+          "Pages - Home, Services, About, Gallery, Blogs, Contact",
           "WordPress admin dashboard for full website control and management",
           "Manage pages, gallery, blog, forms submissions from the WordPress dashboard",
           "The website is built with the Elementor page builder for easy editing and management",
-          "Speed, security and SEO plugins configured",
           "Mobile-first responsive design",
+          "Speed, security and SEO plugins configured",
+          "Basic on-page SEO and Google indexing",
           "Includes one year of free hosting and business email with mailbox",
         ],
       },
     ],
     deliverables: [
       "Website design & development - Next.js/WordPress",
+      "Pages - Home, Services, About, Gallery, Blogs, Contact",
       "You will get a fully functional website with all the features and functionality",
       "You will get the complete code and files for the website",
-      "Mobile, tablet and desktop responsive layouts",
+      "You will get admin access to manage the website and its content",
       "Contact, booking and enquiry forms wired to your inbox",
+      "Mobile, tablet and desktop responsive layouts",
       "Speed, security & SEO optimisation",
       "Free 30-day support after launch",
       "Complete 1-Year Bundle: Hosting and Professional Email",
@@ -1087,14 +1023,13 @@ export const SERVICES = [
     pricing: [
       {
         stack: "wordpress-store",
-        label: "WordPress Website + Store (WooCommerce/EDD/Surecart/WP EasyCart/Ecwid/CartFlows/Dokan)",
+        label: "WordPress Website + Store (WooCommerce)",
         price: 15000,
         addons: [
           "Domain Registration",
           "Domain, hosting and email renewal",
           "Maintenance & support",
           "Zoho Bigin CMS Integration",
-          "Inventory, tax & shipping automation",
           "Product image cleanup & listing setup",
           "Abandoned cart & WhatsApp order recovery",
           "Advanced SEO, Google Analytics & Google Business Profile",
@@ -1109,12 +1044,13 @@ export const SERVICES = [
           "Manage stock, taxes and shipping rules yourself",
           "Razorpay / Stripe / PayPal payment integration",
           "Extensions and plugins configured and secured",
+          "Cloudflare CDN integration for speed and security",
           "Includes one year of free hosting and business email with mailbox",
         ],
       },
       {
-        stack: "php-store",
-        label: "PHP Storefront",
+        stack: "nextjs-php-store",
+        label: "PHP/Nextjs Storefront",
         price: 20000,
         addons: [
           "Domain Registration",
@@ -1129,10 +1065,15 @@ export const SERVICES = [
         ],
         features: [
           "Pages - Home, Shop, Product Details, Cart, Checkout, Policies, About, Gallery, Blogs, Contact",
-          "Storefront with product catalogue and categories",
-          "Cart, checkout and order management",
+          "Storefront with product listings, detail pages and categories",
+          "Support for multiple product variants, categories and attributes",
+          "Cart, checkout, stock, and order management",
           "Razorpay / Stripe / PayPal payment integration",
-          "Custom PHP backend for orders, stock and customers",
+          "Manage stock, taxes and shipping rules yourself",
+          "Custom PHP/Hono backend for complete control over the store and orders",
+          "Nextjs/Frontend for fast, secure and SEO optimised storefront",
+          "Cloudflare CDN integration for speed and security",
+          "Can support high traffic and large product catalogues",
           "Includes one year of free hosting and business email with mailbox",
         ],
       },
@@ -1141,8 +1082,10 @@ export const SERVICES = [
       "Website design & development - Next.js/PHP/WordPress",
       "Pages: Home, Shop, Product Details, Cart, Checkout, Policies",
       "Product catalogue setup and listing structure",
-      "Cart, checkout and order management",
+      "Cart, checkout, stock and order management",
       "Payment gateway integration - Razorpay, Stripe, PayPal",
+      "Admin dashboard for managing products, orders, and content",
+      "Mobile, tablet and desktop responsive layouts",
       "Speed, security & SEO optimisation",
       "Free 30-day support after launch",
       "Complete 1-Year Bundle: Hosting and Professional Email",

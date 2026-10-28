@@ -25,7 +25,7 @@ export const metadata = {
   ],
   authors: [{ name: SITE.name }],
   icons: {
-    icon: '/favicon.svg',
+    icon: '/Abhishek-Sharma.jpg',
   },
   openGraph: {
     type: 'website',

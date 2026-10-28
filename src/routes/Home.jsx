@@ -275,11 +275,11 @@ function ServicesPreview() {
         description="Fixed starting prices, no surprises. Pick a service or combine them into a complete growth system."
       />
 
-      <EqualHeightRow cols={{ sm: 2, lg: 3 }} className="mt-14">
+      <EqualHeightRow cols={{ sm: 2, lg: 2 }} className="mt-14">
         {VISIBLE_SERVICES.map((service) => (
           <StaggerItem
             key={service.slug}
-            className={centeredItem({ cols: { sm: 2, lg: 3 }})}
+            className={centeredItem({ cols: { sm: 2, lg: 2 }})}
           >
             <ServiceCard service={service} />
           </StaggerItem>

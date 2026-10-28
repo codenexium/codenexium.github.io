@@ -35,7 +35,7 @@ const EXPECTATIONS = [
 const FAQS = [
   {
     q: 'How long does a typical project take?',
-    a: 'A business website usually ships in 2–4 weeks. Online stores take 3–6 weeks. Automation and CRM projects vary with scope - I give you a timeline in the proposal and we track against it.',
+    a: 'A business website usually ships in 1–2 weeks. Online stores take 3–4 weeks. Automation and CRM projects vary with scope - I give you a timeline in the proposal and we track against it.',
   },
   {
     q: 'What do I need to provide before we start?',
